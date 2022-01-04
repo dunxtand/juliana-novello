@@ -1,0 +1,51 @@
+<div id="feedback">
+
+    <div id="carousel-feedback">
+
+      <div class="container narrow bg-slate text-white text-left pb-12">
+
+        <carousel :per-page="1" :autoplay="true" :autoplay-timeout="10000" :loop="true">
+
+          {% for item in block.feedback %} 
+
+            <slide>
+              <div class="p-6 py-12 md:px-24 md:pt-24">
+
+                <div class="serif text-xl md:text-4xl">
+                  “{{ item.feedback_copy }}”
+                </div>
+
+                <div class="my-5">
+
+                  {% if item.feedback_url %}
+                    <a href="{{ item.feedback_url }}">
+                  {% endif %}
+                    <div class="h3 mt-3 text-stone">
+                      {% if item.quote_attribution_name %}
+                        {{ item.quote_attribution_name }}
+                      {% else %}
+                        {{ item.post_title }}
+                      {% endif %}
+                    </div>
+                  {% if item.feedback_url %}
+                    </a>
+                  {% endif %}
+
+                  <div class="h3 mb-2 text-stone">
+                    {{ item.quote_attribution_title }}
+                  </div>
+                </div>
+
+              </div>
+            </slide>
+
+          {% endfor %}
+
+        </carousel>
+
+      </div>
+
+    </div><!-- #carousel -->
+
+
+</div><!-- #feedback -->

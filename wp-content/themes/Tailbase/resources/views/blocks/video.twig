@@ -1,0 +1,20 @@
+<div id="video" class="container narrow" data-sal="fade-in" data-sal-duration="800" data-sal-easing="ease-in" style="--sal-delay: 0s;">
+
+    {% if block.title or block.intro %}
+
+    <div class="mb-8 lg:mb-16">
+
+      {% include 'partial/block-title.twig' %}
+
+      {% include 'partial/block-intro.twig' %}
+
+    </div>
+
+    {% endif %}
+
+    <div class="embed-responsive embed-responsive-16by9 lazyload">
+      <iframe class="embed-responsive-item" src='https://player.vimeo.com/video/{{ block.video_desktop_id }}?api=1&background={{ block.show_controls ? 0 : 1 }}&mute=0' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen>
+      </iframe>
+    </div>
+
+</div>

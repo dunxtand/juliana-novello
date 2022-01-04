@@ -1,0 +1,55 @@
+<div id="capabilities">
+
+  <div class="container narrow">
+
+    <div class="px-3 px-lg-0 mb-0 mb-lg-5" data-sal="fade-in" data-sal-delay="400" data-sal-duration="800">
+
+    {% if block.title %}
+
+    <div class="h1 has-text-centered sans-bold is-uppercase mt-3 mt-lg-5 mb-0 mb-lg-5 has-text-grey">
+
+      {{ block.title }}
+
+    </div>
+
+    {% endif %}
+
+    {% if block.sub_title %}
+
+    <div class="h3 mb-4">
+
+      {{ block.sub_title }}
+
+    </div>
+
+    {% endif %}
+
+    {% include 'partial/block-intro.twig' %}
+
+    </div>
+
+    <div class="d-block py-5" data-sal="slide-up" style="--sal-delay: 0s;" data-sal-duration="800">
+      <div class="columns is-multiline is-centered m-0">
+      {% for item in block.capabilities_repeater %}
+        {% set counter = ( counter | default(0) ) + 200 %}
+        <div class="column is-3 px-4" data-sal="slide-up" data-sal-delay="{{counter}}" data-sal-duration="800">
+          <ul>
+          <div class="h5 sans-bold is-uppercase has-text-grey">{{ item.title }}</div>
+          {% for tax in item.tag %}
+            <li class="underline is-size-6 py-2"><a href="/tag/{{ tax.slug }}">{{ tax.name}}</a></li>
+          {% endfor %}
+          {% for tax in item.work_type %}
+            <li class="is-size-6 py-2">{{ tax.name}}</li>
+          {% endfor %}
+          {% for tax in item.industry %}
+            <li class="underline is-size-6 py-2"><a href="/case-studies/industry/{{ tax.slug }}">{{ tax.name}}</a></li>
+          {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
+      </div>
+    </div>
+
+  </div>
+
+</div>

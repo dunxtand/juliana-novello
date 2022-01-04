@@ -1,0 +1,45 @@
+<!doctype html>
+
+<!--[if lt IE 7]><html class="no-js ie ie6 lt-ie9 lt-ie8 lt-ie7" {{site.language_attributes}}> <![endif]-->
+<!--[if IE 7]><html class="no-js ie ie7 lt-ie9 lt-ie8" {{site.language_attributes}}> <![endif]-->
+<!--[if IE 8]><html class="no-js ie ie8 lt-ie9" {{site.language_attributes}}> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" {{site.language_attributes}}>
+  <!--<![endif]-->
+
+  {# <head> #}
+  {% include 'header/_head.twig' %}
+  {# </head> #}
+
+  <body class="{{ body_class }}">
+    <div class="pageloader is-active"></div>
+
+    {% if post.can_edit %}
+      {% if not in_production %}
+        <div class="current-template-file-name">
+          <span class="edit-link"><a class="post-edit-link h7 pl-3 has-text-danger" href="{{ post.edit_link }}">Edit Content</a></span>
+        </div>
+      {% endif %}
+    {% endif %}
+
+    <div id="app">
+
+        <nav-menu-small itemsstr='{{ menu.items|json_encode() }}'>
+        </nav-menu-small>
+
+        <header>
+            <nav-bar
+              items-str="{{ menu.items|json_encode|e }}"
+              {% if post.bkg_type == "video" and post.vimeo_file_link %}
+                transparent
+              {% endif %}
+            >
+              <template v-slot:logo>
+                <img
+                  src="{{ logo }}"
+                  class="w-40 pb-2 style-svg nav-logo"
+                  alt="Bellweather Logo"
+                />
+              </template>
+            </nav-bar>
+        </header>

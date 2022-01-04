@@ -1,0 +1,41 @@
+<div id="wysiwyg" class="bg-{{ block.background }} pt-{{ block.padding_top_reset }} pb-{{ block.padding_bottom_reset }} w-full overflow-hidden" data-sal="fade-in" data-sal-duration="800" data-sal-easing="ease-in" style="--sal-delay: 0s;">
+    <div class="container narrow">
+
+        {% if block.title %}
+          <h4 class="text-md border-t-2 border-black py-6">
+              {{ block.title }}
+          </h4>
+        {% endif %}
+
+        <div class="w-full flex flex-col lg:flex-row justify-between">
+
+          {% if block.is_offset_content and block.offset_image_repeater|length > 0 %}
+            <img
+              src="{{ block.offset_image_repeater|first.offset_image.url }}"
+              class="max-w-full lazyload {% if block.offset_alignment == "right" %}order-last{% endif %}"
+            />
+          {% endif %}
+
+          <div class="self-center {% if block.is_offset_content %}pt-10 lg:pl-10{% else %}lg:pt-0{% endif %}">
+
+            <div class="pb-4">
+              {{ block.wysiwyg|striptags('<a><b><strong><i><p><br><blockquote><img><ul><ol><li><iframe><h1><hr><h2><h3><h4><h5><h6>')|wpautop }}
+            </div>
+
+            {% if block.cta_button %}
+              <div class="flex justify-{{ block.cta_button_alignment }}">
+
+                {% for item in block.cta_repeater %}
+                  <site-button url="{{ attribute(button, "link_" ~ item.link_type) }}">
+                    {{ item.link_text }}
+                  </site-button>
+                {% endfor %}
+
+              </div>
+            {% endif %}
+          </div>
+
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,135 @@
+$hash: 'ec64ua';
+
+@font-face {
+  font-family: 'icomoon';
+  src:
+    url('fonts/icomoon.woff2?{$hash}') format('woff2'),
+    url('fonts/icomoon.ttf?{$hash}') format('truetype'),
+    url('fonts/icomoon.woff?{$hash}') format('woff'),
+    url('fonts/icomoon.svg?{$hash}#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-arrow-fat-up:before {
+  content: "\e918";
+}
+.icon-sun:before {
+  content: "\e91e";
+  color: #ffb800;
+}
+.icon-chevron-left:before {
+  content: "\e915";
+}
+.icon-chevron-down:before {
+  content: "\e916";
+}
+.icon-chevron-up:before {
+  content: "\e917";
+}
+.icon-chevron-right:before {
+  content: "\e914";
+}
+.icon-arrow-circle-right:before {
+  content: "\e903";
+}
+.icon-arrow-circle-left:before {
+  content: "\e90a";
+}
+.icon-arrow-circle-down:before {
+  content: "\e90b";
+}
+.icon-arrow-circle-up:before {
+  content: "\e90d";
+}
+.icon-arrow-left-large:before {
+  content: "\e90e";
+}
+.icon-arrow-short-up:before {
+  content: "\e90f";
+}
+.icon-arrow-short-down:before {
+  content: "\e910";
+}
+.icon-arrow-right-large:before {
+  content: "\e911";
+}
+.icon-arrow-left:before {
+  content: "\e912";
+}
+.icon-arrow-right:before {
+  content: "\e913";
+}
+.icon-phone-call:before {
+  content: "\e91d";
+}
+.icon-add:before {
+  content: "\e908";
+}
+.icon-arrow-up-right:before {
+  content: "\e909";
+}
+.icon-close-o:before {
+  content: "\e905";
+}
+.icon-close:before {
+  content: "\e906";
+}
+.icon-external-link:before {
+  content: "\e904";
+}
+.icon-cloud_download:before {
+  content: "\e902";
+}
+.icon-email:before {
+  content: "\e90c";
+}
+.icon-link:before {
+  content: "\e900";
+}
+.icon-search:before {
+  content: "\e907";
+}
+.icon-phone:before {
+  content: "\e901";
+}
+.icon-download:before {
+  content: "\e9c7";
+}
+.icon-facebook:before {
+  content: "\ea90";
+}
+.icon-instagram:before {
+  content: "\ea92";
+}
+.icon-twitter:before {
+  content: "\ea96";
+}
+.icon-youtube:before {
+  content: "\ea9d";
+}
+.icon-vimeo:before {
+  content: "\eaa0";
+}
+.icon-linkedin:before {
+  content: "\eaca";
+}
+.icon-pinterest:before {
+  content: "\ead1";
+}

@@ -1,0 +1,32 @@
+{# friend orgs list #}
+<div class="bg-paperback">
+    <div id="our-friends" class="container overflow-x-hidden">
+            <h1 class="text-center py-16 text-5xl lg:text-6xl">
+                Friends of Ours
+            </h1>
+
+        <div class="hidden lg:block">
+            <div class="flex flex-row justify-between -mx-4 px-6">
+
+                {% for col in friends|batch(4) %}
+                    <div class="w-1/4">
+                        {% set friends_col = col %}
+                        {% include 'components/friends_image_col.twig' %}
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+
+        <div class="lg:hidden">
+            <twig-carousel>
+                {% for col in friends|batch(4) %}
+                    <slide>
+                        {% set friends_col = col %}
+                        {% include 'components/friends_image_col.twig' %}
+                    </slide>
+                {% endfor %}
+            </twig-carousel>
+        </div>
+    </div>
+</div>

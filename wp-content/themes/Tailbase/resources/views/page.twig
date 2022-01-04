@@ -1,0 +1,13 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+  <div class="container narrow">
+    <h1 class="text-4xl pt-10 mb-10">
+      {{ post.title }}
+    </h1>
+    <div class="wysiwyg mb-24">
+      {{ post.content|striptags('<a><b><strong><i><p><br><blockquote><img><ul><ol><li><iframe><h1><hr><h2><h3><h4><h5><h6>')|wpautop }}
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% if block.is_intro == 'yes' %}
+
+<div class="wysiwyg w-full {% if block.intro_title_half_width %}lg:w-1/2{% endif %}">
+  {{ block.intro }}
+</div>
+
+{% endif %}

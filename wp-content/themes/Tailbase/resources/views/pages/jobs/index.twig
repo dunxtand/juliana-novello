@@ -1,0 +1,36 @@
+{# sidebar #}
+<div class="sticky top-0 left-0 anchor-offset">
+    <anchor-links class="hidden lg:flex flex-col items-center absolute left-0 top-0 mt-24 pt-4 w-24 sans-bold">
+        <a
+            href="#jobs-at-bellweather"
+            class="mr-2 uppercase flex flex-col items-center text-white"
+            style="height:300px;"
+            data-sal="slide-down"
+            data-sal-duration="800"
+            data-sal-delay="800"
+            v-smooth-scroll
+        >
+            <span class="transform -rotate-90 mb-20 pl-6 text-sm text-center whitespace-no-wrap tracking-widest">
+                Jobs at Bellweather
+            </span>
+            {% include 'components/objects/anchor-link-arrow.twig' with { color: 'white' } %}
+        </a>
+    </anchor-links>
+</div>
+
+<div class="pb-16 lg:pb-24 bg-paperback">
+    <section class="text-white bg-slate lg:mt-24">
+        <div class="container narrow pb-20">
+            {% include 'components/page_title.twig' with { color: 'white', arrow_color: 'white' } %}
+
+            <div class="flex flex-col lg:flex-row justify-between serif text-4xl mb-16" data-sal="fade" style="--sal-delay: 0s;" data-sal-duration="800">
+                {{ post.post_content }}
+            </div>
+
+            <div id="jobs-at-bellweather" class="bg-slate overflow-hidden">
+                <jobs-list>
+                </jobs-list>
+            </div>
+        </div>
+    </section>
+</div>

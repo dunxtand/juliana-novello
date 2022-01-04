@@ -1,0 +1,83 @@
+// COLORS
+$primary:        #004270;
+$secondary:      #FFD53F;
+$primary-dark:   #0A202E;
+$primary-light:  #d7dde3;
+$sand:           #F8F5F2;
+$paperback:      #F8F5F2;
+$slate:          #464440;
+$stone:          #958F86;
+
+$brand:          #1328e6;;
+$brand-alt:      #7ee4e8;;
+
+// HELPER URL
+$images: '../images';
+
+
+/* ==========================================================================
+Colors
+========================================================================== */
+
+.bg-sand {
+  background-color: $sand;
+}
+.bg-paperback {
+  background-color: $paperback;
+}
+.bg-slate {
+  background-color: $slate;
+}
+.bg-brand {
+  background-color: $brand;
+}
+
+.text-stone {
+  color: $stone;
+}
+
+.text-brand {
+  color: $brand;
+}
+
+.text-primary {
+  color: $primary !important;
+}
+
+a.text-secondary {
+  color: $secondary !important;
+  &:hover, &:focus, &:active {
+    color: $secondary !important;
+  }
+}
+
+.text-secondary {
+  color: $secondary !important;
+  &:hover, &:focus, &:active {
+    color: $secondary !important;
+  }
+}
+
+.bg-secondary {
+  background: $secondary;
+}
+
+.bg-primary {
+  background: $primary;
+}
+
+.bg-primary-dark {
+  background: $primary-dark;
+}
+
+.text-primary-dark {
+  color: $primary-dark;
+}
+
+.border-primary {
+  border-color: $primary !important;
+}
+
+.border-secondary {
+  border-color: $secondary !important;
+}

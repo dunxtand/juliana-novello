@@ -1,0 +1,136 @@
+<div class="containter narrow">
+    <div class="flex flex-col">
+
+        {# results section #}
+        {% if post.results|length > 0 %}
+            <div class="flex flex-col lg:hidden">
+                <h2 class="border-t-2 border-black w-full text-2xl py-4">
+                    The Results
+                </h2>
+
+                <div class="flex flex-row justify-start lg:justify-center flex-wrap my-5 lg:my-16">
+                    {% for item in post.results %}
+                        <div class="flex flex-col items-start lg:items-center w-1/2 mb-4 pr-1">
+
+                            <span class="text-5xl my-2 serif-header">
+                                <animate-number value="{{ item.stat }}"></animate-number>
+                            </span>
+
+                            <hr class="text-black border-black w-1/2" />
+                            <span class="text-left lg:text-center w-full lg:w-5/6 my-2 pr-4">
+                                {{ item.text }}
+                            </span>
+                            <hr class="text-black border-black w-1/2" />
+
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+        {# process section ('who we talked to') #}
+        {% if process.stats|length > 0 %}
+            <div class="flex flex-col my-10">
+                <h2 class="border-t-2 border-black w-full text-2xl py-4">
+                    {{ process.header }}
+                </h2>
+
+                <div class="flex flex-row justify-start lg:justify-center flex-wrap my-10 lg:my-16">
+                    {% for item in process.stats %}
+                        <div class="flex flex-col items-start lg:items-center w-1/2 lg:w-1/4 mb-4">
+
+                            <span class="text-5xl my-2 lg:my-0 serif-header">
+                                <animate-number value="{{ item.stat }}"></animate-number>
+                            </span>
+
+                            <hr class="text-black border-black lg:hidden w-1/2" />
+                            <span class="text-left lg:text-center w-full lg:w-5/6 my-2 lg:my-0 pr-4">
+                                {{ item.description }}
+                            </span>
+                            <hr class="text-black border-black lg:hidden w-1/2" />
+
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <a href="#" class="sans-medium open-project-info-sm lg:hidden flex flex-row justify-between items-center border-2 border-black rounded-full py-3 px-4 bg-black text-white">
+                    <span>
+                        Project Information
+                    </span>
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="8.5" y1="1.38848e-08" x2="8.5" y2="17.4" stroke="#fff" stroke-width="2"/>
+                        <line x1="17.4" y1="8.5" x2="2.85825e-05" y2="8.5" stroke="#fff" stroke-width="2"/>
+                    </svg>
+                </a>
+
+                <div class="flex flex-row justify-center mt-4 lg:mt-8">
+                    <site-button url="/process" class="w-full lg:w-1/4">
+                        Learn about Our Process
+                    </site-button>
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="hidden lg:flex flex-col my-10">
+            <h2 class="border-t-2 border-black w-full text-2xl py-4">
+                {{ credits.header }}
+            </h2>
+
+            <div class="flex flex-row flex-wrap my-6 lg:my-10">
+                <div class="w-1/4 flex flex-col">
+                    <div class="flex flex-col mb-10">
+                        <span class="uppercase mb-2 text-sm sans-bold tracking-widest">
+                            Client
+                        </span>
+                        <span>
+                            {{ credits.client_name }}
+                        </span>
+                    </div>
+
+                    {% if credits.client_url %}
+                        <div class="flex flex-col mb-10">
+                            <span class="uppercase mb-2 text-sm sans-bold tracking-widest">
+                                Website
+                            </span>
+                            <a href="{{ credits.client_url }}" target="_blank">
+                                {{ credits.client_url }}
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="w-1/4 flex flex-col">
+                    <div class="flex flex-col mb-10">
+                        <span class="uppercase mb-2 text-sm sans-bold tracking-widest">
+                            Sector
+                        </span>
+                        <ul>
+                            {% for item in credits.sectors %}
+                                <li>
+                                    {{ item.name }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="w-1/2 flex flex-col">
+                    <span class="uppercase mb-2 text-sm sans-bold tracking-widest">
+                        Team
+                    </span>
+                    <ul>
+                        {% for item in credits.team_members %}
+                            <li>
+                                {{ item.name }}, {{ item.position }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>

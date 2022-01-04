@@ -1,0 +1,136 @@
+  <footer class="text-white pb-32 lg:pb-8 bg-paperback">
+    <div class="bg-slate relative">
+      <div class="container flex">
+        <div class="w-full lg:w-10/12 bg-slate">
+              <div class="bg-slate py-10 lg:py-16">
+                <h1 class="text-4xl lg:text-5xl">
+                  Have a project in mind?
+                  <br />
+                  Let's talk!
+                </h1>
+                <site-button
+                  url="/contact"
+                  color="white"
+                  class="inline-block my-6 lg:w-1/2"
+                >
+                  Tell us about your project
+                </site-button>
+                
+              </div>
+
+          <div class="border-t border-white lg:mr-16"></div>
+
+          <div class="flex flex-col lg:flex-row bg-slate py-10 lg:py-16">
+            <div class="w-full lg:w-1/2 inline-block align-top relative">
+              <div class="bg-slate mb-10 pt-4">
+                <span class="text-lg">
+                  Stay in touch for the latest news &amp; insights.
+                </span>
+
+                <footer-contact-form>
+                </footer-contact-form>
+              </div>
+            </div>
+
+            <div class="w-full lg:w-1/2 inline-block align-top pt-4">
+              <div class="xl:px-10">
+                <span class="text-lg">
+                  More ways to get in touch:
+                </span>
+                <div class="flex flex-col mt-3">
+                  <site-button
+                    url="{{ contactemail }}"
+                    type="mailto"
+                    color="white"
+                    new-tab
+                    class="mb-3"
+                  >
+                    Email Us
+                  </site-button>
+                  <site-button
+                    url="{{ contactphone }}"
+                    type="tel"
+                    color="white"
+                  >
+                    Call Us
+                  </site-button>
+                </div>
+              </div>
+            </div>
+
+            <div class="w-full lg:w-1/4 inline-block align-top pt-4 mt-16 lg:mt-0">
+              <div class="xl:px-10">
+                <span class="text-lg">
+                  Follow Us:
+                </span>
+                <ul class="flex flex-row lg:flex-col flex-wrap mt-3 text-lg">
+                  {% for item in socialnetworks %}
+                    <li class="mb-4 lg:mb-1 w-1/2 lg:w-full">
+                      <a target="_blank" href="{{ item.social_network_link }}" class="underline">
+                        {{ item.social_network }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+
+            <div class="w-full lg:w-1/4 inline-block align-top pt-4 mt-8 lg:mt-0">
+              <div class="xl:px-10">
+                <span class="text-lg">
+                  Also:
+                </span>
+                <ul class="flex flex-row lg:flex-col flex-wrap mt-3 text-lg">
+                  {% for item in footer_also_menu.items %}
+                    <li class="mb-4 lg:mb-1 w-1/2 lg:w-full">
+                      <a href="{{ item.url }}" class="underline">
+                        {{ item.name }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="bg-paperback lg:w-2/12 relative flex">
+          <div class="w-full flex justify-center items-end">
+            <scroll-to-top
+              class="absolute hidden lg:flex"
+              data-sal="slide-left" data-sal-delay="300" data-sal-duration="800"
+            >
+            </scroll-to-top>
+          </div>
+        </div>
+
+      </div>
+      <div class="hidden lg:flex bg-paperback w-24 absolute right-0 top-0 h-auto lg:h-full"></div>
+    </div>
+
+    <div class="container">
+
+      <div class="flex flex-col lg:flex-row justify-center items-center lg:pt-2 relative">
+        <div class="lg:hidden mt-6">
+          {% include 'footer/footer_extras.twig' %}
+        </div>
+        <div class="flex flex-row items-center relative w-full">
+          <div class="hidden lg:block absolute lg:ml-5 left-0" style="right:100%;top:46.5%;">
+            {% include 'footer/footer_extras.twig' %}
+          </div>
+          <div class="flex flex-row mx-auto max-w-full">
+            {% include 'components/badges.twig' with { px: 2, width: 125, color: '#000' } %}
+          </div>
+        </div>
+      </div>
+    
+    </div>
+
+  </footer>
+
+</div> {# end <div id="app"> #}
+
+{{ function('wp_footer') }}
+</body>
+</html>

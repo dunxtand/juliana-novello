@@ -1,0 +1,31 @@
+<div id="quote" class="container narrow py-5" data-sal="zoom-out" data-sal-duration="500" data-sal-easing="ease-in" style="--sal-delay: 0s;">
+
+    {% if block.title or block.intro %}
+
+    <div class="mb-8 lg:mb-16">
+
+      {% include 'partial/block-title.twig' %}
+
+      {% include 'partial/block-intro.twig' %}
+
+    </div>
+
+    {% endif %}
+
+
+    {% for item in block.block_quote_relationship %}
+
+    <span class="blockquote content-block">
+      <div class="serif text-3xl lg:text-5xl leading-normal mb-10"><span class="ldquo text-3xl lg:text-5xl serif">&ldquo;</span>{{ item.feedback_copy }}<span class="rdquo text-3xl lg:text-5xl serif">&rdquo;</span></div>
+    </span>
+    {% if item.feedback_url %}<a href="{{ item.feedback_url }}" target="_blank" class="underline">{% endif %}<div class="h6">{% if item.quote_attribution_name %}{{ item.quote_attribution_name }}{% else %}{{ item.post_title }}{% endif %}</div>{% if item.feedback_url %}</a>{% endif %}
+    <div class="h6 text-stone">
+      {{ item.quote_attribution_title }}
+    </div>
+
+    {% endfor %}
+
+
+
+
+</div><!-- #quote -->

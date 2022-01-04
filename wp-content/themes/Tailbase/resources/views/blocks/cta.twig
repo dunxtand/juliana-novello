@@ -1,0 +1,26 @@
+<div id="cta" data-sal="fade" data-sal-delay="100" data-sal-duration="800" data-sal-easing="ease-out-bounce">
+
+  <div class="container narrow">
+
+    {% if block.title or block.intro %}
+
+    <div class="px-3 lg:px-0 mb-4">
+
+      {# {% include 'partial/block-title.twig' %}
+
+      {% include 'partial/block-intro.twig' %} #}
+
+    </div>
+
+    {% endif %}
+
+    <div class="w-full flex justify-center">
+      <site-button url="{{ block.cta.url }}" new-tab>
+        {{ block.cta.title }}
+      </site-button>
+    </div>
+
+  </div><!-- /.container -->
+
+
+</div><!-- #cta -->

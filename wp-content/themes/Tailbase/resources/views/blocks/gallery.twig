@@ -1,0 +1,55 @@
+<div id="gallery">
+  <div class="container narrow">
+
+      {% if block.title or block.intro %}
+
+      <div class="mb-8 lg:mb-16">
+
+        {% include 'partial/block-title.twig' %}
+
+        <div class="{% if block.intro_title_half_width %}w-full md:w-2/3 lg:w-7/12 xl:w-1/2{% endif %}">
+          {% include 'partial/block-intro.twig' %}
+        </div>
+
+      </div>
+
+      {% endif %}
+
+      {% if block.gallery_type == "carousel" %}
+
+      <div id="carousel-gallery">
+        <gallery-carousel speed="{{ block.carousel_speed }}">
+          {% for item in block.block_gallery %}
+            <slide>
+                <img class="image w-100 lazyload {% if not loop.last %}mb-2{% endif %}" src="{{ Image(item) }}" data-sal="fade-in" data-sal-duration="800" data-sal-easing="ease-in" style="--sal-delay: 0s;" />
+            </slide>
+          {% endfor %}
+        </carousel>
+      </div>
+
+      {% else %}
+
+      <div class="w-full flex flex-wrap">
+        {% for item in block.gallery_repeater %}
+
+          {% if item.image_width == "full" %}
+
+            <div class="w-full {% if not loop.last %}mb-5 lg:mb-10{% endif %}">
+              <img src="{{ item.image }}" class="object-cover lazyload">
+            </div>
+
+          {% else %}
+
+            <div class="w-1/2 {% if loop.index is odd %}pr-2{% else %}pl-2{% endif %} {% if not loop.index == loop.length + 1 or not loop.index == loop.length %}mb-5 lg:mb-10{% endif %}">
+              <img src="{{ item.image }}" class="object-cover lazyload">
+            </div>
+
+          {% endif %}
+
+        {% endfor %}
+      </div>
+
+      {% endif %}
+
+  </div>
+</div><!-- #gallery -->

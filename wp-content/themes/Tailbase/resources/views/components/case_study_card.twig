@@ -1,0 +1,45 @@
+{% if in_development %}
+    <div class="mt-5 flex flex-col">
+{% else %}
+    <a href="{{ link }}" class="live-case-study mt-5 flex flex-col">
+{% endif %}
+        <div class="{{ height_class }} relative overflow-hidden flex">
+            <img
+                src="{{ image }}"
+                alt="{{ title }}"
+                class="lazyload object-cover w-full flex"
+            />
+            {% if in_development %}
+                <div class="coming-soon absolute inset-0 flex flex-row justify-center items-center">
+                    <span class="text-2xl lg:text-3xl opacity-1 text-center uppercase serif-header text-white tracking-wider">
+                        Coming Soon
+                    <span>
+                </div>
+            {% else %}
+                <div class="case-study-tagline-overlay absolute inset-0 hidden md:flex flex-row justify-center items-center">
+                    <span class="text-2xl lg:text-3xl opacity-1 text-center serif-header text-white tracking-wider px-4">
+                        {{ tagline }}
+                    <span>
+                </div>
+            {% endif %}
+        </div>
+        <span class="mt-2 text-xxs md:text-xs uppercase sans-bold tracking-wider">
+            {# work types / disciplines #}
+            {% for work_type in work_types %}
+                <span>{{ work_type }}</span>
+                {% if not loop.last %}
+                    <span class="mx-1">|</span>
+                {% endif %}
+            {% endfor %}
+        </span>
+        <div class="case-study-title mb-5 mt-3 text-lg md:text-xl sans-medium">
+            <div class="inline-block">
+                <span>{{ title }}</span>
+                {% if not in_development %}<hr class="bg-black"/>{% endif %}
+            </div>
+        </div>
+{% if in_development %}
+    </div>
+{% else %}
+    </a>
+{% endif %}

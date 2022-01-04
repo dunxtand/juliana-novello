@@ -1,0 +1,63 @@
+@import "./breakpoints.scss";
+
+
+
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+
+@import "tailwindcss/utilities";
+
+@import "./grid-overwrite.scss";
+
+
+
+@import "/variables";
+
+@import "./mixins.scss"; // for tailwind @apply
+
+@import "../../../node_modules/sal.js/dist/sal";
+
+@import "./fonts.scss";
+
+@import "./global.scss";
+
+@import "./images.scss";
+
+@import "./vendor/icomoon.scss";
+
+@import "../../views/components/index.scss";
+
+@import "./accessibility.scss";
+
+@import "./utilities.scss";
+
+@import "./helpers.scss";
+
+@import "./components/page.scss";
+
+@import "./components/footer.scss";
+
+@import "./components/hero.scss";
+
+@import "./components/case-studies.scss";
+
+@import "./components/about.scss";
+
+@import "./components/splitting.scss";
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+
+html, body {
+  font-family: $sans;
+  background-color: #fff;
+}
+
+.bkg-gradient {
+  background: linear-gradient(180deg, #fff 0%, $paperback 100%);
+}

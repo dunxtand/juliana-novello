@@ -1,0 +1,9 @@
+<ul class="mx-4 lg:mx-0 mb-24">
+    {% for item in friends_col %}
+        <li class="py-6 flex flex-row justify-center items-center">
+            <a href="{{ item.link }}" target="_blank" class="text-lg text-center">
+               <img src="{{ item.image }}" class="w-full lazyload" />
+            </a>
+        </li>
+    {% endfor %}
+</ul>

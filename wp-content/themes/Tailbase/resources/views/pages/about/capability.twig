@@ -1,0 +1,12 @@
+<div class="flex flex-col mb-6">
+    <p class="text-md mt-10 mb-2 border-b-2 border-black pb-1">
+        {{ item.category }}
+    </p>
+    <ul>
+        {% for cap in item.capabilities %}
+            <li class="py-2">
+                <p class="m-0">{{ cap.name }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

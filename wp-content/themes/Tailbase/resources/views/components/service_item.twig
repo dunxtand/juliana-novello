@@ -1,0 +1,13 @@
+<div class="flex flex-col">
+    <img src="{{ service.image|resize(500, 350, 'center') }}" alt="{{ service.category }}" class="w-full object-cover" />
+    <h5 class="w-full border-b-2 border-black pb-px my-4">
+        {{ service.category }}
+    </h5>
+    <ul>
+        {% for subservice in service.services %}
+            <li class="mb-2">
+                {{ subservice.name }}
+            </li>
+        {% endfor %}
+    </ul>
+</div>

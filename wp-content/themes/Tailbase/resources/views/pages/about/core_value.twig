@@ -1,0 +1,52 @@
+<div class="my-4 mr-6 lg:mx-3 flex flex-col">
+    {% if core_value.animation_name == 'none' %}
+        <img
+            src="{{ Image(core_value.image).src }}"
+            alt="{{ core_value.title }}"
+            class="lazyload object-cover w-full lg:w-11/12 mx-auto my-4 lg:my-6"
+        />
+    {% else %}
+        <lottie-animation
+            class="lottie px-4 lg:px-0"
+            path="{{ core_value.animation_name }}"
+            loop
+        >
+            <template v-slot:fallback>
+                <img
+                    src="{{ Image(core_value.image).src }}"
+                    alt="{{ core_value.title }}"
+                    class="lazyload object-cover w-full lg:w-11/12 mx-auto my-4 lg:my-6"
+                />
+            </template>
+        </lottie-animation>
+    {% endif %}
+
+    <div class="flex flex-row my-4 py-5 border-t-2 border-b-2 border-black ">
+        <p class="mr-10 my-0">
+            {{ core_value.number }}
+        </p>
+        <p class="my-0">
+            {{ core_value.title }}
+        </p>
+    </div>
+
+    <div class="mt-4">
+        <span class="sans-medium inline">
+            {{ core_value.description|split('. ')|first ~ '.' }}
+        </span>
+        {{ core_value.description|split('. ')|slice(1)|join('. ') }}
+    </div>
+
+    {% if core_value.links|length > 0 %}
+        <div class="hidden lg:flex flex-col pt-16 border-t-2 border-black mt-auto">
+            {% for link in core_value.links %}
+                <site-button
+                    url="{{ link.link_type == 'internal_link' ? function('get_permalink', link.linked_content.id) : link.url }}"
+                    class="mb-1 text-sm"
+                >
+                    {{ link.text }}
+                </site-button>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>

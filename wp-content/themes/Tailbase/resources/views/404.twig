@@ -1,0 +1,10 @@
+{% extends "base.twig" %}
+
+{% block content %}
+  <div class="container text-center p-42 mb-40 mt-48"  data-sal="slide-up" data-sal-delay="300" data-sal-duration="800">
+    <h1 class="serif-header text-4xl">
+    {{ messages.404.title }}
+    </h1>
+    <p>{{ messages.404.body }} <a href="{{ site.link }}">{{ messages.404.link_text }}</a>.</p>
+  </div>
+{% endblock %}

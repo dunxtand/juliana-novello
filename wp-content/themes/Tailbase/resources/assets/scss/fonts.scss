@@ -1,0 +1,191 @@
+$serif-header:        'Canela Light', serif;
+$serif:               'Canela Thin', serif;
+
+// $sans-bold:        'Lora Bold', serif;
+// $sans-italic:      'Lora Italic', 'Lora', serif;
+
+
+$sans:              'GT-Walsheim Regular';
+$sans-italic:       'GT-Walsheim Regular Italic';
+$sans-light:        'GT-Walsheim Light';
+$sans-medium:       'GT-Walsheim Medium';
+$sans-bold:         'GT-Walsheim Bold';
+
+$aura: 'Aura';
+
+.sans {
+  font-family: $sans
+}
+.sans-medium {
+  font-family: $sans-medium;
+  font-weight: 500;
+}
+.sans-bold {
+  font-family: $sans-bold
+}
+
+.sans-italic {
+  font-family: $sans-italic
+}
+
+.serif-header {
+  font-family: $serif-header
+}
+
+.serif {
+  font-family: $serif;
+  // color: #958F86;
+  // &.text-black {
+  //   color: #000;
+  // }
+  // &.text-white {
+  //   color: #fff;
+  // }
+}
+
+// .serif-bold {
+//   font-family: $serif-alt-bold
+// }
+
+// .serif-italic {
+//   font-family: $serif-alt-italic
+// }
+
+.aura {
+  font-family: $aura;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.letter-spacing {
+  letter-spacing: 1.5px;
+}
+
+
+/* https://github.com/wearethescenery/ether */
+
+
+.font-family-inherit { font-family: inherit }
+.font-size-inherit { font-size: inherit }
+.text-decoration-none { text-decoration: none }
+
+.bold    { font-weight: var(--bold-font-weight, bold) }
+.regular { font-weight: normal }
+.italic  { font-style: italic }
+.caps    { text-transform: uppercase; letter-spacing: var(--caps-letter-spacing); }
+
+.left-align   { text-align: left }
+.center       { text-align: center }
+.right-align  { text-align: right }
+.justify      { text-align: justify }
+
+.nowrap { white-space: nowrap }
+.break-word { word-wrap: break-word }
+
+// .line-height-1 { line-height: var(--line-height-1) }
+// .line-height-2 { line-height: var(--line-height-2) }
+// .line-height-3 { line-height: var(--line-height-3) }
+// .line-height-4 { line-height: var(--line-height-4) }
+
+.list-style-none { list-style: none }
+
+
+
+.truncate {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.list-reset {
+  list-style: none;
+  padding-left: 0;
+}
+
+
+
+/* Basscss Type Scale */
+.h00 { font-size: 5rem; }
+.h0 { font-size: 4rem; }
+.h1, h1 { font-size: 2rem; line-height: 1.25 !important; }
+.h2, h2 { font-size: 1.65rem; line-height: 1.25 !important; }
+.h3, h3 { font-size: 1.35rem; line-height: 1.35 !important; }
+.h4, h4 { font-size: 1.25rem; line-height: 1.35 !important; }
+.h5, h5 { font-size: 1.15rem; line-height: 1.35 !important; }
+.h6, h6 { font-size: 1.1rem; line-height: 1.35 !important; }
+
+h1, h2 {
+  font-family: $serif;
+}
+
+
+
+// sans
+@font-face{
+  font-family:"GT-Walsheim Light";
+  src:url("../fonts/GTWalsheimPro-Light.eot") format("eot"),
+      url("../fonts/GTWalsheimPro-Light.woff") format("woff"),
+}
+@font-face{
+  font-family:"GT-Walsheim Regular";
+  src:url("../fonts/GTWalsheimPro.eot") format("eot"),
+      url("../fonts/GTWalsheimPro.woff") format("woff"),
+}
+@font-face{
+  font-family:"GT-Walsheim Medium";
+  src:url("../fonts/GTWalsheimPro-Medium.eot") format("eot"),
+      url("../fonts/GTWalsheimPro-Medium.woff") format("woff"),
+}
+@font-face{
+  font-family:"GT-Walsheim Bold";
+  src:url("../fonts/GTWalsheimPro-Bold.eot") format("eot"),
+      url("../fonts/GTWalsheimPro-Bold.woff") format("woff"),
+}
+@font-face{
+  font-family:"Aura";
+  src:url("../fonts/ATAura.woff") format("woff"),
+      url("../fonts/ATAura.woff2") format("woff2"),
+}
+
+//serif
+@font-face{
+  font-family:"Canela";
+  src:url("../fonts/Canela-Bold-Web.eot") format("eot"),
+      url("../fonts/Canela-Bold-Web.woff") format("woff"),
+}
+@font-face{
+  font-family:"Canela Light";
+  src:url("../fonts/Canela-Light.eot") format("eot"),
+      url("../fonts/Canela-Light.woff") format("woff"),
+}
+@font-face{
+  font-family:"Canela Thin";
+  src:url("../fonts/Canela-Thin.eot") format("eot"),
+      url("../fonts/Canela-Thin.woff") format("woff"),
+}
+
+
+// // sans
+// @font-face{
+//   font-family:"Canela Light";
+//   src:url("../fonts/GTWalsheimPro-Light.ot?#iefix") format("eot"),
+//       url("../fonts/GTWalsheimPro-Light.woff") format("woff"),
+// }
+// @font-face{
+//   font-family:"Canela Regular";
+//   src:url("../fonts/GTWalsheimPro.eot?#iefix") format("eot"),
+//       url("../fonts/GTWalsheimPro.woff") format("woff"),
+// }
+// @font-face{
+//   font-family:"Canela Medium";
+//   src:url("../fonts/GTWalsheimPro-Mediumeot?#iefix") format("eot"),
+//       url("../fonts/GTWalsheimPro-Mediumwoff") format("woff"),
+// }
+// @font-face{
+//   font-family:"Canela Bold";
+//   src:url("../fonts/GTWalsheimPro-Bold.et?#iefix") format("eot"),
+//       url("../fonts/GTWalsheimPro-Bold.wff") format("woff"),
+// }

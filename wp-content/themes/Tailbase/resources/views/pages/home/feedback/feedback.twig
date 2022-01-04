@@ -1,0 +1,17 @@
+<section id="feedback-carousel">
+    <feedback-carousel itemsstr="
+        [
+            {% for item in TimberPost(post.feedback_relationship) %}
+                {% set timber_item = TimberPost(item) %}
+                {
+                    &quot;order&quot;: {{ loop.index }},
+                    &quot;quote&quot;: &quot;{{ timber_item.feedback_copy|replace({"\n":' ', "\r":' '}) }}&quot;,
+                    &quot;attribution_name&quot;: &quot;{{ timber_item.quote_attribution_name }}&quot;,
+                    &quot;attribution_title&quot;: &quot;{{ timber_item.quote_attribution_title }}&quot; 
+                }
+                {% if loop.last == false %},{% endif %}
+            {% endfor %}
+        ]
+    ">
+    </feedback-carousel>
+</section>

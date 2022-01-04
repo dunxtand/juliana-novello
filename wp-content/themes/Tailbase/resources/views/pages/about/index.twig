@@ -1,0 +1,213 @@
+<div class="bkg-gradient pb-12 lg:mt-24">
+
+    <div class="sticky top-0 left-0 anchor-offset">
+        <anchor-links class="hidden lg:flex flex-col items-center absolute left-0 top-0 pt-20 w-24 sans-bold">
+            <a
+                href="#core-values"
+                class="mr-2 uppercase flex flex-col items-center"
+                style="height:250px;"
+                data-sal="slide-down"
+                data-sal-duration="800"
+                data-sal-delay="800"
+                v-smooth-scroll
+            >
+                <span class="transform -rotate-90 mb-12 pl-4 text-sm text-center whitespace-no-wrap tracking-widest">
+                    Core Values
+                </span>
+                {% include 'components/objects/anchor-link-arrow.twig' %}
+            </a>
+
+            <a
+                href="#services"
+                class="mr-2 uppercase flex flex-col items-center"
+                style="height:250px;"
+                data-sal="slide-down"
+                data-sal-duration="800"
+                data-sal-delay="900"
+                v-smooth-scroll
+            >
+                <span class="transform -rotate-90 mb-10 pl-2 text-sm text-center tracking-widest">
+                    Services
+                </span>
+                {% include 'components/objects/anchor-link-arrow.twig' %}
+            </a>
+
+            <a
+                href="#team"
+                class="mr-2 uppercase flex flex-col items-center"
+                style="height:250px;"
+                data-sal="slide-down"
+                data-sal-duration="800"
+                data-sal-delay="1000"
+                v-smooth-scroll
+            >
+                <span class="transform -rotate-90 mb-6 text-sm text-center tracking-widest">
+                    Team
+                </span>
+                {% include 'components/objects/anchor-link-arrow.twig' %}
+            </a>
+        </anchor-links>
+    </div>
+
+    <div class="container offset overflow-x-hidden">
+        {% include 'components/page_title.twig' with { color_lg: 'black' } %}
+
+        <div class="mb-6 lg:mb-32">
+            <h1 class="text-3xl lg:text-6xl lg:w-11/12 my-2 splitMeByLine">
+                {{ post.post_content }}
+            </h1>
+        </div>
+
+        <div class="border-t-2 border-black pt-3">
+            <div>
+                <p>Our Leadership</p>
+            </div>
+        </div>
+
+        <section id="leadership" class="mb-16" data-sal="fade-in" data-sal-duration="800" data-sal-easing="ease-in" style="--sal-delay: 0s;">
+            <div class="flex flex-col lg:flex-row lg:pb-12">
+                <div class="w-full lg:w-1/2 overflow-hidden">
+                    <img
+                        src="{{ Image(post.leadership_image).src|resize(900) }}"
+                        alt="Bellweather Leadership"
+                        class="img-zoom"
+                    />
+                </div>
+                <div class="container w-full lg:w-1/2 xl:px-16">
+                    <div class="flex flex-col">
+
+                        {% if post.leadership_show_badges %}
+                            <div class="flex flex-row justify-evenly lg:mb-4">
+                                {% include 'components/badges.twig' with { px: 2 } %}
+                            </div>
+                        {% endif %}
+
+                        <div class="mx-2 lg:mx-10 lg:my-4">
+                            {% for item in post.meta('leadership_paragraphs') %}
+                                <p class="{% if not loop.last %}mb-6 lg:mb-4{% endif %}">
+                                    <span>
+                                        {{ item.text|split('. ')|first ~ '.' }}
+                                    </span>
+                                    <span>
+                                        {{ item.text|split('. ')|slice(1)|join('. ') }}
+                                    </span>
+                                </p>
+                            {% endfor %}
+                        </div>
+                        
+                        {% if post.leadership_button_text and post.leadership_button_url %}
+                            <site-button url="{{ post.leadership_button_url }}" class="self-center w-full lg:w-auto">
+                                {{ post.leadership_button_text }}
+                            </site-button>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div id="core-values" class="border-t-2 border-black pt-3">
+            <div>
+                <p>Our Core Values</p>
+            </div>
+        </div>
+
+        <div class="hidden lg:flex flex-row justify-between lg:-mx-3">
+            {% for item in post.meta('core_values') %}
+                {% set core_value = item %}
+                <div class="w-1/3 core-value-lg flex" data-sal="slide-right" data-sal-duration="800" data-sal-delay="{{ loop.index * 200 }}">
+                    {% include 'pages/about/core_value.twig' %}
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="lg:hidden mb-16" data-sal="fade-in" data-sal-duration="800" style="--sal-delay: 0s;">
+            <twig-carousel>
+                {% for item in post.meta('core_values') %}
+                    {% set core_value = item %}
+                    <slide>
+                        {% include 'pages/about/core_value.twig' %}
+                    </slide>
+                {% endfor %}
+            </twig-carousel>
+        </div>
+
+
+        <div id="services" class="w-full my-10 hidden lg:block">
+            <h4 class="text-md border-t-2 border-black py-6">
+                Our Services
+            </h4>
+
+            <div class="flex flex-row -mx-4">
+                {% for service in services %}
+                    <div class="w-1/4 mx-4" data-sal="slide-right" data-sal-duration="800" data-sal-delay="{{ loop.index * 200 }}">
+                        {% include 'components/service_item.twig' with { service: service } %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+
+        <div class="lg:hidden" data-sal="fade-in" data-sal-duration="800" style="--sal-delay: 0s;">
+            {% for item in post.meta('core_values') %}
+                {% if item.links|length > 0 %}
+                    <div class="flex flex-col {% if loop.last %}mb-10{% endif %}">
+                        {% for link in item.links %}
+                            <site-button
+                                url="{{ item.url }}"
+                                class="mb-4 text-sm"
+                            >
+                                {{ link.text }}
+                            </site-button>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="lg:hidden mb-16 overflow-hidden" data-sal="fade-in" data-sal-duration="800" style="--sal-delay: 0s;">
+        <h4 class="text-md border-t-2 border-black py-6 mx-4">
+            Our Services
+        </h4>
+
+        <twig-carousel arrow-mx="4">
+            {% for service in services %}
+                <slide>
+                    <div class="mx-4">
+                        {% include 'components/service_item.twig' with { service: service } %}
+                    </div>
+                </slide>
+            {% endfor %}
+        </twig-carousel>
+    </div>
+
+    <div id="team" class="bg-black text-white pt-5 pb-10">
+        <div class="container offset py-10 flex flex-col bg-black">
+            <div class="border-t border-white py-6">
+                <div>
+                    <p class="my-0">Our Team</p>
+                </div>
+            </div>
+
+            <div class="flex flex-row flex-wrap -mx-4">
+                {% for person in team %}
+                    {% include 'components/team_member.twig' with { team_member: person } %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="container offset flex flex-col mb-20">
+            <h2 class="text-5xl">
+                Work at Bellweather
+            </h2>
+
+            <site-button
+                url="/jobs"
+                color="white"
+                class="inline-block my-6 lg:w-1/3"
+            >
+                See career opportunities at Bellweather
+            </site-button>
+        </div>
+    </div>
+</div>

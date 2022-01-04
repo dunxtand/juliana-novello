@@ -1,0 +1,33 @@
+    
+<div class="pb-12 md:pb-20">
+{% if more_insights %}
+  <hr>
+  <h3 class="text-3xl md:text-5xl py-6 md:py-12 serif-header">Read on</h3>
+
+  {% for item in TimberPost(more_insights) %}
+    <a href="{{ item.link }}" class="content flex flex-row mb-10">
+        <img
+            src="{{ TimberImage(item).src }}"
+            alt="{{ item.title }}"
+            class="w-1/4 flex lazyload object-cover img-zoom h-48 lg:h-auto mr-4"
+        />
+        <div class="w-3/4 lg:2-auto flex flex-col justify-between py-2 text-lg">
+            <div class="flex flex-col lg:mt-4 mb-4">
+                <span>
+                    {{ item.post_date }}
+                </span>
+                <h4 class="underline mt-1 lg:mt-0 text-xl md:text-2xl lg:text-3xl">
+                    {{ item.post_title }}
+                </h4>
+            </div>
+            <p class="hidden md:block lg:text-xl">
+                {{ item.description|truncate(50) }}
+            </p>
+            <div class="underline mt-4 lg:text-xl">
+                Keep Reading
+            </div>
+        </div>
+    </a>
+  {% endfor %}
+{% endif %}
+</div>

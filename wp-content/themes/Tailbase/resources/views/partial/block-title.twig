@@ -1,0 +1,19 @@
+{% if block.title %}
+
+<h2 class="serif-header text-2xl lg:text-4xl mt-8 lg:mt-16 mb-8 lg:mb-10 w-full {% if block.intro_title_half_width %}lg:w-1/2{% endif %}">
+
+  {{ block.title }}
+
+</h2>
+
+{% endif %}
+
+{% if block.sub_title %}
+
+<div class="h5 mb-6 sans w-full {% if block.intro_title_half_width %}lg:w-1/2{% endif %}">
+
+  <p>{{ block.sub_title }}</p>
+
+</div>
+
+{% endif %}
