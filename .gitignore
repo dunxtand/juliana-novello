@@ -1,5 +1,7 @@
 # Updated version of the older WP Engine recommended gitignore file.
 
+wp-content/themes/Tailbase/notes.txt
+
 # Temporary and OS files
 *~
 .DS_Store

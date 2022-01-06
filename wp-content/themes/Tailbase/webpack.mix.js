@@ -9,8 +9,8 @@ const whitelistPath = require('./build/whitelist');
 Config
 ========================================================================== */
 const config = {
-  siteUrl: "bellweather.local",
-  proxyUrl: "https://bellweather.local/",
+  siteUrl: "julie.local",
+  proxyUrl: "https://julie.local/",
   port: 5454,
   openOnStart: true,
   // pathToLocalSSLCert: "bellweather.local.crt",
