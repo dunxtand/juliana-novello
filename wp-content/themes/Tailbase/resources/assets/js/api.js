@@ -11,4 +11,18 @@ function wrap (promise) {
 }
 
 
-export {};
+const getContactForm = pageId => wrap(fetch(`/wp-json/contact/${pageId}/form`));
+
+const addContactFormEntry = (pageId, data) => wrap(fetch(`/wp-json/contact/${pageId}/entries`, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+}));
+
+
+export {
+    getContactForm,
+    addContactFormEntry
+};

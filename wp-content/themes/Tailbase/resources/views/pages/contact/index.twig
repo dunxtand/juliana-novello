@@ -3,92 +3,11 @@
 </div>
 
 <div class="pb-16 lg:pb-24 bg-paperback">
-    <section id="contact" class="text-white bg-slate lg:mt-24">
-        <div class="container narrow">
-            <div class="flex flex-col lg:flex-row justify-between py-16" data-sal="fade" style="--sal-delay: 0s;" data-sal-duration="800">
-
-                <div class="flex flex-col justify-between w-full lg:w-8/12 mb-10 lg:mb-24">
-                    <h1 class="text-6xl mb-16 splitMeByLine">
-                        Let's explore the possibilities of working together.
-                    </h1>
-                    <div class="flex flex-row justify-between w-full lg:w-2/3 lg:mb-2">
-                        <site-button
-                            url="{{ contactemail }}"
-                            type="mailto"
-                            color="white"
-                            new-tab
-                            class="flex-grow mr-2"
-                        >
-                            Email Us
-                        </site-button>
-                        <site-button
-                            url="{{ contactphone }}"
-                            type="tel"
-                            color="white"
-                            class="flex-grow"
-                        >
-                            Call Us
-                        </site-button>
-                    </div>
-                </div>
-
-                <div class="w-full lg:w-3/12">
-                    <ul class="flex flex-col justify-between mt-4 border-t border-white lg:border-none bg-slate">
-
-                        {% for location in officelocations %}
-
-                            {# small #}
-                            <li class="lg:hidden border-b border-white pt-2 bg-slate">
-                                <office-location>
-                                    <template v-slot:city>
-                                        {{ location.office_city|striptags }}
-                                    </template>
-                                    <template v-slot:location>
-                                        <a target="_blank" href="{{ location.office_link }}">
-                                            {{ location.office_address }}
-                                        </a>
-                                    </template>
-                                </office-location>
-                            </li>
-                            {% if loop.last %}
-                                {# to make sure the last expandable item doesn't show at first when clicked #}
-                                <div class="h-10 bg-slate flex lg:hidden"></div>
-                            {% endif %}
-
-                            {# large #}
-                            <li class="hidden lg:block {% if not loop.last %}mb-6{% endif %}">
-                                <a target="_blank" href="{{ location.office_link }}">
-                                    <p class="m-0">
-                                        {{ location.office_city|striptags }}
-                                    </p>
-                                    <p  class="m-0">
-                                        {{ location.office_address }}
-                                    </p>
-                                </a>
-                            </li>
-                        {% endfor %}
-
-                    </ul>
-                </div>
-
-            </div>
-
-            <div id="project-overview" class="flex flex-row justify-between border-t-2 border-white pt-4 pb-24" data-sal="fade" data-sal-delay="600" data-sal-duration="800">
-                <h4 class="w-1/2">
-                    Project Overview
-                </h4>
-                <p class="w-1/3 text-xs lg:text-md m-0 p-1 text-right">
-                    We promise to keep your information safe and private.
-                </p>
-            </div>
-
-            <div class="w-full">
-                <contact-page-form
-                    page-id="{{ post.id }}"
-                    class="pb-40 lg:pb-10 mb-0"
-                >
-                </contact-page-form>
-            </div>
-        </div>
-    </section>
+    <div class="w-full">
+        <contact-form
+            page-id="{{ post.id }}"
+            class="pb-40 lg:pb-10 mb-0"
+        >
+        </contact-form>
+    </div>
 </div>
