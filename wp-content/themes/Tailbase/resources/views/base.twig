@@ -16,7 +16,7 @@
     {% endif %}
 
     <div id="app">
-        <nav-bar></nav-bar>
+        <nav-bar items-str='{{ menu.items|json_encode() }}'></nav-bar>
 
 		<div class="relative">
 

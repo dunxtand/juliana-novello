@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Page Contact
+ * Template Name: Contact Page
  */
 
 $context = Timber::context();
