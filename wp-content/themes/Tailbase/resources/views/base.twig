@@ -1,11 +1,35 @@
-{% include 'header/index.twig' %}
+<!doctype html>
 
-<div class="relative">
+<html class="no-js" {{site.language_attributes}}>
 
-	{% block content %}
+  {% include 'header/_head.twig' %}
 
-		{{ messages.base.no_content }}
+  <body class="{{ body_class }}">
+    <div class="pageloader is-active"></div>
 
-	{% endblock %}
+    {% if post.can_edit %}
+      {% if not in_production %}
+        <div class="current-template-file-name">
+          <span class="edit-link"><a class="post-edit-link h7 pl-3 has-text-danger" href="{{ post.edit_link }}">Edit Content</a></span>
+        </div>
+      {% endif %}
+    {% endif %}
 
-</div>
+    <div id="app">
+        <nav-bar></nav-bar>
+
+		<div class="relative">
+
+			{% block content %}
+
+				{{ messages.base.no_content }}
+
+			{% endblock %}
+
+		</div>
+
+	</div>
+
+	{{ function('wp_footer') }}
+	</body>
+</html>

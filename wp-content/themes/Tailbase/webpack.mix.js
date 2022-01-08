@@ -22,6 +22,7 @@ const config = {
     "resources/assets/js/**/*.js",
     "resources/assets/images/*",
     "resources/assets/js/components/**/*.vue",
+    "resources/assets/js/components/*.vue",
     "build/tailwind.config.js"
   ]
 };
@@ -148,7 +149,8 @@ if (mix.inProduction()) {
           path.join(__dirname, "./**/*.php"),
           path.join(__dirname, "resources/views/**/**/*.twig"),
           path.join(__dirname, "resources/assets/js/**/*.js"),
-          path.join(__dirname, "resources/assets/js/components/**/*.vue")
+          path.join(__dirname, "resources/assets/js/components/**/*.vue"),
+          path.join(__dirname, "resources/assets/js/components/*.vue")
         ]),
         extractors: [
           {
