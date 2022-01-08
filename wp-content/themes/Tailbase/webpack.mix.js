@@ -62,14 +62,6 @@ mix
     "resources/assets/scss/main.scss",
     "dist/css/styles." + makeid(8) + ".min.css"
   )
-  .sass(
-    "resources/assets/scss/login.scss",
-    "dist/css/login." + makeid(8) + ".min.css"
-  )
-  .sass(
-    "resources/assets/scss/admin.scss",
-    "dist/css/admin." + makeid(8) + ".min.css"
-  )
 
   .disableNotifications()
   .options({

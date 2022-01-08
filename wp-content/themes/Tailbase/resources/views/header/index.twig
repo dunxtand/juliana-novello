@@ -23,23 +23,4 @@
     {% endif %}
 
     <div id="app">
-
-        <nav-menu-small itemsstr='{{ menu.items|json_encode() }}'>
-        </nav-menu-small>
-
-        <header>
-            <nav-bar
-              items-str="{{ menu.items|json_encode|e }}"
-              {% if post.bkg_type == "video" and post.vimeo_file_link %}
-                transparent
-              {% endif %}
-            >
-              <template v-slot:logo>
-                <img
-                  src="{{ logo }}"
-                  class="w-40 pb-2 style-svg nav-logo"
-                  alt="Bellweather Logo"
-                />
-              </template>
-            </nav-bar>
-        </header>
+    
