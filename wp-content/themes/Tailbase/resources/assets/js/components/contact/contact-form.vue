@@ -41,12 +41,12 @@
                 :key="'submit'"
                 class="w-full flex flex-row justify-center"
             >
-                <site-button
-                    @click.native="send"
+                <button
+                    @click="send"
                     color="white"
                 >
                     {{ submitting ? 'Please wait...' : 'Submit' }}
-                </site-button>
+                </button>
             </div>
 
             <div
