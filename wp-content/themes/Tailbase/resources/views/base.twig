@@ -4,32 +4,21 @@
 
   {% include 'header/_head.twig' %}
 
-  <body class="{{ body_class }}">
-    <div class="pageloader is-active"></div>
-
-    {% if post.can_edit %}
-      {% if not in_production %}
-        <div class="current-template-file-name">
-          <span class="edit-link"><a class="post-edit-link h7 pl-3 has-text-danger" href="{{ post.edit_link }}">Edit Content</a></span>
-        </div>
-      {% endif %}
-    {% endif %}
-
+  <body>
     <div id="app">
-        <nav-bar items-str='{{ menu.items|json_encode() }}'></nav-bar>
+      <nav-bar items-str='{{ menu.items|json_encode() }}'></nav-bar>
 
-		<div class="relative">
+      <div class="relative">
 
-			{% block content %}
+        {% block content %}
 
-				{{ messages.base.no_content }}
+          {{ messages.base.no_content }}
 
-			{% endblock %}
+        {% endblock %}
 
-		</div>
+      </div>
+	  </div>
 
-	</div>
-
-	{{ function('wp_footer') }}
+	  {{ function('wp_footer') }}
 	</body>
 </html>
