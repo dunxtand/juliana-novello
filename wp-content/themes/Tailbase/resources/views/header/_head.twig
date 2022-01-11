@@ -40,6 +40,14 @@
 
   <link rel="pingback" href="{{ site.pingback_url }}"/>
 
+  {% if projects %}
+    {% for project in projects %}
+      {% for imageUrl in project.gallery %}
+        <link rel="preload" as="image" href="{{ imageUrl }}"/>
+      {% endfor %}
+    {% endfor %}
+  {% endif %}
+
   {{ function('wp_head') }}
   
 </head>

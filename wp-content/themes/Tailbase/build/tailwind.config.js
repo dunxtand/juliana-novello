@@ -139,6 +139,8 @@ module.exports = {
     content: [
       "/resources/**/**/*.twig",
       "/resources/**/**/*.vue",
+      "/resources/assets/js/components/*.vue",
+      "/resources/assets/js/components/**/*.vue",
       "/resources/**/**/*.js",
       "/resources/**/**/*.php"
     ]
