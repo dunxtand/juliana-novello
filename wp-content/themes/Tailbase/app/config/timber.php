@@ -1,5 +1,8 @@
 <?php
 
+
+include_once get_theme_file_path( '/functions/menu_items.php' );
+
 /*
 |--------------------------------------------------------------------------
 | Pagination mid size
@@ -45,7 +48,7 @@ Timber::$dirname = ['resources/views'];
 function add_to_context( $context )
 {
     // Add Main Menu to Timber context object
-    $context['menu'] = new TimberMenu('Main Navigation');
+    $context['menu'] = get_menu_items();
     $context['footer_also_menu'] = new TimberMenu('Footer Also Menu');
 
     // Add main-sidebar to Timber context object

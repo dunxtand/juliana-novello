@@ -7,12 +7,12 @@
             />
         </div>
 
-        <div class="w-1/2 flex flex-col">
+        <div class="w-1/2 flex flex-col items-end">
             <a
                 v-for="(project, index) in items"
                 :key="index"
                 :href="project.link"
-                class="text-right my-10"
+                class="flex text-right my-10"
                 @mouseover="selected = project.id"
                 @mouseout="selected = null"
             >

@@ -6,9 +6,21 @@
         <a
             v-for="(item, index) in items"
             :key="index"
-            :href="item.url"
+            :href="item.link"
+            class="flex items-center my-2"
         >
-            {{ item.name }}
+            <img
+                :src="item.image"
+                :alt="item.title"
+                @mouseover="selected = index"
+                @mouseout="selected = null"
+            />
+            <div
+                v-show="selected === index"
+                class="ml-2"
+            >
+                {{ item.title }}
+            </div>
         </a>
     </nav>
 </template>
@@ -26,6 +38,12 @@ export default {
 		}
     },
 
+    data: function () {
+        return {
+            selected: null
+        };
+    },
+
     computed: {
 		items: function () {
 			return JSON.parse(this.itemsStr);
@@ -37,5 +55,9 @@ export default {
 <style lang="scss" scoped>
 nav {
     z-index: 100;
+
+    img {
+        width: 40px;
+    }
 }
 </style>
