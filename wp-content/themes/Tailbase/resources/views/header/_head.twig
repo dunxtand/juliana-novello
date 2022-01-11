@@ -48,6 +48,12 @@
     {% endfor %}
   {% endif %}
 
+  {% if project_gallery %}
+    {% for imageUrl in project_gallery %}
+      <link rel="preload" as="image" href="{{ imageUrl }}"/>
+    {% endfor %}
+  {% endif %}
+
   {{ function('wp_head') }}
   
 </head>
