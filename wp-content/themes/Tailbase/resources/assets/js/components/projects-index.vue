@@ -1,8 +1,8 @@
 <template>
     <div class="w-full h-screen flex justify-between py-4">
         <img
-            :src="previewImage || 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'"
-            :class="{ show: !!previewImage && !!selected }"
+            :src="image || 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'"
+            :class="{ show: !!selected }"
         />
 
         <div class="w-full h-full flex flex-col justify-between items-center">
@@ -43,8 +43,24 @@ export default {
 
     data: function () {
         return {
-            selected: null
+            selected: null,
+            image: null
         };
+    },
+
+    watch: {
+        selected: function (val) {
+            if (!val) {
+                return setTimeout(() => {
+                    if (!this.selected) {
+                        this.image = null;
+                    }
+                }, 400);
+            }
+
+            const randomIndex = Math.floor((Math.random()) * ((this.selectedProject.gallery.length - 1) + 1));
+            this.image = this.selectedProject.gallery[randomIndex];
+        }
     },
 
     computed: {
@@ -54,15 +70,6 @@ export default {
 
         selectedProject: function () {
             return this.items.find(item => item.id === this.selected) || null;
-        },
-
-        previewImage: function () {
-            if (!this.selected) {
-                return null;
-            }
-
-            const randomIndex = Math.floor((Math.random()) * ((this.selectedProject.gallery.length - 1) + 1));
-            return this.selectedProject.gallery[randomIndex];
         }
     }
 }
@@ -78,7 +85,7 @@ img {
     top: 50%;
     transform: translate(-50%, -50%);
     opacity: 0;
-    transition: .4s;
+    transition: opacity .4s;
     &.show {
         opacity: 0.8;
     }
@@ -102,7 +109,7 @@ a {
         font-size: 45px;
         text-align: center;
         opacity: 1;
-        transition: .4s;
+        transition: opacity .4s;
     }
 }
 

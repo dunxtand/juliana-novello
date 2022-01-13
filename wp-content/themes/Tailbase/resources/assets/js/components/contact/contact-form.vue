@@ -13,7 +13,7 @@
                 :class="[
                     'mb-2 pb-8 relative flex flex-col items-center',
                     {
-                        'w-full lg:w-1/3': field.type !== TEXTAREA,
+                        'w-full': field.type !== TEXTAREA,
                         'w-full lg:mx-5 mt-2': field.type === TEXTAREA
                     }
                 ]"
@@ -21,9 +21,10 @@
                 <form-field
                     :field="field"
                     :class="[
+                        'border border-black bg-transparent',
                         {
-                            'w-full lg:w-11/12 bg-slate py-2 border-white border-b-2': field.type !== TEXTAREA,
-                            'w-full bg-white p-4 text-stone': field.type === TEXTAREA
+                            'w-full lg:w-11/12 py-2': field.type !== TEXTAREA,
+                            'w-full p-4': field.type === TEXTAREA
                         }
                     ]"
                 />
@@ -159,6 +160,9 @@ export default {
 <style lang="scss" scoped>
 form {
     min-height: 50%;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 input, textarea {
     &::placeholder {
