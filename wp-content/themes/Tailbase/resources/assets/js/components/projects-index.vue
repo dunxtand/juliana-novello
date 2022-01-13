@@ -87,7 +87,7 @@ img {
     opacity: 0;
     transition: opacity .4s;
     &.show {
-        opacity: 0.8;
+        opacity: 1;
     }
 }
 
@@ -109,7 +109,7 @@ a {
         font-size: 45px;
         text-align: center;
         opacity: 1;
-        transition: opacity .4s;
+        transition: opacity .4s, color .1s;
     }
 }
 

@@ -1,23 +1,24 @@
 <template>
-    <div class="relative">
-        <div class="flex flex-col items-center">
+    <div class="w-full relative my-16">
+        <div class="flex flex-wrap items-center justify-center w-3/4 mx-auto">
             <a
                 v-for="(imageUrl, index) in items"
                 :key="index"
                 href="#"
                 @click.prevent="shown = imageUrl"
-                class="my-4"
+                class="w-full lg:w-1/2"
             >
                 <img
                     :src="imageUrl"
                     alt=""
-                    class="image-item"
+                    class="image-item m-4"
                 />
             </a>
         </div>
+
         <div
             v-show="!!shown"
-            class="fixed top-0 shown-image flex justify-center items-center"
+            class="fixed top-0 shown-image flex justify-center items-center w-full h-screen"
         >
             <a
                 href="#"
@@ -29,12 +30,11 @@
             <img
                 :src="shown"
                 alt=""
-                class="object-cover"
             />
             <a
                 href="#"
                 @click.prevent="shown = null"
-                class="controls absolute top-0 right-0"
+                class="controls absolute top-0 left-0"
             >
                 X
             </a>
@@ -100,15 +100,15 @@ export default {
 
 <style lang="scss" scoped>
 .image-item {
-    max-width: 700px;
+    max-width: 90%;
 }
 .shown-image {
     z-index: 100;
     background: rgba(0, 0, 0, .9);
 
     img {
-        max-width: 90%;
-        max-height: 90%;
+        max-width: 85%;
+        max-height: 95%;
         z-index: 101;
     }
 
