@@ -916,26 +916,7 @@ module.exports = {
   |
   */
 
-  plugins: [
-    require("tailwindcss-accessibility"),
-
-    // https://github.com/karolis-sh/tailwind-bootstrap-grid
-    require("tailwind-bootstrap-grid")({
-      gridColumns: 12,
-      gridGutterWidth: 30,
-      generateNoGutters: false,
-      generateContainer: false,
-
-      // should be the same as (../resources/assets/scss/breakpoints.scss)
-      containerMaxWidths: { 
-                            sm: '640px', 
-                            md: '768px', 
-                            lg: '992px', 
-                            xl: '1140px', 
-                            xl: '1460px'  
-                          } 
-    })
-  ],
+  plugins: [],
 
   /*
   |-----------------------------------------------------------------------------

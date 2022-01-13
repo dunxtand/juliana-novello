@@ -14,13 +14,9 @@
 
 <script>
 import isEmail from 'validator/lib/isEmail';
-import isURL from 'validator/lib/isURL';
-import phone from 'phone';
 
 export const TEXT = 'text';
 export const EMAIL = 'email';
-export const PHONE = 'phone';
-export const WEBSITE = 'website';
 export const TEXTAREA = 'textarea';
 
 
@@ -48,12 +44,6 @@ export default {
                 case EMAIL:
                     this.field.valid = !!isEmail(val);
                     break;
-                case PHONE:
-                    this.field.valid = (phone(val) || []).length > 0;
-                    break;
-                case WEBSITE:
-                    this.field.valid = !!isURL(val);
-                    break
             }
         }
     }

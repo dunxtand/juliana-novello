@@ -1,59 +1,4 @@
-$serif-header:        'Canela Light', serif;
-$serif:               'Canela Thin', serif;
-
-// $sans-bold:        'Lora Bold', serif;
-// $sans-italic:      'Lora Italic', 'Lora', serif;
-
-
-$sans:              'GT-Walsheim Regular';
-$sans-italic:       'GT-Walsheim Regular Italic';
-$sans-light:        'GT-Walsheim Light';
-$sans-medium:       'GT-Walsheim Medium';
-$sans-bold:         'GT-Walsheim Bold';
-
-$aura: 'Aura';
-
-.sans {
-  font-family: $sans
-}
-.sans-medium {
-  font-family: $sans-medium;
-  font-weight: 500;
-}
-.sans-bold {
-  font-family: $sans-bold
-}
-
-.sans-italic {
-  font-family: $sans-italic
-}
-
-.serif-header {
-  font-family: $serif-header
-}
-
-.serif {
-  font-family: $serif;
-  // color: #958F86;
-  // &.text-black {
-  //   color: #000;
-  // }
-  // &.text-white {
-  //   color: #fff;
-  // }
-}
-
-// .serif-bold {
-//   font-family: $serif-alt-bold
-// }
-
-// .serif-italic {
-//   font-family: $serif-alt-italic
-// }
-
-.aura {
-  font-family: $aura;
-}
+$yeseva: 'YesevaOne Regular';
 
 .uppercase {
   text-transform: uppercase;
@@ -117,75 +62,37 @@ $aura: 'Aura';
 .h5, h5 { font-size: 1.15rem; line-height: 1.35 !important; }
 .h6, h6 { font-size: 1.1rem; line-height: 1.35 !important; }
 
-h1, h2 {
-  font-family: $serif;
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
 }
 
 
-
-// sans
-@font-face{
-  font-family:"GT-Walsheim Light";
-  src:url("../fonts/GTWalsheimPro-Light.eot") format("eot"),
-      url("../fonts/GTWalsheimPro-Light.woff") format("woff"),
-}
-@font-face{
-  font-family:"GT-Walsheim Regular";
-  src:url("../fonts/GTWalsheimPro.eot") format("eot"),
-      url("../fonts/GTWalsheimPro.woff") format("woff"),
-}
-@font-face{
-  font-family:"GT-Walsheim Medium";
-  src:url("../fonts/GTWalsheimPro-Medium.eot") format("eot"),
-      url("../fonts/GTWalsheimPro-Medium.woff") format("woff"),
-}
-@font-face{
-  font-family:"GT-Walsheim Bold";
-  src:url("../fonts/GTWalsheimPro-Bold.eot") format("eot"),
-      url("../fonts/GTWalsheimPro-Bold.woff") format("woff"),
-}
-@font-face{
-  font-family:"Aura";
-  src:url("../fonts/ATAura.woff") format("woff"),
-      url("../fonts/ATAura.woff2") format("woff2"),
+@font-face {
+  font-family: 'HappyTime';
+  src: url('../fonts/HappyTime.eot');
+  src: url('../fonts/HappyTime.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/HappyTime.svg#HappyTime') format('svg'),
+       url('../fonts/HappyTime.ttf') format('truetype'),
+       url('../fonts/HappyTime.woff') format('woff'),
+       url('../fonts/HappyTime.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
 }
 
-//serif
-@font-face{
-  font-family:"Canela";
-  src:url("../fonts/Canela-Bold-Web.eot") format("eot"),
-      url("../fonts/Canela-Bold-Web.woff") format("woff"),
-}
-@font-face{
-  font-family:"Canela Light";
-  src:url("../fonts/Canela-Light.eot") format("eot"),
-      url("../fonts/Canela-Light.woff") format("woff"),
-}
-@font-face{
-  font-family:"Canela Thin";
-  src:url("../fonts/Canela-Thin.eot") format("eot"),
-      url("../fonts/Canela-Thin.woff") format("woff"),
+@font-face {
+  font-family: 'YesevaOne-Regular';
+  src: url('../fonts/YesevaOne-Regular.eot');
+  src: url('../fonts/YesevaOne-Regular.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/YesevaOne-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
 }
 
-
-// // sans
-// @font-face{
-//   font-family:"Canela Light";
-//   src:url("../fonts/GTWalsheimPro-Light.ot?#iefix") format("eot"),
-//       url("../fonts/GTWalsheimPro-Light.woff") format("woff"),
-// }
-// @font-face{
-//   font-family:"Canela Regular";
-//   src:url("../fonts/GTWalsheimPro.eot?#iefix") format("eot"),
-//       url("../fonts/GTWalsheimPro.woff") format("woff"),
-// }
-// @font-face{
-//   font-family:"Canela Medium";
-//   src:url("../fonts/GTWalsheimPro-Mediumeot?#iefix") format("eot"),
-//       url("../fonts/GTWalsheimPro-Mediumwoff") format("woff"),
-// }
-// @font-face{
-//   font-family:"Canela Bold";
-//   src:url("../fonts/GTWalsheimPro-Bold.et?#iefix") format("eot"),
-//       url("../fonts/GTWalsheimPro-Bold.wff") format("woff"),
-// }
+@font-face {
+  font-family: 'YesevaOne';
+  src: url('../fonts/YesevaOne.svg#YesevaOne') format('svg'),
+       url('../fonts/YesevaOne.ttf') format('truetype'),
+       url('../fonts/YesevaOne.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}

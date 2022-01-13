@@ -6,11 +6,9 @@
 
 @import "tailwindcss/utilities";
 
-@import "/variables";
+@import "./variables.scss";
 
 @import "./fonts.scss";
-
-@import "./global.scss";
 
 @import "./utilities.scss";
 
@@ -22,7 +20,7 @@
 
 
 html, body {
-  font-family: $sans;
+  font-family: 'HappyTime';
   background-color: #f5dbdb;
 }
 

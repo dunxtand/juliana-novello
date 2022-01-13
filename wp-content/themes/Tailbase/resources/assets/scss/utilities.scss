@@ -35,25 +35,6 @@ iframe {
 }
 
 
-
-.table, table {
-  background: transparent;
-  strong {
-    font-family: $sans-medium;
-    color: $primary;
-  }
-  td, th {
-    border: 0px;
-    padding: 10px;
-  }
-  &.is-narrow {
-    td, th {
-      border: 0px;
-      padding: 10px;
-    }
-  }
-}
-
 .z-1 {
   z-index: 1;
 }

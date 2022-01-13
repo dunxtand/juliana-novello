@@ -1,27 +1,34 @@
 <template>
-    <nav class="fixed top-0 left-0 flex flex-col">
-        <a href="/">
-            juliana roccoforte novello
-        </a>
-        <a
-            v-for="(item, index) in items"
-            :key="index"
-            :href="item.link"
-            class="flex items-center my-2"
-        >
-            <img
-                :src="item.image"
-                :alt="item.title"
-                @mouseover="selected = index"
-                @mouseout="selected = null"
-            />
+    <nav>
+        <div class="fixed top-0 left-0 m-4">
+            <a href="/">
+                <h3>
+                    juliana roccoforte novello
+                </h3>
+            </a>
+        </div>
+
+        <div class="fixed top-0 right-0 flex items-center m-3">
             <div
-                v-show="selected === index"
-                class="ml-2"
+                v-show="!!selectedItem"
+                class="mr-2"
             >
-                {{ item.title }}
+                {{ selectedItem.title }}
             </div>
-        </a>
+            <a
+                v-for="(item, index) in items"
+                :key="index"
+                :href="item.link"
+                class="flex items-center mx-4"
+            >
+                <img
+                    :src="item.image"
+                    :alt="item.title"
+                    @mouseover="selected = index"
+                    @mouseout="selected = null"
+                />
+            </a>
+        </div>
     </nav>
 </template>
 
@@ -47,13 +54,18 @@ export default {
     computed: {
 		items: function () {
 			return JSON.parse(this.itemsStr);
-		}
+		},
+
+        selectedItem: function () {
+            return this.items[this.selected] || {};
+        }
     }
 }
 </script>
 
 <style lang="scss" scoped>
 nav {
+    position: relative;
     z-index: 100;
 
     img {
