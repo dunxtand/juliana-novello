@@ -6,7 +6,7 @@ function get_menu_items () {
     $menu_items = array_map(
         function ( $item ) {
             return [
-                'title' => $item->post_title,
+                'title' => $item->name,
                 'link' => $item->path,
                 'image' => (new TimberImage( $item->image ))->src
             ];
