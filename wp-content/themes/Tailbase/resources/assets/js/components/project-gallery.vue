@@ -32,9 +32,9 @@
             <a
                 href="#"
                 @click.prevent="back"
-                class="controls absolute left-0"
+                class="controls controls-prev absolute left-0 ml-2"
             >
-                PREV
+                &lArr;
             </a>
             <img
                 :src="shown"
@@ -43,16 +43,16 @@
             <a
                 href="#"
                 @click.prevent="shown = null"
-                class="controls absolute top-0 right-0"
+                class="controls controls-close absolute top-0 right-0 mt-2 mr-6"
             >
-                X
+                &#x2715;
             </a>
             <a
                 href="#"
                 @click.prevent="forward"
-                class="controls absolute right-0"
+                class="controls controls-next absolute right-0 mr-2"
             >
-                NEXT
+                &rArr;
             </a>
         </div>
     </div>
@@ -128,6 +128,14 @@ export default {
     .controls {
         color: white;
         z-index: 101;
+    }
+
+    .controls-prev, .controls-next {
+        font-size: 50px;
+    }
+
+    .controls-close {
+        font-size: 30px;
     }
 }
 </style>

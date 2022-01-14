@@ -10,10 +10,10 @@
 
         <div class="fixed bottom-0 lg:top-0 lg:right-0 lg:bottom-auto flex w-full lg:w-auto justify-center items-center mb-2 lg:mb-0 lg:mr-2 lg:mt-2">
             <div
-                v-show="!!selectedItem"
+                v-show="!!tooltip"
                 class="tooltip mr-2"
             >
-                {{ selectedItem.title }}
+                {{ tooltip }}
             </div>
             <a
                 v-for="(item, index) in items"
@@ -24,8 +24,8 @@
                 <img
                     :src="item.image"
                     :alt="item.title"
-                    @mouseover="selected = index"
-                    @mouseout="selected = null"
+                    @mouseover="selectedIndex = index"
+                    @mouseout="selectedIndex = null"
                 />
             </a>
         </div>
@@ -47,18 +47,25 @@ export default {
 
     data: function () {
         return {
-            selected: null
+            selectedIndex: null,
+            tooltip: null
         };
+    },
+
+    watch: {
+        selectedIndex: function (index) {
+            if (window.innerWidth < 1024) {
+                this.tooltip = null;
+            } else {
+                this.tooltip = (this.items[this.selectedIndex] || { title: null }).title
+            }
+        }
     },
 
     computed: {
 		items: function () {
 			return JSON.parse(this.itemsStr);
-		},
-
-        selectedItem: function () {
-            return this.items[this.selected] || {};
-        }
+		}
     }
 }
 </script>
@@ -70,12 +77,6 @@ nav {
 
     img {
         width: 40px;
-    }
-
-    .tooltip {
-        @media(max-width: 1023px) {
-            display: none;
-        }
     }
 }
 </style>
