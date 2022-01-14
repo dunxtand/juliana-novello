@@ -11,7 +11,7 @@
         <div class="fixed bottom-0 lg:top-0 lg:right-0 lg:bottom-auto flex w-full lg:w-auto justify-center items-center mb-2 lg:mb-0 lg:mr-2 lg:mt-2">
             <div
                 v-show="!!selectedItem"
-                class="mr-2 hidden lg:flex"
+                class="tooltip mr-2"
             >
                 {{ selectedItem.title }}
             </div>
@@ -70,6 +70,12 @@ nav {
 
     img {
         width: 40px;
+    }
+
+    .tooltip {
+        @media(max-width: 1023px) {
+            display: none;
+        }
     }
 }
 </style>

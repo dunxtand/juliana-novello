@@ -107,6 +107,7 @@ a {
 
     h2 {
         font-size: 45px;
+        max-width: 900px;
         text-align: center;
         opacity: 1;
         transition: opacity .4s, color .1s;
