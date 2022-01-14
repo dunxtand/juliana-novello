@@ -11,7 +11,7 @@
                 :key="index"
                 :href="project.link"
                 :class="[
-                    'flex',
+                    'flex mb-16 lg:mb-0',
                     {
                         selected: selected === project.id,
                         'not-selected': !!selected && selected !== project.id

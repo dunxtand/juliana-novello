@@ -1,6 +1,6 @@
 <template>
     <div class="w-full relative my-16">
-        <div class="flex flex-wrap items-center justify-center w-3/4 mx-auto">
+        <div class="flex flex-wrap items-center justify-center w-full lg:w-3/4 mx-auto">
             <a
                 v-for="(imageUrl, index) in items"
                 :key="index"
@@ -119,7 +119,7 @@ export default {
     }
 
     img {
-        max-width: 85%;
+        max-width: 80%;
         max-height: 94%;
         z-index: 101;
         transition: opacity .3s;

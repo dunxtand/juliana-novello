@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full h-screen flex flex-col justify-between items-center pt-4 pb-32">
+    <div class="w-full lg:h-screen flex flex-col justify-between items-center pt-4 pb-32">
         <a
             v-for="(post, index) in posts"
             :key="index"
@@ -7,7 +7,7 @@
             @mouseenter="selectedIndex = index"
             @mouseleave="selectedIndex = null"
             :class="[
-                'relative flex justify-center mb-6',
+                'relative flex justify-center mb-16 lg:mb-6',
                 {
                     selected: selectedIndex === index,
                     'not-selected': selectedIndex !== null && selectedIndex !== index

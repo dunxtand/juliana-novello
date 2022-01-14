@@ -1,7 +1,7 @@
 <template>
     <form
         @submit="send"
-        class="lg:-mx-4"
+        class="lg:-mx-4 px-6"
     >
         <fade-list
             tag="div"
@@ -157,6 +157,7 @@ form {
 }
 
 input, textarea {
+    -webkit-appearance: none;
     &::placeholder {
         color: #958F86;
     }
