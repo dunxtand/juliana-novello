@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full h-full flex justify-between pt-4 pb-20">
+    <div class="w-full h-full flex justify-between pt-4 pb-24">
         <img
             :src="image || 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'"
             :class="{ show: !!selected }"
@@ -77,7 +77,7 @@ export default {
 
 <style lang="scss" scoped>
 img {
-    max-width: 90%;
+    max-width: 63%;
     max-height: 90%;
     position: absolute;
     z-index: 1;

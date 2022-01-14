@@ -32,9 +32,9 @@
             <a
                 href="#"
                 @click.prevent="back"
-                class="controls controls-prev absolute left-0 ml-2"
+                class="controls controls-prev absolute bottom-0 sm:bottom-auto left-0 ml-4"
             >
-                &lArr;
+                ➬
             </a>
             <img
                 :src="shown"
@@ -50,9 +50,9 @@
             <a
                 href="#"
                 @click.prevent="forward"
-                class="controls controls-next absolute right-0 mr-2"
+                class="controls controls-next absolute bottom-0 sm:bottom-auto right-0 mr-4"
             >
-                &rArr;
+                ➫
             </a>
         </div>
     </div>
@@ -119,10 +119,13 @@ export default {
     }
 
     img {
-        max-width: 80%;
         max-height: 94%;
         z-index: 101;
         transition: opacity .3s;
+        max-width: 100%;
+        @media(min-width: 640px) {
+            max-width: 80%;
+        }
     }
 
     .controls {
@@ -132,6 +135,11 @@ export default {
 
     .controls-prev, .controls-next {
         font-size: 50px;
+        z-index: 102;
+    }
+
+    .controls-prev {
+        transform: rotate(180deg);
     }
 
     .controls-close {
