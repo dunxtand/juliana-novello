@@ -5,34 +5,24 @@
     >
         <fade-list
             tag="div"
-            class="flex flex-row flex-wrap justify-between w-full"
+            class="min-h-screen flex flex-col justify-center items-center w-full pt-4"
         >
             <div
-                v-for="field in fields"
+                v-for="(field, index) in fields"
                 :key="field.id"
                 :class="[
-                    'mb-2 pb-8 relative flex flex-col items-center',
+                    'w-full relative flex flex-col items-center',
                     {
                         'w-full': field.type !== TEXTAREA,
-                        'w-full lg:mx-5 mt-2': field.type === TEXTAREA
+                        'w-full lg:mx-5': field.type === TEXTAREA,
                     }
                 ]"
             >
                 <form-field
                     :field="field"
                     :class="[
-                        'border border-black bg-transparent',
-                        {
-                            'w-full lg:w-11/12 py-2': field.type !== TEXTAREA,
-                            'w-full p-4': field.type === TEXTAREA
-                        }
-                    ]"
-                />
-                <field-error
-                    :field="field"
-                    :class="[
-                        'text-red-600 absolute left-0 bottom-0',
-                        { 'lg:ml-4': field.type !== TEXTAREA }
+                        'w-full p-2 border-b border-r border-l border-black bg-transparent',
+                        { 'border-t': index === 0 }
                     ]"
                 />
             </div>
@@ -40,30 +30,22 @@
             <div
                 v-show="loaded"
                 :key="'submit'"
-                class="w-full flex flex-row justify-center"
+                class="w-full flex flex-row justify-center mt-4"
             >
                 <button
                     @click="send"
                     color="white"
                 >
-                    {{ submitting ? 'Please wait...' : 'Submit' }}
+                    {{ submitting ? 'please wait...' : 'submit' }}
                 </button>
             </div>
 
             <div
-                v-if="message || error"
+                v-show="message || error"
                 :key="'message'"
                 class="w-full flex flex-row justify-center my-6"
             >
-                <span :class="[
-                    'text-xl',
-                    {
-                        'text-green-500': message,
-                        'text-red-600': error
-                    }
-                ]">
-                    {{ message || error }}
-                </span>
+                {{ message || error }}
             </div>
         </fade-list>
     </form>
@@ -72,7 +54,6 @@
 <script>
 import { getContactForm, addContactFormEntry } from '../../api';
 import FormField, { TEXTAREA } from './form-field';
-import FieldError from './field-error';
 import { FadeList } from '../transitions';
 
 
@@ -84,6 +65,7 @@ export default {
             validator: val => !!parseInt(val)
         }
     },
+
     created: function () {
         getContactForm(this.pageId)
             .then(form => {
@@ -104,6 +86,7 @@ export default {
                 console.error('Error retrieving form:', err);
             });
     },
+
     data: function () {
         return {
             fields: [],
@@ -113,45 +96,53 @@ export default {
             error: ''
         };
     },
+
     computed: {
         TEXTAREA: () => TEXTAREA,
+
         hasErrors: function () {
             return this.fields.some(f => !f.valid);
         }
     },
+
     methods: {
         send: function (e) {
             e.preventDefault();
+
             if (this.submitting) {
                 return false;
             }
+
             if (this.hasErrors) {
                 for (const field of this.fields) {
                     field.touched = true;
                 }
                 return;
             }
+
             const reqData = this.fields.reduce((data, field) => ({ ...data, [field.id]: field.value }), {});
+
             this.submitting = true;
+
             addContactFormEntry(this.pageId, reqData)
                 .then(() => {
                     this.fields = this.fields.map(f => ({ ...f, value: '' }));
                     this.$nextTick(() => this.fields = this.fields.map(f => ({ ...f, touched: false })));
                     this.submitting = false;
-                    this.message = 'Thanks for reaching out! We\'ll be in touch as soon as possible.';
+                    this.message = 'thanks for reaching out! I\'ll be in touch as soon as possible.';
                     this.error = '';
                 })
                 .catch(err => {
                     console.error('Error submitting form:', err);
                     this.submitting = false;
-                    this.error = 'Something went wrong. Please try again later.';
+                    this.error = 'something went wrong - please try again later.';
                     this.message = '';
                 });
         }
     },
+
     components: {
         FormField,
-        FieldError,
         FadeList
     }
 }
@@ -164,12 +155,18 @@ form {
     margin-left: auto;
     margin-right: auto;
 }
+
 input, textarea {
     &::placeholder {
         color: #958F86;
     }
 }
+
 textarea {
     height: 200px;
+}
+
+input, textarea, button {
+    outline: none !important;
 }
 </style>

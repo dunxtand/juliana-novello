@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full min-h-screen flex flex-col justify-between items-center mb-32">
+    <div class="w-full h-screen flex flex-col justify-between items-center pt-4 pb-32">
         <a
             v-for="(post, index) in posts"
             :key="index"
@@ -118,9 +118,6 @@ a {
 .selected-content {
     width: 500px;
     position: absolute;
-    top: 100px;
-    margin: 0 auto;
-    /* left: 0;
-    right: 0; */
+    top: 90px;
 }
 </style>

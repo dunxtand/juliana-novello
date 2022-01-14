@@ -27,3 +27,17 @@ html, body {
 .bkg-gradient {
   background: linear-gradient(180deg, #fff 0%, $paperback 100%);
 }
+
+.post-content {
+  margin: 0 auto;
+  max-width: 90%;
+  @media (min-width: $md) {
+    max-width: 1000px;
+  }
+  p {
+    margin: 20px 0;
+  }
+  img {
+    margin: 50px auto;
+  }
+}

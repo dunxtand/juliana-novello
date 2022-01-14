@@ -12,13 +12,22 @@
                     :src="imageUrl"
                     alt=""
                     class="image-item m-4"
+                    :style="{
+                        opacity: imageUrl ? 1 : 0
+                    }"
                 />
             </a>
         </div>
 
         <div
-            v-show="!!shown"
-            class="fixed top-0 shown-image flex justify-center items-center w-full h-screen"
+            :class="[
+                'fixed top-0 lightbox flex justify-center items-center w-full h-screen',
+                { shown }
+            ]"
+            :style="{
+                opacity: shown ? 1 : 0,
+                'z-index': shown ? 100 : -100
+            }"
         >
             <a
                 href="#"
@@ -34,7 +43,7 @@
             <a
                 href="#"
                 @click.prevent="shown = null"
-                class="controls absolute top-0 left-0"
+                class="controls absolute top-0 right-0"
             >
                 X
             </a>
@@ -102,14 +111,18 @@ export default {
 .image-item {
     max-width: 90%;
 }
-.shown-image {
-    z-index: 100;
-    background: rgba(0, 0, 0, .9);
+.lightbox {    
+    background: rgba(0, 0, 0, .8);
+
+    &.shown {
+        transition: opacity .3s, z-index 0s;
+    }
 
     img {
         max-width: 85%;
-        max-height: 95%;
+        max-height: 94%;
         z-index: 101;
+        transition: opacity .3s;
     }
 
     .controls {

@@ -33,9 +33,11 @@ export default {
     watch: {
         'field.value': function (val) {
             this.field.touched = this.field.touched || true;
+
             if (!this.field.isRequired) {
                 return;
             }
+            
             switch (this.field.type) {
                 case TEXT:
                 case TEXTAREA:

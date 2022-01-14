@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full h-screen flex justify-between py-4">
+    <div class="w-full h-full flex justify-between pt-4 pb-20">
         <img
             :src="image || 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'"
             :class="{ show: !!selected }"
@@ -11,7 +11,7 @@
                 :key="index"
                 :href="project.link"
                 :class="[
-                    'flex text-right my-10',
+                    'flex',
                     {
                         selected: selected === project.id,
                         'not-selected': !!selected && selected !== project.id

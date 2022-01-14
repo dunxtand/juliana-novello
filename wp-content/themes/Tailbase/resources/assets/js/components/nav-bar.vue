@@ -1,6 +1,6 @@
 <template>
     <nav>
-        <div class="fixed top-0 left-0 mx-4 mt-2 lg:mt-8">
+        <div class="fixed top-0 left-0 ml-2 lg:ml-8 mt-2 lg:mt-6">
             <a href="/">
                 <h3>
                     juliana roccoforte novello
@@ -8,10 +8,10 @@
             </a>
         </div>
 
-        <div class="fixed bottom-0 lg:top-0 lg:right-0 lg:bottom-auto flex w-full lg:w-auto justify-center items-center mb-2 lg:mb-0 lg:m-3">
+        <div class="fixed bottom-0 lg:top-0 lg:right-0 lg:bottom-auto flex w-full lg:w-auto justify-center items-center mb-2 lg:mb-0 lg:mr-2 lg:mt-2">
             <div
                 v-show="!!selectedItem"
-                class="mr-2"
+                class="mr-2 hidden lg:flex"
             >
                 {{ selectedItem.title }}
             </div>
