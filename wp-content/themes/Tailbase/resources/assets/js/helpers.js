@@ -8,4 +8,11 @@ export function validateJSON (val) {
 };
 
 
+export function preloadImage (src) {
+    const image = new Image();
+    image.src = src;
+    image.onload = () => console.log(`${src} loaded`);
+}
+
+
 export function noop () {}

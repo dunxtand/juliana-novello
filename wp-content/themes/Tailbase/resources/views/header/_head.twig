@@ -31,20 +31,5 @@
 
   <link rel="pingback" href="{{ site.pingback_url }}"/>
 
-  {% if projects %}
-    {% for project in projects %}
-      {% for imageUrl in project.gallery %}
-        <link rel="preload" as="image" href="{{ imageUrl }}"/>
-      {% endfor %}
-    {% endfor %}
-  {% endif %}
-
-  {% if project_gallery %}
-    {% for imageUrl in project_gallery %}
-      <link rel="preload" as="image" href="{{ imageUrl }}"/>
-    {% endfor %}
-  {% endif %}
-
   {{ function('wp_head') }}
-  
 </head>

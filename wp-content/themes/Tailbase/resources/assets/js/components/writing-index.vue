@@ -7,7 +7,7 @@
             @mouseenter="selectedIndex = index"
             @mouseleave="selectedIndex = null"
             :class="[
-                'relative flex justify-center mb-16 lg:mb-6',
+                'relative flex justify-center mb-16 lg:mb-6 mx-4',
                 {
                     selected: selectedIndex === index,
                     'not-selected': selectedIndex !== null && selectedIndex !== index

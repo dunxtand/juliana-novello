@@ -5,9 +5,9 @@
             :class="{ show: !!selected }"
         />
 
-        <div class="w-full h-full flex flex-col justify-between items-center">
+        <div class="w-full h-full flex flex-col justify-between items-center mx-4">
             <a
-                v-for="(project, index) in items"
+                v-for="(project, index) in projects"
                 :key="index"
                 :href="project.link"
                 :class="[
@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { validateJSON } from '../helpers';
+import { validateJSON, preloadImage } from '../helpers';
 
 
 export default {
@@ -39,6 +39,12 @@ export default {
 			required: true,
 			validator: validateJSON
 		}
+    },
+
+    mounted: function () {
+        for (const { gallery } of this.projects) {
+            gallery.forEach(preloadImage);
+        }
     },
 
     data: function () {
@@ -64,12 +70,12 @@ export default {
     },
 
     computed: {
-		items: function () {
+		projects: function () {
 			return JSON.parse(this.itemsStr);
 		},
 
         selectedProject: function () {
-            return this.items.find(item => item.id === this.selected) || null;
+            return this.projects.find(item => item.id === this.selected) || null;
         }
     }
 }
