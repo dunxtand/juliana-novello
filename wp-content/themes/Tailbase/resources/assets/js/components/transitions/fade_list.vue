@@ -3,7 +3,7 @@
         name="fade-list"
         :tag="tag"
     >
-        <slot />
+        <slot/>
     </transition-group>
 </template>
 
