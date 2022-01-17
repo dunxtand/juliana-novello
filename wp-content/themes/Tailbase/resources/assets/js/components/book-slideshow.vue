@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { validateJSON, preloadImage } from '../helpers';
+import { validateJSON } from '../helpers';
 import { FadeList } from './transitions';
 
 
@@ -40,10 +40,6 @@ export default {
 			required: true,
 			validator: validateJSON
 		}
-    },
-
-    mounted: function () {
-        this.images.forEach(preloadImage);
     },
 
     data: function () {

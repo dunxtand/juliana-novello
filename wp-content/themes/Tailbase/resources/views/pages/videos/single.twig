@@ -1,3 +1,17 @@
-<div class="w-full h-full flex justify-center items-center">
-    single video
+<h2 class="text-center mb-16 mt-24 pt-4">
+    {{ post.post_title }}
+</h2>
+
+<div class="w-full flex flex-col items-center">
+    {% for video in videos %}
+        <video-player
+            type="{{ video.type }}"
+            src="{{ video.src }}"
+        >
+        </video-player>
+    {% endfor %}
+</div>
+
+<div class="post-content pb-24">
+    {{ post.post_content }}
 </div>

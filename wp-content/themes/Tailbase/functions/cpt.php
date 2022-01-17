@@ -27,10 +27,39 @@ function create_post_types(){
       'public' => true,
       'has_archive' => false,
       'hierarchical' => true,
-      'menu_icon' => 'dashicons-book',
+      'menu_icon' => 'dashicons-camera',
+      'supports' => array( 'title', 'editor' )
+    )
+  );
+
+  register_post_type(
+    'video',
+    array(
+      'labels' => array(
+          'name'                       => _x( 'Video Projects', 'taxonomy general name', 'textdomain' ),
+          'singular_name'              => _x( 'Video Project', 'taxonomy singular name', 'textdomain' ),
+          'search_items'               => __( 'Search Video Projects', 'textdomain' ),
+          'popular_items'              => __( 'Popular Video Projects', 'textdomain' ),
+          'all_items'                  => __( 'All Video Projects', 'textdomain' ),
+          'parent_item'                => null,
+          'parent_item_colon'          => null,
+          'edit_item'                  => __( 'Edit Video Project', 'textdomain' ),
+          'update_item'                => __( 'Update Video Project', 'textdomain' ),
+          'add_new_item'               => __( 'Add New Video Project', 'textdomain' ),
+          'new_item_name'              => __( 'New Video Project Name', 'textdomain' ),
+          'separate_items_with_commas' => __( 'Separate Video Projects with commas', 'textdomain' ),
+          'add_or_remove_items'        => __( 'Add or remove Video Projects', 'textdomain' ),
+          'choose_from_most_used'      => __( 'Choose from the most used Video Projects', 'textdomain' ),
+          'not_found'                  => __( 'No Video Projects found.', 'textdomain' ),
+          'menu_name'                  => __( 'Video Projects', 'textdomain' ),
+      ),
+      'public' => true,
+      'has_archive' => false,
+      'hierarchical' => true,
+      'menu_icon' => 'dashicons-video-alt',
       'supports' => array( 'title', 'editor' )
     )
   );
 }
-add_action('init', 'create_post_types');
 
+add_action('init', 'create_post_types');

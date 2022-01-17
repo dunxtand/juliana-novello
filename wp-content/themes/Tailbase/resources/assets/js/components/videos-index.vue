@@ -1,11 +1,18 @@
 <template>
     <div class="w-full h-full flex justify-between pt-4 pb-24">
-        <img
-            :src="image || 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'"
+        <video
+            ref="video"
             :class="{ show: !!selected }"
-        />
+            muted
+        >
+            <source
+                v-if="selectedVideo"
+                :type="selectedVideo.type"
+                :src="selectedVideo.src"
+            />
+        </video>
 
-        <div class="w-full h-full flex flex-col justify-between items-center mx-4">
+        <div class="w-full h-full flex flex-col justify-center items-center mx-4">
             <a
                 v-for="(project, index) in projects"
                 :key="index"
@@ -29,7 +36,7 @@
 </template>
 
 <script>
-import { validateJSON, preloadImage } from '../helpers';
+import { validateJSON } from '../helpers';
 
 
 export default {
@@ -41,14 +48,6 @@ export default {
 		}
     },
 
-    mounted: function () {
-        if (window.innerWidth >= 1024) {
-            for (const { gallery } of this.projects) {
-                gallery.forEach(preloadImage);
-            }
-        }
-    },
-
     data: function () {
         return {
             selected: null,
@@ -57,35 +56,41 @@ export default {
     },
 
     watch: {
-        selected: function (val) {
-            if (!val) {
-                return setTimeout(() => {
-                    if (!this.selected) {
-                        this.image = null;
-                    }
-                }, 400);
+        selectedVideo: function (video) {
+            console.log(video);
+            if (video && video.src) {
+                this.$refs.video.currentTime = 0;
+                this.$refs.video.muted = false;
+                this.$refs.video.play();
+            } else {
+                this.$refs.video.pause();
+                this.$refs.video.muted = true;
             }
-
-            const randomIndex = Math.floor((Math.random()) * ((this.selectedProject.gallery.length - 1) + 1));
-            this.image = this.selectedProject.gallery[randomIndex];
         }
     },
 
     computed: {
 		projects: function () {
-			return JSON.parse(this.itemsStr);F
+			return JSON.parse(this.itemsStr);
 		},
 
-        selectedProject: function () {
-            return this.projects.find(item => item.id === this.selected) || null;
+        selectedVideo: function () {
+            if (window.innerWidth < 1024) {
+                return null;
+            }
+
+            const videos = (this.projects.find(v => v.id === this.selected) || { videos: [] }).videos;
+            const randomIndex = Math.floor((Math.random()) * ((videos.length - 1) + 1));
+            return videos[randomIndex] || null;
         }
     }
 }
 </script>
 
 <style lang="scss" scoped>
-img {
-    max-width: 63%;
+video {
+    width: 1000px;
+    max-width: 80%;
     max-height: 90%;
     position: absolute;
     z-index: 1;
@@ -127,4 +132,3 @@ h2 {
     text-align: center;
 }
 </style>
-

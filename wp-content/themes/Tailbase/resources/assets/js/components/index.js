@@ -4,6 +4,8 @@ import ProjectsIndex from './projects-index';
 import ProjectGallery from './project-gallery';
 import WritingIndex from './writing-index';
 import BookSlideshow from './book-slideshow';
+import VideosIndex from './videos-index';
+import VideoPlayer from './video-player';
 
 
 export default [
@@ -12,5 +14,7 @@ export default [
     ['projects-index', ProjectsIndex],
     ['project-gallery', ProjectGallery],
     ['writing-index', WritingIndex],
-    ['book-slideshow', BookSlideshow]
+    ['book-slideshow', BookSlideshow],
+    ['videos-index', VideosIndex],
+    ['video-player', VideoPlayer]
 ];
