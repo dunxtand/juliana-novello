@@ -2,18 +2,18 @@
     <div class="w-full relative my-16">
         <div class="flex flex-wrap items-center justify-center w-full lg:w-3/4 mx-auto">
             <a
-                v-for="(imageUrl, index) in items"
+                v-for="(src, index) in images"
                 :key="index"
                 href="#"
-                @click.prevent="shown = imageUrl"
+                @click.prevent="shown = src"
                 class="w-full lg:w-1/2"
             >
                 <img
-                    :src="imageUrl"
+                    :src="src"
                     alt=""
                     class="image-item m-4"
                     :style="{
-                        opacity: imageUrl ? 1 : 0
+                        opacity: src ? 1 : 0
                     }"
                 />
             </a>
@@ -37,8 +37,10 @@
                 ➬
             </a>
             <img
-                :src="shown"
-                alt=""
+                v-for="(src, index) in images"
+                :key="index"
+                :src="src"
+                :class="{ show: src === shown }"
             />
             <a
                 href="#"
@@ -78,29 +80,29 @@ export default {
     },
 
     computed: {
-		items: function () {
+		images: function () {
 			return JSON.parse(this.itemsStr);
 		},
 
         currentIndex: function () {
-            return this.items.findIndex(imageUrl => imageUrl === this.shown);
+            return this.images.findIndex(src => src === this.shown);
         }
     },
 
     methods: {
         back: function () {
             if (this.currentIndex - 1 < 0) {
-                this.shown = this.items[this.items.length - 1];
+                this.shown = this.images[this.images.length - 1];
             } else {
-                this.shown = this.items[this.currentIndex - 1];
+                this.shown = this.images[this.currentIndex - 1];
             }
         },
 
         forward: function () {
-            if (this.currentIndex + 1 > (this.items.length - 1)) {
-                this.shown = this.items[0];
+            if (this.currentIndex + 1 > (this.images.length - 1)) {
+                this.shown = this.images[0];
             } else {
-                this.shown = this.items[this.currentIndex + 1];
+                this.shown = this.images[this.currentIndex + 1];
             }
         }
     }
@@ -119,12 +121,17 @@ export default {
     }
 
     img {
+        position: absolute;
+        opacity: 0;
         max-height: 94%;
         z-index: 101;
         transition: opacity .3s;
         max-width: 100%;
         @media(min-width: 640px) {
             max-width: 80%;
+        }
+        &.show {
+            opacity: 1;
         }
     }
 

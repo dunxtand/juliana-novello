@@ -1,8 +1,13 @@
 <template>
     <div class="w-full h-full flex justify-between pt-4 pb-24">
         <img
-            :src="image || 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'"
-            :class="{ show: !!selected }"
+            v-for="(src, index) in allImages"
+            :key="index"
+            :src="src"
+            :class="[
+                'mt-6',
+                { show: image === src }
+            ]"
         />
 
         <div class="w-full h-full flex flex-col justify-between items-center mx-4">
@@ -29,7 +34,7 @@
 </template>
 
 <script>
-import { validateJSON, preloadImage } from '../helpers';
+import { validateJSON } from '../helpers';
 
 
 export default {
@@ -39,14 +44,6 @@ export default {
 			required: true,
 			validator: validateJSON
 		}
-    },
-
-    mounted: function () {
-        if (window.innerWidth >= 1024) {
-            for (const { gallery } of this.projects) {
-                gallery.forEach(preloadImage);
-            }
-        }
     },
 
     data: function () {
@@ -59,11 +56,8 @@ export default {
     watch: {
         selected: function (val) {
             if (!val) {
-                return setTimeout(() => {
-                    if (!this.selected) {
-                        this.image = null;
-                    }
-                }, 400);
+                this.image = null;
+                return;
             }
 
             const randomIndex = Math.floor((Math.random()) * ((this.selectedProject.gallery.length - 1) + 1));
@@ -78,6 +72,10 @@ export default {
 
         selectedProject: function () {
             return this.projects.find(item => item.id === this.selected) || null;
+        },
+
+        allImages: function () {
+            return this.projects.reduce((images, project) => images.concat(project.gallery), []);
         }
     }
 }
