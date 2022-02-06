@@ -1,6 +1,10 @@
 {
-    "/js/scripts.95901416.min.js": "/js/scripts.95901416.min.js",
-    "/css/styles.86889244.min.css": "/css/styles.86889244.min.css",
+    "/js/scripts.71917910.min.js": "/js/scripts.71917910.min.js",
+    "/css/styles.95118976.min.css": "/css/styles.95118976.min.css",
+    "/images/browserconfig.xml": "/images/browserconfig.xml",
+    "/images/favicon.png": "/images/favicon.png",
+    "/images/ferriswheel.png": "/images/ferriswheel.png",
+    "/images/site.webmanifest": "/images/site.webmanifest",
     "/fonts/HappyTime.eot": "/fonts/HappyTime.eot",
     "/fonts/HappyTime.otf": "/fonts/HappyTime.otf",
     "/fonts/HappyTime.svg": "/fonts/HappyTime.svg",
@@ -11,11 +15,5 @@
     "/fonts/LinLibertine.svg": "/fonts/LinLibertine.svg",
     "/fonts/LinLibertine.ttf": "/fonts/LinLibertine.ttf",
     "/fonts/LinLibertine.woff": "/fonts/LinLibertine.woff",
-    "/fonts/LinLibertine.woff2": "/fonts/LinLibertine.woff2",
-    "/fonts/YesevaOne-Regular.eot": "/fonts/YesevaOne-Regular.eot",
-    "/fonts/YesevaOne-Regular.ttf": "/fonts/YesevaOne-Regular.ttf",
-    "/fonts/YesevaOne-Regular.woff2": "/fonts/YesevaOne-Regular.woff2",
-    "/fonts/YesevaOne.svg": "/fonts/YesevaOne.svg",
-    "/fonts/YesevaOne.ttf": "/fonts/YesevaOne.ttf",
-    "/fonts/YesevaOne.woff": "/fonts/YesevaOne.woff"
+    "/fonts/LinLibertine.woff2": "/fonts/LinLibertine.woff2"
 }

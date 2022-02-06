@@ -20,7 +20,7 @@
             <div
                 v-if="selectedIndex === index"
                 v-html="selectedContent"
-                class="selected-content"
+                class="selected-content lin-libertine"
             ></div>
         </a>
     </div>

@@ -1,0 +1,43 @@
+{
+    "key": "group_6200090730c13",
+    "title": "Image Attributes",
+    "fields": [
+        {
+            "key": "field_62000911fe52b",
+            "label": "Featured?",
+            "name": "featured",
+            "type": "true_false",
+            "instructions": "Check this if you want the image to show up in the projects index page.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "attachment",
+                "operator": "==",
+                "value": "image"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "modified": 1644169559
+}

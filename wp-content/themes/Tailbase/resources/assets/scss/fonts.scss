@@ -1,14 +1,3 @@
-$yeseva: 'YesevaOne Regular';
-
-.uppercase {
-  text-transform: uppercase;
-}
-
-.letter-spacing {
-  letter-spacing: 1.5px;
-}
-
-
 /* https://github.com/wearethescenery/ether */
 
 
@@ -67,6 +56,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+.happy-time {
+  font-family: 'HappyTime';
+}
+
+.lin-libertine {
+  font-family: 'LinLibertine';
+}
+
+
 @font-face {
   font-family: 'HappyTime';
   src: url('../fonts/HappyTime.eot');
@@ -79,20 +77,15 @@ h1, h2, h3, h4, h5, h6 {
   font-style: normal;
 }
 
-@font-face {
-  font-family: 'YesevaOne-Regular';
-  src: url('../fonts/YesevaOne-Regular.eot');
-  src: url('../fonts/YesevaOne-Regular.eot?#iefix') format('embedded-opentype'),
-       url('../fonts/YesevaOne-Regular.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-}
 
 @font-face {
-  font-family: 'YesevaOne';
-  src: url('../fonts/YesevaOne.svg#YesevaOne') format('svg'),
-       url('../fonts/YesevaOne.ttf') format('truetype'),
-       url('../fonts/YesevaOne.woff') format('woff');
+  font-family: 'LinLibertine';
+  src: url('../fonts/LinLibertine.eot');
+  src: url('../fonts/LinLibertine.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/LinLibertine.svg#LinLibertine') format('svg'),
+       url('../fonts/LinLibertine.ttf') format('truetype'),
+       url('../fonts/LinLibertine.woff') format('woff'),
+       url('../fonts/LinLibertine.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }

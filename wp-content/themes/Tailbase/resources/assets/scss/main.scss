@@ -24,11 +24,8 @@ html, body {
   background-color: #f5dbdb;
 }
 
-.bkg-gradient {
-  background: linear-gradient(180deg, #fff 0%, $paperback 100%);
-}
-
 .post-content {
+  font-family: 'LinLibertine';
   margin: 0 auto;
   max-width: 90%;
   @media (min-width: $md) {

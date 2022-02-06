@@ -1,16 +1,18 @@
 const mix = require("laravel-mix");
-const clean = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const tailwindcss = require("tailwindcss");
 const glob = require("glob-all");
 const purgecss = require("purgecss-webpack-plugin");
 const whitelistPath = require('./build/whitelist');
+const path = require('path');
+
 
 /* ==========================================================================
 Config
 ========================================================================== */
 const config = {
-  siteUrl: "julie.local",
-  proxyUrl: "https://julie.local/",
+  siteUrl: "juliananovello.local",
+  proxyUrl: "https://juliananovello.local/",
   port: 5454,
   openOnStart: true,
   // pathToLocalSSLCert: "bellweather.local.crt",
@@ -30,10 +32,8 @@ const config = {
 /* ==========================================================================
 Purge CSS Extractors
 ========================================================================== */
-class TailwindExtractor {
-  static extract(content) {
-    return content.match(/[A-z0-9-:\/]+/g) || [];
-  }
+const tailwindExtractor = (content) => {
+  return content.match(/[A-z0-9-:\/]+/g) || [];
 }
 
 /* ==========================================================================
@@ -56,6 +56,7 @@ mix
   // handle JS files
   .setPublicPath("dist")
   .js("resources/assets/js/main.js", "dist/js/scripts." + makeid(8) + ".min.js")
+  .vue()
   .disableNotifications()
 
   // Sass files and Tailwind CSS Config
@@ -102,7 +103,7 @@ if (!mix.inProduction()) {
     .webpackConfig({
       devtool: "source-map",
       plugins: [
-        new clean(["dist"])
+        new CleanWebpackPlugin()
       ]
     })
     .sourceMaps();
@@ -143,7 +144,7 @@ if (mix.inProduction()) {
   // more examples can be found at https://gist.github.com/jack-pallot/217a5d172ffa43c8c85df2cb41b80bad
   mix.webpackConfig({
     plugins: [
-      new clean(["dist"], { verbose: false }),
+      new CleanWebpackPlugin(),
       new purgecss({
         paths: glob.sync([
           path.join(__dirname, "./**/*.php"),
@@ -154,7 +155,7 @@ if (mix.inProduction()) {
         ]),
         extractors: [
           {
-            extractor: TailwindExtractor,
+            extractor: tailwindExtractor,
             extensions: ["twig", "php", "js", "vue"]
           }
         ],
