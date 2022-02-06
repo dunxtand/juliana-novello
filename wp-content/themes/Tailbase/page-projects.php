@@ -20,4 +20,5 @@ $projects_query = new WP_Query([
 
 $context['projects'] = array_map( 'format_project', $projects_query->posts );
 
+
 Timber::render( 'page-projects.twig' , $context );

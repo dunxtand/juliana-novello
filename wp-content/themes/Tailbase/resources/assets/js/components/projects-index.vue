@@ -46,6 +46,10 @@ export default {
 		}
     },
 
+    mounted: function () {
+        console.log(this.projects);
+    },
+
     data: function () {
         return {
             selected: null,
@@ -60,8 +64,8 @@ export default {
                 return;
             }
 
-            const randomIndex = Math.floor((Math.random()) * ((this.selectedProject.gallery.length - 1) + 1));
-            this.image = this.selectedProject.gallery[randomIndex];
+            const randomIndex = Math.floor((Math.random()) * ((this.selectedProject.featured.length - 1) + 1));
+            this.image = this.selectedProject.featured[randomIndex];
         }
     },
 
@@ -75,7 +79,7 @@ export default {
         },
 
         allImages: function () {
-            return this.projects.reduce((images, project) => images.concat(project.gallery), []);
+            return this.projects.reduce((images, project) => images.concat(project.featured), []);
         }
     }
 }
