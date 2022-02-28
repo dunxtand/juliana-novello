@@ -22,9 +22,16 @@ const config = {
     "resources/views/**/**/*.twig",
     "resources/assets/scss/**/**/**/*.scss",
     "resources/assets/js/**/*.js",
+    "resources/assets/js/**/*.ts",
+    "resources/assets/js/**/*.jsx",
+    "resources/assets/js/**/*.tsx",
     "resources/assets/images/*",
     "resources/assets/js/components/**/*.vue",
     "resources/assets/js/components/*.vue",
+    "resources/assets/js/components/**/*.js",
+    "resources/assets/js/components/**/*.ts",
+    "resources/assets/js/components/**/*.jsx",
+    "resources/assets/js/components/**/*.tsx",
     "build/tailwind.config.js"
   ]
 };
@@ -55,7 +62,7 @@ Laravel Mix Config
 mix
   // handle JS files
   .setPublicPath("dist")
-  .js("resources/assets/js/main.js", "dist/js/scripts." + makeid(8) + ".min.js")
+  .ts("resources/assets/js/main.tsx", "dist/js/scripts." + makeid(8) + ".min.js")
   .vue()
   .disableNotifications()
 
@@ -151,12 +158,14 @@ if (mix.inProduction()) {
           path.join(__dirname, "resources/views/**/**/*.twig"),
           path.join(__dirname, "resources/assets/js/**/*.js"),
           path.join(__dirname, "resources/assets/js/components/**/*.vue"),
-          path.join(__dirname, "resources/assets/js/components/*.vue")
+          path.join(__dirname, "resources/assets/js/components/*.vue"),
+          path.join(__dirname, "resources/assets/js/components/**/*.jsx"),
+          path.join(__dirname, "resources/assets/js/components/**/*.tsx")
         ]),
         extractors: [
           {
             extractor: tailwindExtractor,
-            extensions: ["twig", "php", "js", "vue"]
+            extensions: ["twig", "php", "js", "vue", "jsx", "tsx"]
           }
         ],
         whitelist: whitelistPath.whitelist,

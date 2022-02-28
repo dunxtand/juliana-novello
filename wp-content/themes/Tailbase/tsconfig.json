@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+      "target": "es5",
+      "lib": [
+        "dom",
+        "dom.iterable",
+        "esnext"
+      ],
+      "skipLibCheck": true,
+      "strict": false,
+      "forceConsistentCasingInFileNames": true,
+      "esModuleInterop": true,
+      "module": "esnext",
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "jsx": "preserve",
+      "incremental": true
+    },
+    "include": [
+      "resources/assets/js/**/*.ts",
+      "resources/assets/js/**/*.tsx"
+    ],
+    "exclude": [
+      "node_modules"
+    ]
+}
