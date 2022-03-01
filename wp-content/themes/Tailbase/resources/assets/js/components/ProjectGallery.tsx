@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { useQuery, ProjectIdType, MediaItemSizeEnum } from '../gqty';
 
@@ -64,7 +64,7 @@ export default function ProjectGallery(props: {
         idType: ProjectIdType.DATABASE_ID
     });
 
-    const { gallery } = project?.projectAttributes ?? {};
+    const { gallery = [] } = project?.projectAttributes ?? {};
 
     const [currentIndex, setCurrentIndex] = useState(null);
 

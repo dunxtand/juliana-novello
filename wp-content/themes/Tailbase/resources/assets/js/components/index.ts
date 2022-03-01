@@ -2,7 +2,9 @@ import ProjectsIndex from './ProjectsIndex';
 import NavBar from './NavBar';
 import WritingIndex from './WritingIndex';
 import ProjectGallery from './ProjectGallery';
-import VideosIndex from './VideosIndex'; 
+import VideosIndex from './VideosIndex';
+import VideoGallery from './VideoGallery';
+import VideoPlayer from './VideoPlayer';
 
 
 export default [
@@ -10,5 +12,7 @@ export default [
     NavBar,
     WritingIndex,
     ProjectGallery,
-    VideosIndex
+    VideosIndex,
+    VideoGallery,
+    VideoPlayer
 ];

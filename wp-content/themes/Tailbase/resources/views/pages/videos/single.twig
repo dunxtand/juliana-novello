@@ -2,14 +2,10 @@
     {{ post.post_title }}
 </h2>
 
-<div class="w-full flex flex-col items-center">
-    {% for video in videos %}
-        <video-player
-            type="{{ video.type }}"
-            src="{{ video.src }}"
-        >
-        </video-player>
-    {% endfor %}
+<div
+    data-react="VideoGallery"
+    data-props='{ "id": "{{ post.id }}" }'
+>
 </div>
 
 <div class="post-content pb-24">
