@@ -27,6 +27,9 @@ function create_post_types(){
       'public' => true,
       'has_archive' => false,
       'hierarchical' => true,
+      'show_in_graphql' => true,
+      'graphql_single_name' => 'project',
+      'graphql_plural_name' => 'projects',
       'menu_icon' => 'dashicons-camera',
       'supports' => array( 'title', 'editor' )
     )
@@ -56,6 +59,9 @@ function create_post_types(){
       'public' => true,
       'has_archive' => false,
       'hierarchical' => true,
+      'show_in_graphql' => true,
+      'graphql_single_name' => 'video_project',
+      'graphql_plural_name' => 'video_projects',
       'menu_icon' => 'dashicons-video-alt',
       'supports' => array( 'title', 'editor' )
     )

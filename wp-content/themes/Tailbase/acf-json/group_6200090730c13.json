@@ -39,5 +39,9 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1644169559
+    "show_in_graphql": 1,
+    "graphql_field_name": "imageAttributes",
+    "map_graphql_types_from_location_rules": 0,
+    "graphql_types": "",
+    "modified": 1646101156
 }

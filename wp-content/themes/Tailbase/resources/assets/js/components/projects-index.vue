@@ -46,10 +46,6 @@ export default {
 		}
     },
 
-    mounted: function () {
-        console.log(this.projects);
-    },
-
     data: function () {
         return {
             selected: null,

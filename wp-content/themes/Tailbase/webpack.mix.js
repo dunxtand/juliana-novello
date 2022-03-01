@@ -63,7 +63,6 @@ mix
   // handle JS files
   .setPublicPath("dist")
   .ts("resources/assets/js/main.tsx", "dist/js/scripts." + makeid(8) + ".min.js")
-  .vue()
   .disableNotifications()
 
   // Sass files and Tailwind CSS Config
@@ -143,6 +142,12 @@ if (mix.inProduction()) {
         },
 
         exclude: [/\.min\.js$/gi] // skip pre-minified libs
+      }
+    },
+
+    terser: {
+      terserOptions: {
+        keep_fnames: true
       }
     }
   });

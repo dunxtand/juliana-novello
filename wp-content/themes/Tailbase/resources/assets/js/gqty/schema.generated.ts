@@ -378,6 +378,10 @@ export enum ContentTypeEnum {
   PAGE = "PAGE",
   /** The Type of Content object */
   POST = "POST",
+  /** The Type of Content object */
+  PROJECT = "PROJECT",
+  /** The Type of Content object */
+  VIDEO = "VIDEO",
 }
 
 /** The Type of Identifier used to fetch a single Content Type node. To be used along with the "id" field. Default is "ID". */
@@ -598,6 +602,28 @@ export interface CreatePostInput {
   toPing?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
 }
 
+/** Input for the createProject mutation */
+export interface CreateProjectInput {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars["String"]>;
+  /** The content of the object */
+  content?: InputMaybe<Scalars["String"]>;
+  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+  date?: InputMaybe<Scalars["String"]>;
+  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
+  menuOrder?: InputMaybe<Scalars["Int"]>;
+  /** The ID of the parent object */
+  parentId?: InputMaybe<Scalars["ID"]>;
+  /** The password used to protect the content of the object */
+  password?: InputMaybe<Scalars["String"]>;
+  /** The slug of the object */
+  slug?: InputMaybe<Scalars["String"]>;
+  /** The status of the object */
+  status?: InputMaybe<PostStatusEnum>;
+  /** The title of the object */
+  title?: InputMaybe<Scalars["String"]>;
+}
+
 /** Input for the createTag mutation */
 export interface CreateTagInput {
   /** The slug that the post_tag will be an alias of */
@@ -650,6 +676,28 @@ export interface CreateUserInput {
   websiteUrl?: InputMaybe<Scalars["String"]>;
   /** User's Yahoo IM account. */
   yim?: InputMaybe<Scalars["String"]>;
+}
+
+/** Input for the createVideo_project mutation */
+export interface CreateVideo_projectInput {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars["String"]>;
+  /** The content of the object */
+  content?: InputMaybe<Scalars["String"]>;
+  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+  date?: InputMaybe<Scalars["String"]>;
+  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
+  menuOrder?: InputMaybe<Scalars["Int"]>;
+  /** The ID of the parent object */
+  parentId?: InputMaybe<Scalars["ID"]>;
+  /** The password used to protect the content of the object */
+  password?: InputMaybe<Scalars["String"]>;
+  /** The slug of the object */
+  slug?: InputMaybe<Scalars["String"]>;
+  /** The status of the object */
+  status?: InputMaybe<PostStatusEnum>;
+  /** The title of the object */
+  title?: InputMaybe<Scalars["String"]>;
 }
 
 /** Date values */
@@ -748,6 +796,16 @@ export interface DeletePostInput {
   id: Scalars["ID"];
 }
 
+/** Input for the deleteProject mutation */
+export interface DeleteProjectInput {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars["String"]>;
+  /** Whether the object should be force deleted instead of being moved to the trash */
+  forceDelete?: InputMaybe<Scalars["Boolean"]>;
+  /** The ID of the project to delete */
+  id: Scalars["ID"];
+}
+
 /** Input for the deleteTag mutation */
 export interface DeleteTagInput {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
@@ -764,6 +822,16 @@ export interface DeleteUserInput {
   id: Scalars["ID"];
   /** Reassign posts and links to new User ID. */
   reassignId?: InputMaybe<Scalars["ID"]>;
+}
+
+/** Input for the deleteVideo_project mutation */
+export interface DeleteVideo_projectInput {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars["String"]>;
+  /** Whether the object should be force deleted instead of being moved to the trash */
+  forceDelete?: InputMaybe<Scalars["Boolean"]>;
+  /** The ID of the video_project to delete */
+  id: Scalars["ID"];
 }
 
 /** Arguments for filtering the HierarchicalContentNodeToContentNodeAncestorsConnection connection */
@@ -1886,6 +1954,16 @@ export interface PostToTermNodeConnectionWhereArgs {
   updateTermMetaCache?: InputMaybe<Scalars["Boolean"]>;
 }
 
+/** The Type of Identifier used to fetch a single resource. Default is ID. */
+export enum ProjectIdType {
+  /** Identify a resource by the Database ID. */
+  DATABASE_ID = "DATABASE_ID",
+  /** Identify a resource by the (hashed) Global ID. */
+  ID = "ID",
+  /** Identify a resource by the URI. */
+  URI = "URI",
+}
+
 /** Input for the registerUser mutation */
 export interface RegisterUserInput {
   /** User's AOL IM account. */
@@ -2362,6 +2440,44 @@ export interface RootQueryToPostFormatConnectionWhereArgs {
   updateTermMetaCache?: InputMaybe<Scalars["Boolean"]>;
 }
 
+/** Arguments for filtering the RootQueryToProjectConnection connection */
+export interface RootQueryToProjectConnectionWhereArgs {
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars["Boolean"]>;
+  /** Specific ID of the object */
+  id?: InputMaybe<Scalars["Int"]>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars["String"]>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
+  /** What paramater to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars["ID"]>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars["String"]>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars["String"]>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars["String"]>;
+}
+
 /** Arguments for filtering the RootQueryToTagConnection connection */
 export interface RootQueryToTagConnectionWhereArgs {
   /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
@@ -2486,6 +2602,44 @@ export interface RootQueryToUserConnectionWhereArgs {
   searchColumns?: InputMaybe<
     Array<InputMaybe<UsersConnectionSearchColumnEnum>>
   >;
+}
+
+/** Arguments for filtering the RootQueryToVideo_projectConnection connection */
+export interface RootQueryToVideo_projectConnectionWhereArgs {
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars["Boolean"]>;
+  /** Specific ID of the object */
+  id?: InputMaybe<Scalars["Int"]>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars["String"]>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
+  /** What paramater to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars["ID"]>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars["String"]>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars["String"]>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars["String"]>;
 }
 
 /** Input for the sendPasswordResetEmail mutation */
@@ -2830,6 +2984,30 @@ export interface UpdatePostInput {
   toPing?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
 }
 
+/** Input for the updateProject mutation */
+export interface UpdateProjectInput {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars["String"]>;
+  /** The content of the object */
+  content?: InputMaybe<Scalars["String"]>;
+  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+  date?: InputMaybe<Scalars["String"]>;
+  /** The ID of the project object */
+  id: Scalars["ID"];
+  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
+  menuOrder?: InputMaybe<Scalars["Int"]>;
+  /** The ID of the parent object */
+  parentId?: InputMaybe<Scalars["ID"]>;
+  /** The password used to protect the content of the object */
+  password?: InputMaybe<Scalars["String"]>;
+  /** The slug of the object */
+  slug?: InputMaybe<Scalars["String"]>;
+  /** The status of the object */
+  status?: InputMaybe<PostStatusEnum>;
+  /** The title of the object */
+  title?: InputMaybe<Scalars["String"]>;
+}
+
 /** Input for the updateSettings mutation */
 export interface UpdateSettingsInput {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
@@ -2920,6 +3098,30 @@ export interface UpdateUserInput {
   websiteUrl?: InputMaybe<Scalars["String"]>;
   /** User's Yahoo IM account. */
   yim?: InputMaybe<Scalars["String"]>;
+}
+
+/** Input for the updateVideo_project mutation */
+export interface UpdateVideo_projectInput {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars["String"]>;
+  /** The content of the object */
+  content?: InputMaybe<Scalars["String"]>;
+  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+  date?: InputMaybe<Scalars["String"]>;
+  /** The ID of the video_project object */
+  id: Scalars["ID"];
+  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
+  menuOrder?: InputMaybe<Scalars["Int"]>;
+  /** The ID of the parent object */
+  parentId?: InputMaybe<Scalars["ID"]>;
+  /** The password used to protect the content of the object */
+  password?: InputMaybe<Scalars["String"]>;
+  /** The slug of the object */
+  slug?: InputMaybe<Scalars["String"]>;
+  /** The status of the object */
+  status?: InputMaybe<PostStatusEnum>;
+  /** The title of the object */
+  title?: InputMaybe<Scalars["String"]>;
 }
 
 /** The Type of Identifier used to fetch a single User node. To be used along with the "id" field. Default is "ID". */
@@ -3258,6 +3460,16 @@ export enum UsersConnectionSearchColumnEnum {
   URL = "URL",
 }
 
+/** The Type of Identifier used to fetch a single resource. Default is ID. */
+export enum Video_projectIdType {
+  /** Identify a resource by the Database ID. */
+  DATABASE_ID = "DATABASE_ID",
+  /** Identify a resource by the (hashed) Global ID. */
+  ID = "ID",
+  /** Identify a resource by the URI. */
+  URI = "URI",
+}
+
 export const scalarsEnumsHash: import("gqty").ScalarsEnumsHash = {
   AvatarRatingEnum: true,
   Boolean: true,
@@ -3287,6 +3499,7 @@ export const scalarsEnumsHash: import("gqty").ScalarsEnumsHash = {
   PostObjectsConnectionDateColumnEnum: true,
   PostObjectsConnectionOrderbyEnum: true,
   PostStatusEnum: true,
+  ProjectIdType: true,
   RelationEnum: true,
   String: true,
   TagIdType: true,
@@ -3298,8 +3511,14 @@ export const scalarsEnumsHash: import("gqty").ScalarsEnumsHash = {
   UserRoleEnum: true,
   UsersConnectionOrderbyEnum: true,
   UsersConnectionSearchColumnEnum: true,
+  Video_projectIdType: true,
 };
 export const generatedSchema = {
+  AcfFieldGroup: {
+    __typename: { __type: "String!" },
+    fieldGroupName: { __type: "String" },
+    $on: { __type: "$AcfFieldGroup!" },
+  },
   Avatar: {
     __typename: { __type: "String!" },
     default: { __type: "String" },
@@ -3921,6 +4140,22 @@ export const generatedSchema = {
     clientMutationId: { __type: "String" },
     post: { __type: "Post" },
   },
+  CreateProjectInput: {
+    clientMutationId: { __type: "String" },
+    content: { __type: "String" },
+    date: { __type: "String" },
+    menuOrder: { __type: "Int" },
+    parentId: { __type: "ID" },
+    password: { __type: "String" },
+    slug: { __type: "String" },
+    status: { __type: "PostStatusEnum" },
+    title: { __type: "String" },
+  },
+  CreateProjectPayload: {
+    __typename: { __type: "String!" },
+    clientMutationId: { __type: "String" },
+    project: { __type: "Project" },
+  },
   CreateTagInput: {
     aliasOf: { __type: "String" },
     clientMutationId: { __type: "String" },
@@ -3957,6 +4192,22 @@ export const generatedSchema = {
     __typename: { __type: "String!" },
     clientMutationId: { __type: "String" },
     user: { __type: "User" },
+  },
+  CreateVideo_projectInput: {
+    clientMutationId: { __type: "String" },
+    content: { __type: "String" },
+    date: { __type: "String" },
+    menuOrder: { __type: "Int" },
+    parentId: { __type: "ID" },
+    password: { __type: "String" },
+    slug: { __type: "String" },
+    status: { __type: "PostStatusEnum" },
+    title: { __type: "String" },
+  },
+  CreateVideo_projectPayload: {
+    __typename: { __type: "String!" },
+    clientMutationId: { __type: "String" },
+    video_project: { __type: "Video_project" },
   },
   DatabaseIdentifier: {
     __typename: { __type: "String!" },
@@ -4051,6 +4302,17 @@ export const generatedSchema = {
     deletedId: { __type: "ID" },
     post: { __type: "Post" },
   },
+  DeleteProjectInput: {
+    clientMutationId: { __type: "String" },
+    forceDelete: { __type: "Boolean" },
+    id: { __type: "ID!" },
+  },
+  DeleteProjectPayload: {
+    __typename: { __type: "String!" },
+    clientMutationId: { __type: "String" },
+    deletedId: { __type: "ID" },
+    project: { __type: "Project" },
+  },
   DeleteTagInput: {
     clientMutationId: { __type: "String" },
     id: { __type: "ID!" },
@@ -4071,6 +4333,17 @@ export const generatedSchema = {
     clientMutationId: { __type: "String" },
     deletedId: { __type: "ID" },
     user: { __type: "User" },
+  },
+  DeleteVideo_projectInput: {
+    clientMutationId: { __type: "String" },
+    forceDelete: { __type: "Boolean" },
+    id: { __type: "ID!" },
+  },
+  DeleteVideo_projectPayload: {
+    __typename: { __type: "String!" },
+    clientMutationId: { __type: "String" },
+    deletedId: { __type: "ID" },
+    video_project: { __type: "Video_project" },
   },
   DiscussionSettings: {
     __typename: { __type: "String!" },
@@ -4302,6 +4575,7 @@ export const generatedSchema = {
     fileSize: { __type: "Int", __args: { size: "MediaItemSizeEnum" } },
     guid: { __type: "String" },
     id: { __type: "ID!" },
+    imageAttributes: { __type: "MediaItem_Imageattributes" },
     isContentNode: { __type: "Boolean!" },
     isPreview: { __type: "Boolean" },
     isRestricted: { __type: "Boolean" },
@@ -4391,6 +4665,11 @@ export const generatedSchema = {
     status: { __type: "String" },
     userId: { __type: "ID" },
   },
+  MediaItem_Imageattributes: {
+    __typename: { __type: "String!" },
+    featured: { __type: "Boolean" },
+    fieldGroupName: { __type: "String" },
+  },
   MediaSize: {
     __typename: { __type: "String!" },
     file: { __type: "String" },
@@ -4445,6 +4724,7 @@ export const generatedSchema = {
     linkRelationship: { __type: "String" },
     locations: { __type: "[MenuLocationEnum]" },
     menu: { __type: "MenuItemToMenuConnectionEdge" },
+    menuItemAttributes: { __type: "MenuItem_Menuitemattributes" },
     menuItemId: { __type: "Int" },
     order: { __type: "Int" },
     parentDatabaseId: { __type: "Int" },
@@ -4489,6 +4769,11 @@ export const generatedSchema = {
   MenuItemToMenuItemLinkableConnectionEdge: {
     __typename: { __type: "String!" },
     node: { __type: "MenuItemLinkable" },
+  },
+  MenuItem_Menuitemattributes: {
+    __typename: { __type: "String!" },
+    fieldGroupName: { __type: "String" },
+    image: { __type: "MediaItem" },
   },
   MenuToMenuItemConnection: {
     __typename: { __type: "String!" },
@@ -5355,6 +5640,88 @@ export const generatedSchema = {
     viewItem: { __type: "String" },
     viewItems: { __type: "String" },
   },
+  Project: {
+    __typename: { __type: "String!" },
+    ancestors: {
+      __type: "HierarchicalContentNodeToContentNodeAncestorsConnection",
+      __args: {
+        after: "String",
+        before: "String",
+        first: "Int",
+        last: "Int",
+        where:
+          "HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgs",
+      },
+    },
+    children: {
+      __type: "HierarchicalContentNodeToContentNodeChildrenConnection",
+      __args: {
+        after: "String",
+        before: "String",
+        first: "Int",
+        last: "Int",
+        where:
+          "HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgs",
+      },
+    },
+    content: {
+      __type: "String",
+      __args: { format: "PostObjectFieldFormatEnum" },
+    },
+    contentType: { __type: "ContentNodeToContentTypeConnectionEdge" },
+    contentTypeName: { __type: "String!" },
+    databaseId: { __type: "Int!" },
+    date: { __type: "String" },
+    dateGmt: { __type: "String" },
+    desiredSlug: { __type: "String" },
+    editingLockedBy: { __type: "ContentNodeToEditLockConnectionEdge" },
+    enclosure: { __type: "String" },
+    enqueuedScripts: {
+      __type: "ContentNodeToEnqueuedScriptConnection",
+      __args: { after: "String", before: "String", first: "Int", last: "Int" },
+    },
+    enqueuedStylesheets: {
+      __type: "ContentNodeToEnqueuedStylesheetConnection",
+      __args: { after: "String", before: "String", first: "Int", last: "Int" },
+    },
+    guid: { __type: "String" },
+    id: { __type: "ID!" },
+    isContentNode: { __type: "Boolean!" },
+    isPreview: { __type: "Boolean" },
+    isRestricted: { __type: "Boolean" },
+    isTermNode: { __type: "Boolean!" },
+    lastEditedBy: { __type: "ContentNodeToEditLastConnectionEdge" },
+    link: { __type: "String" },
+    modified: { __type: "String" },
+    modifiedGmt: { __type: "String" },
+    parent: {
+      __type: "HierarchicalContentNodeToParentContentNodeConnectionEdge",
+    },
+    parentDatabaseId: { __type: "Int" },
+    parentId: { __type: "ID" },
+    preview: { __type: "ProjectToPreviewConnectionEdge" },
+    previewRevisionDatabaseId: { __type: "Int" },
+    previewRevisionId: { __type: "ID" },
+    projectAttributes: { __type: "Project_Projectattributes" },
+    projectId: { __type: "Int!" },
+    slug: { __type: "String" },
+    status: { __type: "String" },
+    template: { __type: "ContentTemplate" },
+    title: {
+      __type: "String",
+      __args: { format: "PostObjectFieldFormatEnum" },
+    },
+    uri: { __type: "String" },
+  },
+  ProjectToPreviewConnectionEdge: {
+    __typename: { __type: "String!" },
+    node: { __type: "Project" },
+  },
+  Project_Projectattributes: {
+    __typename: { __type: "String!" },
+    fieldGroupName: { __type: "String" },
+    gallery: { __type: "[MediaItem]" },
+  },
   ReadingSettings: {
     __typename: { __type: "String!" },
     postsPerPage: { __type: "Int" },
@@ -5763,6 +6130,36 @@ export const generatedSchema = {
     termTaxonomId: { __type: "[ID]" },
     updateTermMetaCache: { __type: "Boolean" },
   },
+  RootQueryToProjectConnection: {
+    __typename: { __type: "String!" },
+    edges: { __type: "[RootQueryToProjectConnectionEdge]" },
+    nodes: { __type: "[Project]" },
+    pageInfo: { __type: "WPPageInfo" },
+  },
+  RootQueryToProjectConnectionEdge: {
+    __typename: { __type: "String!" },
+    cursor: { __type: "String" },
+    node: { __type: "Project" },
+  },
+  RootQueryToProjectConnectionWhereArgs: {
+    dateQuery: { __type: "DateQueryInput" },
+    hasPassword: { __type: "Boolean" },
+    id: { __type: "Int" },
+    in: { __type: "[ID]" },
+    mimeType: { __type: "MimeTypeEnum" },
+    name: { __type: "String" },
+    nameIn: { __type: "[String]" },
+    notIn: { __type: "[ID]" },
+    orderby: { __type: "[PostObjectsConnectionOrderbyInput]" },
+    parent: { __type: "ID" },
+    parentIn: { __type: "[ID]" },
+    parentNotIn: { __type: "[ID]" },
+    password: { __type: "String" },
+    search: { __type: "String" },
+    stati: { __type: "[PostStatusEnum]" },
+    status: { __type: "PostStatusEnum" },
+    title: { __type: "String" },
+  },
   RootQueryToTagConnection: {
     __typename: { __type: "String!" },
     edges: { __type: "[RootQueryToTagConnectionEdge]" },
@@ -5890,6 +6287,36 @@ export const generatedSchema = {
     __typename: { __type: "String!" },
     cursor: { __type: "String" },
     node: { __type: "UserRole" },
+  },
+  RootQueryToVideo_projectConnection: {
+    __typename: { __type: "String!" },
+    edges: { __type: "[RootQueryToVideo_projectConnectionEdge]" },
+    nodes: { __type: "[Video_project]" },
+    pageInfo: { __type: "WPPageInfo" },
+  },
+  RootQueryToVideo_projectConnectionEdge: {
+    __typename: { __type: "String!" },
+    cursor: { __type: "String" },
+    node: { __type: "Video_project" },
+  },
+  RootQueryToVideo_projectConnectionWhereArgs: {
+    dateQuery: { __type: "DateQueryInput" },
+    hasPassword: { __type: "Boolean" },
+    id: { __type: "Int" },
+    in: { __type: "[ID]" },
+    mimeType: { __type: "MimeTypeEnum" },
+    name: { __type: "String" },
+    nameIn: { __type: "[String]" },
+    notIn: { __type: "[ID]" },
+    orderby: { __type: "[PostObjectsConnectionOrderbyInput]" },
+    parent: { __type: "ID" },
+    parentIn: { __type: "[ID]" },
+    parentNotIn: { __type: "[ID]" },
+    password: { __type: "String" },
+    search: { __type: "String" },
+    stati: { __type: "[PostStatusEnum]" },
+    status: { __type: "PostStatusEnum" },
+    title: { __type: "String" },
   },
   SendPasswordResetEmailInput: {
     clientMutationId: { __type: "String" },
@@ -6087,11 +6514,25 @@ export const generatedSchema = {
   },
   Template_BookPage: {
     __typename: { __type: "String!" },
+    bookPageAttributes: { __type: "Template_BookPage_Bookpageattributes" },
     templateName: { __type: "String" },
+  },
+  Template_BookPage_Bookpageattributes: {
+    __typename: { __type: "String!" },
+    fieldGroupName: { __type: "String" },
+    slideshow: { __type: "[MediaItem]" },
   },
   Template_ContactPage: {
     __typename: { __type: "String!" },
+    contactPageOptions: { __type: "Template_ContactPage_Contactpageoptions" },
     templateName: { __type: "String" },
+  },
+  Template_ContactPage_Contactpageoptions: {
+    __typename: { __type: "String!" },
+    consumerKey: { __type: "String" },
+    consumerSecret: { __type: "String" },
+    fieldGroupName: { __type: "String" },
+    formId: { __type: "Float" },
   },
   Template_ProjectsPage: {
     __typename: { __type: "String!" },
@@ -6288,6 +6729,23 @@ export const generatedSchema = {
     clientMutationId: { __type: "String" },
     post: { __type: "Post" },
   },
+  UpdateProjectInput: {
+    clientMutationId: { __type: "String" },
+    content: { __type: "String" },
+    date: { __type: "String" },
+    id: { __type: "ID!" },
+    menuOrder: { __type: "Int" },
+    parentId: { __type: "ID" },
+    password: { __type: "String" },
+    slug: { __type: "String" },
+    status: { __type: "PostStatusEnum" },
+    title: { __type: "String" },
+  },
+  UpdateProjectPayload: {
+    __typename: { __type: "String!" },
+    clientMutationId: { __type: "String" },
+    project: { __type: "Project" },
+  },
   UpdateSettingsInput: {
     clientMutationId: { __type: "String" },
     discussionSettingsDefaultCommentStatus: { __type: "String" },
@@ -6352,6 +6810,23 @@ export const generatedSchema = {
     __typename: { __type: "String!" },
     clientMutationId: { __type: "String" },
     user: { __type: "User" },
+  },
+  UpdateVideo_projectInput: {
+    clientMutationId: { __type: "String" },
+    content: { __type: "String" },
+    date: { __type: "String" },
+    id: { __type: "ID!" },
+    menuOrder: { __type: "Int" },
+    parentId: { __type: "ID" },
+    password: { __type: "String" },
+    slug: { __type: "String" },
+    status: { __type: "PostStatusEnum" },
+    title: { __type: "String" },
+  },
+  UpdateVideo_projectPayload: {
+    __typename: { __type: "String!" },
+    clientMutationId: { __type: "String" },
+    video_project: { __type: "Video_project" },
   },
   User: {
     __typename: { __type: "String!" },
@@ -6678,6 +7153,82 @@ export const generatedSchema = {
     field: { __type: "UsersConnectionOrderbyEnum!" },
     order: { __type: "OrderEnum" },
   },
+  Video_project: {
+    __typename: { __type: "String!" },
+    ancestors: {
+      __type: "HierarchicalContentNodeToContentNodeAncestorsConnection",
+      __args: {
+        after: "String",
+        before: "String",
+        first: "Int",
+        last: "Int",
+        where:
+          "HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgs",
+      },
+    },
+    children: {
+      __type: "HierarchicalContentNodeToContentNodeChildrenConnection",
+      __args: {
+        after: "String",
+        before: "String",
+        first: "Int",
+        last: "Int",
+        where:
+          "HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgs",
+      },
+    },
+    content: {
+      __type: "String",
+      __args: { format: "PostObjectFieldFormatEnum" },
+    },
+    contentType: { __type: "ContentNodeToContentTypeConnectionEdge" },
+    contentTypeName: { __type: "String!" },
+    databaseId: { __type: "Int!" },
+    date: { __type: "String" },
+    dateGmt: { __type: "String" },
+    desiredSlug: { __type: "String" },
+    editingLockedBy: { __type: "ContentNodeToEditLockConnectionEdge" },
+    enclosure: { __type: "String" },
+    enqueuedScripts: {
+      __type: "ContentNodeToEnqueuedScriptConnection",
+      __args: { after: "String", before: "String", first: "Int", last: "Int" },
+    },
+    enqueuedStylesheets: {
+      __type: "ContentNodeToEnqueuedStylesheetConnection",
+      __args: { after: "String", before: "String", first: "Int", last: "Int" },
+    },
+    guid: { __type: "String" },
+    id: { __type: "ID!" },
+    isContentNode: { __type: "Boolean!" },
+    isPreview: { __type: "Boolean" },
+    isRestricted: { __type: "Boolean" },
+    isTermNode: { __type: "Boolean!" },
+    lastEditedBy: { __type: "ContentNodeToEditLastConnectionEdge" },
+    link: { __type: "String" },
+    modified: { __type: "String" },
+    modifiedGmt: { __type: "String" },
+    parent: {
+      __type: "HierarchicalContentNodeToParentContentNodeConnectionEdge",
+    },
+    parentDatabaseId: { __type: "Int" },
+    parentId: { __type: "ID" },
+    preview: { __type: "Video_projectToPreviewConnectionEdge" },
+    previewRevisionDatabaseId: { __type: "Int" },
+    previewRevisionId: { __type: "ID" },
+    slug: { __type: "String" },
+    status: { __type: "String" },
+    template: { __type: "ContentTemplate" },
+    title: {
+      __type: "String",
+      __args: { format: "PostObjectFieldFormatEnum" },
+    },
+    uri: { __type: "String" },
+    video_projectId: { __type: "Int!" },
+  },
+  Video_projectToPreviewConnectionEdge: {
+    __typename: { __type: "String!" },
+    node: { __type: "Video_project" },
+  },
   WPPageInfo: {
     __typename: { __type: "String!" },
     endCursor: { __type: "String" },
@@ -6717,6 +7268,10 @@ export const generatedSchema = {
       __type: "CreatePostFormatPayload",
       __args: { input: "CreatePostFormatInput!" },
     },
+    createProject: {
+      __type: "CreateProjectPayload",
+      __args: { input: "CreateProjectInput!" },
+    },
     createTag: {
       __type: "CreateTagPayload",
       __args: { input: "CreateTagInput!" },
@@ -6724,6 +7279,10 @@ export const generatedSchema = {
     createUser: {
       __type: "CreateUserPayload",
       __args: { input: "CreateUserInput!" },
+    },
+    createVideoProject: {
+      __type: "CreateVideo_projectPayload",
+      __args: { input: "CreateVideo_projectInput!" },
     },
     deleteCategory: {
       __type: "DeleteCategoryPayload",
@@ -6749,6 +7308,10 @@ export const generatedSchema = {
       __type: "DeletePostFormatPayload",
       __args: { input: "DeletePostFormatInput!" },
     },
+    deleteProject: {
+      __type: "DeleteProjectPayload",
+      __args: { input: "DeleteProjectInput!" },
+    },
     deleteTag: {
       __type: "DeleteTagPayload",
       __args: { input: "DeleteTagInput!" },
@@ -6756,6 +7319,10 @@ export const generatedSchema = {
     deleteUser: {
       __type: "DeleteUserPayload",
       __args: { input: "DeleteUserInput!" },
+    },
+    deleteVideoProject: {
+      __type: "DeleteVideo_projectPayload",
+      __args: { input: "DeleteVideo_projectInput!" },
     },
     increaseCount: { __type: "Int", __args: { count: "Int" } },
     registerUser: {
@@ -6798,6 +7365,10 @@ export const generatedSchema = {
       __type: "UpdatePostFormatPayload",
       __args: { input: "UpdatePostFormatInput!" },
     },
+    updateProject: {
+      __type: "UpdateProjectPayload",
+      __args: { input: "UpdateProjectInput!" },
+    },
     updateSettings: {
       __type: "UpdateSettingsPayload",
       __args: { input: "UpdateSettingsInput!" },
@@ -6809,6 +7380,10 @@ export const generatedSchema = {
     updateUser: {
       __type: "UpdateUserPayload",
       __args: { input: "UpdateUserInput!" },
+    },
+    updateVideoProject: {
+      __type: "UpdateVideo_projectPayload",
+      __args: { input: "UpdateVideo_projectInput!" },
     },
   },
   query: {
@@ -6974,6 +7549,24 @@ export const generatedSchema = {
         where: "RootQueryToPostConnectionWhereArgs",
       },
     },
+    project: {
+      __type: "Project",
+      __args: { asPreview: "Boolean", id: "ID!", idType: "ProjectIdType" },
+    },
+    projectBy: {
+      __type: "Project",
+      __args: { id: "ID", projectId: "Int", uri: "String" },
+    },
+    projects: {
+      __type: "RootQueryToProjectConnection",
+      __args: {
+        after: "String",
+        before: "String",
+        first: "Int",
+        last: "Int",
+        where: "RootQueryToProjectConnectionWhereArgs",
+      },
+    },
     readingSettings: { __type: "ReadingSettings" },
     registeredScripts: {
       __type: "RootQueryToEnqueuedScriptConnection",
@@ -7054,6 +7647,28 @@ export const generatedSchema = {
         where: "RootQueryToUserConnectionWhereArgs",
       },
     },
+    videoProject: {
+      __type: "Video_project",
+      __args: {
+        asPreview: "Boolean",
+        id: "ID!",
+        idType: "Video_projectIdType",
+      },
+    },
+    videoProjectBy: {
+      __type: "Video_project",
+      __args: { id: "ID", uri: "String", video_projectId: "Int" },
+    },
+    videoProjects: {
+      __type: "RootQueryToVideo_projectConnection",
+      __args: {
+        after: "String",
+        before: "String",
+        first: "Int",
+        last: "Int",
+        where: "RootQueryToVideo_projectConnectionWhereArgs",
+      },
+    },
     viewer: { __type: "User" },
     writingSettings: { __type: "WritingSettings" },
   },
@@ -7068,11 +7683,20 @@ export const generatedSchema = {
       "Page",
       "Post",
       "PostFormat",
+      "Project",
       "Tag",
       "User",
+      "Video_project",
     ],
     HierarchicalTermNode: ["Category"],
-    MenuItemLinkable: ["Category", "Page", "Post", "Tag"],
+    MenuItemLinkable: [
+      "Category",
+      "Page",
+      "Post",
+      "Project",
+      "Tag",
+      "Video_project",
+    ],
     Node: [
       "Category",
       "Comment",
@@ -7087,11 +7711,13 @@ export const generatedSchema = {
       "Plugin",
       "Post",
       "PostFormat",
+      "Project",
       "Tag",
       "Taxonomy",
       "Theme",
       "User",
       "UserRole",
+      "Video_project",
     ],
     TermNode: ["Category", "PostFormat", "Tag"],
     UniformResourceIdentifiable: [
@@ -7101,8 +7727,10 @@ export const generatedSchema = {
       "Page",
       "Post",
       "PostFormat",
+      "Project",
       "Tag",
       "User",
+      "Video_project",
     ],
     Commenter: ["CommentAuthor", "User"],
     ContentRevisionUnion: ["Page", "Post"],
@@ -7116,14 +7744,28 @@ export const generatedSchema = {
       "Template_WritingPage",
     ],
     EnqueuedAsset: ["EnqueuedScript", "EnqueuedStylesheet"],
-    ContentNode: ["MediaItem", "Page", "Post"],
-    HierarchicalContentNode: ["MediaItem", "Page"],
+    ContentNode: ["MediaItem", "Page", "Post", "Project", "Video_project"],
+    HierarchicalContentNode: ["MediaItem", "Page", "Project", "Video_project"],
     NodeWithAuthor: ["MediaItem", "Page", "Post"],
     NodeWithComments: ["MediaItem", "Page", "Post"],
-    NodeWithTemplate: ["MediaItem", "Page", "Post"],
-    NodeWithTitle: ["MediaItem", "Page", "Post"],
-    MenuItemObjectUnion: ["Category", "Page", "Post", "Tag"],
-    NodeWithContentEditor: ["Page", "Post"],
+    NodeWithTemplate: ["MediaItem", "Page", "Post", "Project", "Video_project"],
+    NodeWithTitle: ["MediaItem", "Page", "Post", "Project", "Video_project"],
+    AcfFieldGroup: [
+      "MediaItem_Imageattributes",
+      "MenuItem_Menuitemattributes",
+      "Project_Projectattributes",
+      "Template_BookPage_Bookpageattributes",
+      "Template_ContactPage_Contactpageoptions",
+    ],
+    MenuItemObjectUnion: [
+      "Category",
+      "Page",
+      "Post",
+      "Project",
+      "Tag",
+      "Video_project",
+    ],
+    NodeWithContentEditor: ["Page", "Post", "Project", "Video_project"],
     NodeWithFeaturedImage: ["Page", "Post"],
     NodeWithPageAttributes: ["Page"],
     NodeWithRevisions: ["Page", "Post"],
@@ -7131,6 +7773,23 @@ export const generatedSchema = {
     NodeWithTrackbacks: ["Post"],
   },
 } as const;
+
+/**
+ * A Field Group registered by ACF
+ */
+export interface AcfFieldGroup {
+  __typename?:
+    | "MediaItem_Imageattributes"
+    | "MenuItem_Menuitemattributes"
+    | "Project_Projectattributes"
+    | "Template_BookPage_Bookpageattributes"
+    | "Template_ContactPage_Contactpageoptions";
+  /**
+   * The name of the ACF Field Group
+   */
+  fieldGroupName?: Maybe<ScalarsEnums["String"]>;
+  $on: $AcfFieldGroup;
+}
 
 /**
  * Avatars are profile images for users. WordPress by default uses the Gravatar service to host and fetch avatars from.
@@ -7808,7 +8467,7 @@ export interface Commenter {
  * Nodes used to manage content
  */
 export interface ContentNode {
-  __typename?: "MediaItem" | "Page" | "Post";
+  __typename?: "MediaItem" | "Page" | "Post" | "Project" | "Video_project";
   /**
    * Connection between the ContentNode type and the ContentType type
    */
@@ -8418,6 +9077,21 @@ export interface CreatePostPayload {
 }
 
 /**
+ * The payload for the createProject mutation
+ */
+export interface CreateProjectPayload {
+  __typename?: "CreateProjectPayload";
+  /**
+   * If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+   */
+  clientMutationId?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The Post object mutation type.
+   */
+  project?: Maybe<Project>;
+}
+
+/**
  * The payload for the createTag mutation
  */
 export interface CreateTagPayload {
@@ -8448,6 +9122,21 @@ export interface CreateUserPayload {
 }
 
 /**
+ * The payload for the createVideo_project mutation
+ */
+export interface CreateVideo_projectPayload {
+  __typename?: "CreateVideo_projectPayload";
+  /**
+   * If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+   */
+  clientMutationId?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The Post object mutation type.
+   */
+  video_project?: Maybe<Video_project>;
+}
+
+/**
  * Object that can be identified with a Database ID
  */
 export interface DatabaseIdentifier {
@@ -8460,8 +9149,10 @@ export interface DatabaseIdentifier {
     | "Page"
     | "Post"
     | "PostFormat"
+    | "Project"
     | "Tag"
-    | "User";
+    | "User"
+    | "Video_project";
   /**
    * The unique identifier stored in the database
    */
@@ -8595,6 +9286,25 @@ export interface DeletePostPayload {
 }
 
 /**
+ * The payload for the deleteProject mutation
+ */
+export interface DeleteProjectPayload {
+  __typename?: "DeleteProjectPayload";
+  /**
+   * If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+   */
+  clientMutationId?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The ID of the deleted object
+   */
+  deletedId?: Maybe<ScalarsEnums["ID"]>;
+  /**
+   * The object before it was deleted
+   */
+  project?: Maybe<Project>;
+}
+
+/**
  * The payload for the deleteTag mutation
  */
 export interface DeleteTagPayload {
@@ -8630,6 +9340,25 @@ export interface DeleteUserPayload {
    * The deleted user object
    */
   user?: Maybe<User>;
+}
+
+/**
+ * The payload for the deleteVideo_project mutation
+ */
+export interface DeleteVideo_projectPayload {
+  __typename?: "DeleteVideo_projectPayload";
+  /**
+   * If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+   */
+  clientMutationId?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The ID of the deleted object
+   */
+  deletedId?: Maybe<ScalarsEnums["ID"]>;
+  /**
+   * The object before it was deleted
+   */
+  video_project?: Maybe<Video_project>;
 }
 
 /**
@@ -8800,7 +9529,7 @@ export interface GeneralSettings {
  * Content node with hierarchical (parent/child) relationships
  */
 export interface HierarchicalContentNode {
-  __typename?: "MediaItem" | "Page";
+  __typename?: "MediaItem" | "Page" | "Project" | "Video_project";
   /**
    * Returns ancestors of the node. Default ordered as lowest (closest to the child) to highest (closest to the root).
    */
@@ -9206,6 +9935,10 @@ export interface MediaItem {
    */
   id: ScalarsEnums["ID"];
   /**
+   * Added to the GraphQL Schema because the ACF Field Group &quot;Image Attributes&quot; was set to Show in GraphQL.
+   */
+  imageAttributes?: Maybe<MediaItem_Imageattributes>;
+  /**
    * Whether the node is a Content Node
    */
   isContentNode: ScalarsEnums["Boolean"];
@@ -9422,6 +10155,21 @@ export interface MediaItemToCommentConnectionEdge {
 }
 
 /**
+ * Field Group
+ */
+export interface MediaItem_Imageattributes {
+  __typename?: "MediaItem_Imageattributes";
+  /**
+   * Check this if you want the image to show up in the projects index page.
+   */
+  featured?: Maybe<ScalarsEnums["Boolean"]>;
+  /**
+   * The name of the ACF Field Group
+   */
+  fieldGroupName?: Maybe<ScalarsEnums["String"]>;
+}
+
+/**
  * Details of an available size for a media item
  */
 export interface MediaSize {
@@ -9597,6 +10345,10 @@ export interface MenuItem {
    */
   menu?: Maybe<MenuItemToMenuConnectionEdge>;
   /**
+   * Added to the GraphQL Schema because the ACF Field Group &quot;Menu Item Attributes&quot; was set to Show in GraphQL.
+   */
+  menuItemAttributes?: Maybe<MenuItem_Menuitemattributes>;
+  /**
    * WP ID of the menu item.
    * @deprecated Deprecated in favor of the databaseId field
    */
@@ -9635,7 +10387,13 @@ export interface MenuItem {
  * Nodes that can be linked to as Menu Items
  */
 export interface MenuItemLinkable {
-  __typename?: "Category" | "Page" | "Post" | "Tag";
+  __typename?:
+    | "Category"
+    | "Page"
+    | "Post"
+    | "Project"
+    | "Tag"
+    | "Video_project";
   /**
    * The unique resource identifier path
    */
@@ -9655,7 +10413,13 @@ export interface MenuItemLinkable {
  * Deprecated in favor of MenuItemLinkeable Interface
  */
 export interface MenuItemObjectUnion {
-  __typename?: "Category" | "Page" | "Post" | "Tag";
+  __typename?:
+    | "Category"
+    | "Page"
+    | "Post"
+    | "Project"
+    | "Tag"
+    | "Video_project";
   $on: $MenuItemObjectUnion;
 }
 
@@ -9716,6 +10480,18 @@ export interface MenuItemToMenuItemLinkableConnectionEdge {
 }
 
 /**
+ * Field Group
+ */
+export interface MenuItem_Menuitemattributes {
+  __typename?: "MenuItem_Menuitemattributes";
+  /**
+   * The name of the ACF Field Group
+   */
+  fieldGroupName?: Maybe<ScalarsEnums["String"]>;
+  image?: Maybe<MediaItem>;
+}
+
+/**
  * Connection between the Menu type and the MenuItem type
  */
 export interface MenuToMenuItemConnection {
@@ -9767,11 +10543,13 @@ export interface Node {
     | "Plugin"
     | "Post"
     | "PostFormat"
+    | "Project"
     | "Tag"
     | "Taxonomy"
     | "Theme"
     | "User"
-    | "UserRole";
+    | "UserRole"
+    | "Video_project";
   /**
    * The globally unique ID for the object
    */
@@ -9830,7 +10608,7 @@ export interface NodeWithComments {
  * A node that supports the content editor
  */
 export interface NodeWithContentEditor {
-  __typename?: "Page" | "Post";
+  __typename?: "Page" | "Post" | "Project" | "Video_project";
   /**
    * The content of the post.
    */
@@ -10072,7 +10850,7 @@ export interface NodeWithRevisionsToContentNodeConnectionEdge {
  * A node that can have a template associated with it
  */
 export interface NodeWithTemplate {
-  __typename?: "MediaItem" | "Page" | "Post";
+  __typename?: "MediaItem" | "Page" | "Post" | "Project" | "Video_project";
   /**
    * The template assigned to the node
    */
@@ -10084,7 +10862,7 @@ export interface NodeWithTemplate {
  * A node that NodeWith a title
  */
 export interface NodeWithTitle {
-  __typename?: "MediaItem" | "Page" | "Post";
+  __typename?: "MediaItem" | "Page" | "Post" | "Project" | "Video_project";
   /**
    * The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made.
    */
@@ -11532,6 +12310,267 @@ export interface PostTypeLabelDetails {
 }
 
 /**
+ * The project type
+ */
+export interface Project {
+  __typename?: "Project";
+  /**
+   * Returns ancestors of the node. Default ordered as lowest (closest to the child) to highest (closest to the root).
+   */
+  ancestors: (args?: {
+    /**
+     * Cursor used along with the "first" argument to reference where in the dataset to get data
+     */
+    after?: Maybe<Scalars["String"]>;
+    /**
+     * Cursor used along with the "last" argument to reference where in the dataset to get data
+     */
+    before?: Maybe<Scalars["String"]>;
+    /**
+     * The number of items to return after the referenced "after" cursor
+     */
+    first?: Maybe<Scalars["Int"]>;
+    /**
+     * The number of items to return before the referenced "before" cursor
+     */
+    last?: Maybe<Scalars["Int"]>;
+    /**
+     * Arguments for filtering the connection
+     */
+    where?: Maybe<HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgs>;
+  }) => Maybe<HierarchicalContentNodeToContentNodeAncestorsConnection>;
+  /**
+   * Connection between the HierarchicalContentNode type and the ContentNode type
+   */
+  children: (args?: {
+    /**
+     * Cursor used along with the "first" argument to reference where in the dataset to get data
+     */
+    after?: Maybe<Scalars["String"]>;
+    /**
+     * Cursor used along with the "last" argument to reference where in the dataset to get data
+     */
+    before?: Maybe<Scalars["String"]>;
+    /**
+     * The number of items to return after the referenced "after" cursor
+     */
+    first?: Maybe<Scalars["Int"]>;
+    /**
+     * The number of items to return before the referenced "before" cursor
+     */
+    last?: Maybe<Scalars["Int"]>;
+    /**
+     * Arguments for filtering the connection
+     */
+    where?: Maybe<HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgs>;
+  }) => Maybe<HierarchicalContentNodeToContentNodeChildrenConnection>;
+  /**
+   * The content of the post.
+   */
+  content: (args?: {
+    /**
+     * Format of the field output
+     */
+    format?: Maybe<PostObjectFieldFormatEnum>;
+  }) => Maybe<ScalarsEnums["String"]>;
+  /**
+   * Connection between the ContentNode type and the ContentType type
+   */
+  contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
+  /**
+   * The name of the Content Type the node belongs to
+   */
+  contentTypeName: ScalarsEnums["String"];
+  /**
+   * The unique resource identifier path
+   */
+  databaseId: ScalarsEnums["Int"];
+  /**
+   * Post publishing date.
+   */
+  date?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The publishing date set in GMT.
+   */
+  dateGmt?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The desired slug of the post
+   */
+  desiredSlug?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * If a user has edited the node within the past 15 seconds, this will return the user that last edited. Null if the edit lock doesn&#039;t exist or is greater than 15 seconds
+   */
+  editingLockedBy?: Maybe<ContentNodeToEditLockConnectionEdge>;
+  /**
+   * The RSS enclosure for the object
+   */
+  enclosure?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * Connection between the ContentNode type and the EnqueuedScript type
+   */
+  enqueuedScripts: (args?: {
+    /**
+     * Cursor used along with the "first" argument to reference where in the dataset to get data
+     */
+    after?: Maybe<Scalars["String"]>;
+    /**
+     * Cursor used along with the "last" argument to reference where in the dataset to get data
+     */
+    before?: Maybe<Scalars["String"]>;
+    /**
+     * The number of items to return after the referenced "after" cursor
+     */
+    first?: Maybe<Scalars["Int"]>;
+    /**
+     * The number of items to return before the referenced "before" cursor
+     */
+    last?: Maybe<Scalars["Int"]>;
+  }) => Maybe<ContentNodeToEnqueuedScriptConnection>;
+  /**
+   * Connection between the ContentNode type and the EnqueuedStylesheet type
+   */
+  enqueuedStylesheets: (args?: {
+    /**
+     * Cursor used along with the "first" argument to reference where in the dataset to get data
+     */
+    after?: Maybe<Scalars["String"]>;
+    /**
+     * Cursor used along with the "last" argument to reference where in the dataset to get data
+     */
+    before?: Maybe<Scalars["String"]>;
+    /**
+     * The number of items to return after the referenced "after" cursor
+     */
+    first?: Maybe<Scalars["Int"]>;
+    /**
+     * The number of items to return before the referenced "before" cursor
+     */
+    last?: Maybe<Scalars["Int"]>;
+  }) => Maybe<ContentNodeToEnqueuedStylesheetConnection>;
+  /**
+   * The global unique identifier for this post. This currently matches the value stored in WP_Post-&gt;guid and the guid column in the &quot;post_objects&quot; database table.
+   */
+  guid?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The globally unique identifier of the project object.
+   */
+  id: ScalarsEnums["ID"];
+  /**
+   * Whether the node is a Content Node
+   */
+  isContentNode: ScalarsEnums["Boolean"];
+  /**
+   * Whether the object is a node in the preview state
+   */
+  isPreview?: Maybe<ScalarsEnums["Boolean"]>;
+  /**
+   * Whether the object is restricted from the current viewer
+   */
+  isRestricted?: Maybe<ScalarsEnums["Boolean"]>;
+  /**
+   * Whether the node is a Term
+   */
+  isTermNode: ScalarsEnums["Boolean"];
+  /**
+   * The user that most recently edited the node
+   */
+  lastEditedBy?: Maybe<ContentNodeToEditLastConnectionEdge>;
+  /**
+   * The permalink of the post
+   */
+  link?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The local modified time for a post. If a post was recently updated the modified field will change to match the corresponding time.
+   */
+  modified?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The GMT modified time for a post. If a post was recently updated the modified field will change to match the corresponding time in GMT.
+   */
+  modifiedGmt?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The parent of the node. The parent object can be of various types
+   */
+  parent?: Maybe<HierarchicalContentNodeToParentContentNodeConnectionEdge>;
+  /**
+   * Database id of the parent node
+   */
+  parentDatabaseId?: Maybe<ScalarsEnums["Int"]>;
+  /**
+   * The globally unique identifier of the parent node.
+   */
+  parentId?: Maybe<ScalarsEnums["ID"]>;
+  /**
+   * Connection between the project type and the project type
+   */
+  preview?: Maybe<ProjectToPreviewConnectionEdge>;
+  /**
+   * The database id of the preview node
+   */
+  previewRevisionDatabaseId?: Maybe<ScalarsEnums["Int"]>;
+  /**
+   * Whether the object is a node in the preview state
+   */
+  previewRevisionId?: Maybe<ScalarsEnums["ID"]>;
+  /**
+   * Added to the GraphQL Schema because the ACF Field Group &quot;Project Attributes&quot; was set to Show in GraphQL.
+   */
+  projectAttributes?: Maybe<Project_Projectattributes>;
+  /**
+   * The id field matches the WP_Post-&gt;ID field.
+   * @deprecated Deprecated in favor of the databaseId field
+   */
+  projectId: ScalarsEnums["Int"];
+  /**
+   * The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table.
+   */
+  slug?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The current status of the object
+   */
+  status?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The template assigned to the node
+   */
+  template?: Maybe<ContentTemplate>;
+  /**
+   * The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made.
+   */
+  title: (args?: {
+    /**
+     * Format of the field output
+     */
+    format?: Maybe<PostObjectFieldFormatEnum>;
+  }) => Maybe<ScalarsEnums["String"]>;
+  /**
+   * The unique resource identifier path
+   */
+  uri?: Maybe<ScalarsEnums["String"]>;
+}
+
+/**
+ * Connection between the project type and the project type
+ */
+export interface ProjectToPreviewConnectionEdge {
+  __typename?: "ProjectToPreviewConnectionEdge";
+  /**
+   * The node of the connection, without the edges
+   */
+  node?: Maybe<Project>;
+}
+
+/**
+ * Field Group
+ */
+export interface Project_Projectattributes {
+  __typename?: "Project_Projectattributes";
+  /**
+   * The name of the ACF Field Group
+   */
+  fieldGroupName?: Maybe<ScalarsEnums["String"]>;
+  gallery?: Maybe<Array<Maybe<MediaItem>>>;
+}
+
+/**
  * The reading setting type
  */
 export interface ReadingSettings {
@@ -12068,6 +13107,40 @@ export interface RootQueryToPostFormatConnectionEdge {
 }
 
 /**
+ * Connection between the RootQuery type and the project type
+ */
+export interface RootQueryToProjectConnection {
+  __typename?: "RootQueryToProjectConnection";
+  /**
+   * Edges for the RootQueryToProjectConnection connection
+   */
+  edges?: Maybe<Array<Maybe<RootQueryToProjectConnectionEdge>>>;
+  /**
+   * The nodes of the connection, without the edges
+   */
+  nodes?: Maybe<Array<Maybe<Project>>>;
+  /**
+   * Information about pagination in a connection.
+   */
+  pageInfo?: Maybe<WPPageInfo>;
+}
+
+/**
+ * An edge in a connection
+ */
+export interface RootQueryToProjectConnectionEdge {
+  __typename?: "RootQueryToProjectConnectionEdge";
+  /**
+   * A cursor for use in pagination
+   */
+  cursor?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The item at the end of the edge
+   */
+  node?: Maybe<Project>;
+}
+
+/**
  * Connection between the RootQuery type and the tag type
  */
 export interface RootQueryToTagConnection {
@@ -12269,6 +13342,40 @@ export interface RootQueryToUserRoleConnectionEdge {
    * The item at the end of the edge
    */
   node?: Maybe<UserRole>;
+}
+
+/**
+ * Connection between the RootQuery type and the video_project type
+ */
+export interface RootQueryToVideo_projectConnection {
+  __typename?: "RootQueryToVideo_projectConnection";
+  /**
+   * Edges for the RootQueryToVideo_projectConnection connection
+   */
+  edges?: Maybe<Array<Maybe<RootQueryToVideo_projectConnectionEdge>>>;
+  /**
+   * The nodes of the connection, without the edges
+   */
+  nodes?: Maybe<Array<Maybe<Video_project>>>;
+  /**
+   * Information about pagination in a connection.
+   */
+  pageInfo?: Maybe<WPPageInfo>;
+}
+
+/**
+ * An edge in a connection
+ */
+export interface RootQueryToVideo_projectConnectionEdge {
+  __typename?: "RootQueryToVideo_projectConnectionEdge";
+  /**
+   * A cursor for use in pagination
+   */
+  cursor?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The item at the end of the edge
+   */
+  node?: Maybe<Video_project>;
 }
 
 /**
@@ -12751,9 +13858,25 @@ export interface Template_AboutPage {
 export interface Template_BookPage {
   __typename?: "Template_BookPage";
   /**
+   * Added to the GraphQL Schema because the ACF Field Group &quot;Book Page Attributes&quot; was set to Show in GraphQL.
+   */
+  bookPageAttributes?: Maybe<Template_BookPage_Bookpageattributes>;
+  /**
    * The name of the template
    */
   templateName?: Maybe<ScalarsEnums["String"]>;
+}
+
+/**
+ * Field Group
+ */
+export interface Template_BookPage_Bookpageattributes {
+  __typename?: "Template_BookPage_Bookpageattributes";
+  /**
+   * The name of the ACF Field Group
+   */
+  fieldGroupName?: Maybe<ScalarsEnums["String"]>;
+  slideshow?: Maybe<Array<Maybe<MediaItem>>>;
 }
 
 /**
@@ -12762,9 +13885,27 @@ export interface Template_BookPage {
 export interface Template_ContactPage {
   __typename?: "Template_ContactPage";
   /**
+   * Added to the GraphQL Schema because the ACF Field Group &quot;Contact Page Options&quot; was set to Show in GraphQL.
+   */
+  contactPageOptions?: Maybe<Template_ContactPage_Contactpageoptions>;
+  /**
    * The name of the template
    */
   templateName?: Maybe<ScalarsEnums["String"]>;
+}
+
+/**
+ * Field Group
+ */
+export interface Template_ContactPage_Contactpageoptions {
+  __typename?: "Template_ContactPage_Contactpageoptions";
+  consumerKey?: Maybe<ScalarsEnums["String"]>;
+  consumerSecret?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The name of the ACF Field Group
+   */
+  fieldGroupName?: Maybe<ScalarsEnums["String"]>;
+  formId?: Maybe<ScalarsEnums["Float"]>;
 }
 
 /**
@@ -13036,8 +14177,10 @@ export interface UniformResourceIdentifiable {
     | "Page"
     | "Post"
     | "PostFormat"
+    | "Project"
     | "Tag"
-    | "User";
+    | "User"
+    | "Video_project";
   /**
    * The unique resource identifier path
    */
@@ -13152,6 +14295,21 @@ export interface UpdatePostPayload {
 }
 
 /**
+ * The payload for the updateProject mutation
+ */
+export interface UpdateProjectPayload {
+  __typename?: "UpdateProjectPayload";
+  /**
+   * If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+   */
+  clientMutationId?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The Post object mutation type.
+   */
+  project?: Maybe<Project>;
+}
+
+/**
  * The payload for the updateSettings mutation
  */
 export interface UpdateSettingsPayload {
@@ -13210,6 +14368,21 @@ export interface UpdateUserPayload {
    * The User object mutation type.
    */
   user?: Maybe<User>;
+}
+
+/**
+ * The payload for the updateVideo_project mutation
+ */
+export interface UpdateVideo_projectPayload {
+  __typename?: "UpdateVideo_projectPayload";
+  /**
+   * If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+   */
+  clientMutationId?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The Post object mutation type.
+   */
+  video_project?: Maybe<Video_project>;
 }
 
 /**
@@ -13814,6 +14987,251 @@ export interface UserToUserRoleConnectionEdge {
 }
 
 /**
+ * The video_project type
+ */
+export interface Video_project {
+  __typename?: "Video_project";
+  /**
+   * Returns ancestors of the node. Default ordered as lowest (closest to the child) to highest (closest to the root).
+   */
+  ancestors: (args?: {
+    /**
+     * Cursor used along with the "first" argument to reference where in the dataset to get data
+     */
+    after?: Maybe<Scalars["String"]>;
+    /**
+     * Cursor used along with the "last" argument to reference where in the dataset to get data
+     */
+    before?: Maybe<Scalars["String"]>;
+    /**
+     * The number of items to return after the referenced "after" cursor
+     */
+    first?: Maybe<Scalars["Int"]>;
+    /**
+     * The number of items to return before the referenced "before" cursor
+     */
+    last?: Maybe<Scalars["Int"]>;
+    /**
+     * Arguments for filtering the connection
+     */
+    where?: Maybe<HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgs>;
+  }) => Maybe<HierarchicalContentNodeToContentNodeAncestorsConnection>;
+  /**
+   * Connection between the HierarchicalContentNode type and the ContentNode type
+   */
+  children: (args?: {
+    /**
+     * Cursor used along with the "first" argument to reference where in the dataset to get data
+     */
+    after?: Maybe<Scalars["String"]>;
+    /**
+     * Cursor used along with the "last" argument to reference where in the dataset to get data
+     */
+    before?: Maybe<Scalars["String"]>;
+    /**
+     * The number of items to return after the referenced "after" cursor
+     */
+    first?: Maybe<Scalars["Int"]>;
+    /**
+     * The number of items to return before the referenced "before" cursor
+     */
+    last?: Maybe<Scalars["Int"]>;
+    /**
+     * Arguments for filtering the connection
+     */
+    where?: Maybe<HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgs>;
+  }) => Maybe<HierarchicalContentNodeToContentNodeChildrenConnection>;
+  /**
+   * The content of the post.
+   */
+  content: (args?: {
+    /**
+     * Format of the field output
+     */
+    format?: Maybe<PostObjectFieldFormatEnum>;
+  }) => Maybe<ScalarsEnums["String"]>;
+  /**
+   * Connection between the ContentNode type and the ContentType type
+   */
+  contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
+  /**
+   * The name of the Content Type the node belongs to
+   */
+  contentTypeName: ScalarsEnums["String"];
+  /**
+   * The unique resource identifier path
+   */
+  databaseId: ScalarsEnums["Int"];
+  /**
+   * Post publishing date.
+   */
+  date?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The publishing date set in GMT.
+   */
+  dateGmt?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The desired slug of the post
+   */
+  desiredSlug?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * If a user has edited the node within the past 15 seconds, this will return the user that last edited. Null if the edit lock doesn&#039;t exist or is greater than 15 seconds
+   */
+  editingLockedBy?: Maybe<ContentNodeToEditLockConnectionEdge>;
+  /**
+   * The RSS enclosure for the object
+   */
+  enclosure?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * Connection between the ContentNode type and the EnqueuedScript type
+   */
+  enqueuedScripts: (args?: {
+    /**
+     * Cursor used along with the "first" argument to reference where in the dataset to get data
+     */
+    after?: Maybe<Scalars["String"]>;
+    /**
+     * Cursor used along with the "last" argument to reference where in the dataset to get data
+     */
+    before?: Maybe<Scalars["String"]>;
+    /**
+     * The number of items to return after the referenced "after" cursor
+     */
+    first?: Maybe<Scalars["Int"]>;
+    /**
+     * The number of items to return before the referenced "before" cursor
+     */
+    last?: Maybe<Scalars["Int"]>;
+  }) => Maybe<ContentNodeToEnqueuedScriptConnection>;
+  /**
+   * Connection between the ContentNode type and the EnqueuedStylesheet type
+   */
+  enqueuedStylesheets: (args?: {
+    /**
+     * Cursor used along with the "first" argument to reference where in the dataset to get data
+     */
+    after?: Maybe<Scalars["String"]>;
+    /**
+     * Cursor used along with the "last" argument to reference where in the dataset to get data
+     */
+    before?: Maybe<Scalars["String"]>;
+    /**
+     * The number of items to return after the referenced "after" cursor
+     */
+    first?: Maybe<Scalars["Int"]>;
+    /**
+     * The number of items to return before the referenced "before" cursor
+     */
+    last?: Maybe<Scalars["Int"]>;
+  }) => Maybe<ContentNodeToEnqueuedStylesheetConnection>;
+  /**
+   * The global unique identifier for this post. This currently matches the value stored in WP_Post-&gt;guid and the guid column in the &quot;post_objects&quot; database table.
+   */
+  guid?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The globally unique identifier of the video object.
+   */
+  id: ScalarsEnums["ID"];
+  /**
+   * Whether the node is a Content Node
+   */
+  isContentNode: ScalarsEnums["Boolean"];
+  /**
+   * Whether the object is a node in the preview state
+   */
+  isPreview?: Maybe<ScalarsEnums["Boolean"]>;
+  /**
+   * Whether the object is restricted from the current viewer
+   */
+  isRestricted?: Maybe<ScalarsEnums["Boolean"]>;
+  /**
+   * Whether the node is a Term
+   */
+  isTermNode: ScalarsEnums["Boolean"];
+  /**
+   * The user that most recently edited the node
+   */
+  lastEditedBy?: Maybe<ContentNodeToEditLastConnectionEdge>;
+  /**
+   * The permalink of the post
+   */
+  link?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The local modified time for a post. If a post was recently updated the modified field will change to match the corresponding time.
+   */
+  modified?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The GMT modified time for a post. If a post was recently updated the modified field will change to match the corresponding time in GMT.
+   */
+  modifiedGmt?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The parent of the node. The parent object can be of various types
+   */
+  parent?: Maybe<HierarchicalContentNodeToParentContentNodeConnectionEdge>;
+  /**
+   * Database id of the parent node
+   */
+  parentDatabaseId?: Maybe<ScalarsEnums["Int"]>;
+  /**
+   * The globally unique identifier of the parent node.
+   */
+  parentId?: Maybe<ScalarsEnums["ID"]>;
+  /**
+   * Connection between the video_project type and the video_project type
+   */
+  preview?: Maybe<Video_projectToPreviewConnectionEdge>;
+  /**
+   * The database id of the preview node
+   */
+  previewRevisionDatabaseId?: Maybe<ScalarsEnums["Int"]>;
+  /**
+   * Whether the object is a node in the preview state
+   */
+  previewRevisionId?: Maybe<ScalarsEnums["ID"]>;
+  /**
+   * The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table.
+   */
+  slug?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The current status of the object
+   */
+  status?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The template assigned to the node
+   */
+  template?: Maybe<ContentTemplate>;
+  /**
+   * The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made.
+   */
+  title: (args?: {
+    /**
+     * Format of the field output
+     */
+    format?: Maybe<PostObjectFieldFormatEnum>;
+  }) => Maybe<ScalarsEnums["String"]>;
+  /**
+   * The unique resource identifier path
+   */
+  uri?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The id field matches the WP_Post-&gt;ID field.
+   * @deprecated Deprecated in favor of the databaseId field
+   */
+  video_projectId: ScalarsEnums["Int"];
+}
+
+/**
+ * Connection between the video_project type and the video_project type
+ */
+export interface Video_projectToPreviewConnectionEdge {
+  __typename?: "Video_projectToPreviewConnectionEdge";
+  /**
+   * The node of the connection, without the edges
+   */
+  node?: Maybe<Video_project>;
+}
+
+/**
  * Information about pagination in a connection.
  */
 export interface WPPageInfo {
@@ -13871,8 +15289,14 @@ export interface Mutation {
   createPostFormat: (args: {
     input: CreatePostFormatInput;
   }) => Maybe<CreatePostFormatPayload>;
+  createProject: (args: {
+    input: CreateProjectInput;
+  }) => Maybe<CreateProjectPayload>;
   createTag: (args: { input: CreateTagInput }) => Maybe<CreateTagPayload>;
   createUser: (args: { input: CreateUserInput }) => Maybe<CreateUserPayload>;
+  createVideoProject: (args: {
+    input: CreateVideo_projectInput;
+  }) => Maybe<CreateVideo_projectPayload>;
   deleteCategory: (args: {
     input: DeleteCategoryInput;
   }) => Maybe<DeleteCategoryPayload>;
@@ -13887,8 +15311,14 @@ export interface Mutation {
   deletePostFormat: (args: {
     input: DeletePostFormatInput;
   }) => Maybe<DeletePostFormatPayload>;
+  deleteProject: (args: {
+    input: DeleteProjectInput;
+  }) => Maybe<DeleteProjectPayload>;
   deleteTag: (args: { input: DeleteTagInput }) => Maybe<DeleteTagPayload>;
   deleteUser: (args: { input: DeleteUserInput }) => Maybe<DeleteUserPayload>;
+  deleteVideoProject: (args: {
+    input: DeleteVideo_projectInput;
+  }) => Maybe<DeleteVideo_projectPayload>;
   increaseCount: (args?: {
     count?: Maybe<Scalars["Int"]>;
   }) => Maybe<ScalarsEnums["Int"]>;
@@ -13918,11 +15348,17 @@ export interface Mutation {
   updatePostFormat: (args: {
     input: UpdatePostFormatInput;
   }) => Maybe<UpdatePostFormatPayload>;
+  updateProject: (args: {
+    input: UpdateProjectInput;
+  }) => Maybe<UpdateProjectPayload>;
   updateSettings: (args: {
     input: UpdateSettingsInput;
   }) => Maybe<UpdateSettingsPayload>;
   updateTag: (args: { input: UpdateTagInput }) => Maybe<UpdateTagPayload>;
   updateUser: (args: { input: UpdateUserInput }) => Maybe<UpdateUserPayload>;
+  updateVideoProject: (args: {
+    input: UpdateVideo_projectInput;
+  }) => Maybe<UpdateVideo_projectPayload>;
 }
 
 export interface Query {
@@ -14069,6 +15505,23 @@ export interface Query {
     last?: Maybe<Scalars["Int"]>;
     where?: Maybe<RootQueryToPostConnectionWhereArgs>;
   }) => Maybe<RootQueryToPostConnection>;
+  project: (args: {
+    asPreview?: Maybe<Scalars["Boolean"]>;
+    id: Scalars["ID"];
+    idType?: Maybe<ProjectIdType>;
+  }) => Maybe<Project>;
+  projectBy: (args?: {
+    id?: Maybe<Scalars["ID"]>;
+    projectId?: Maybe<Scalars["Int"]>;
+    uri?: Maybe<Scalars["String"]>;
+  }) => Maybe<Project>;
+  projects: (args?: {
+    after?: Maybe<Scalars["String"]>;
+    before?: Maybe<Scalars["String"]>;
+    first?: Maybe<Scalars["Int"]>;
+    last?: Maybe<Scalars["Int"]>;
+    where?: Maybe<RootQueryToProjectConnectionWhereArgs>;
+  }) => Maybe<RootQueryToProjectConnection>;
   readingSettings?: Maybe<ReadingSettings>;
   registeredScripts: (args?: {
     after?: Maybe<Scalars["String"]>;
@@ -14144,6 +15597,23 @@ export interface Query {
     last?: Maybe<Scalars["Int"]>;
     where?: Maybe<RootQueryToUserConnectionWhereArgs>;
   }) => Maybe<RootQueryToUserConnection>;
+  videoProject: (args: {
+    asPreview?: Maybe<Scalars["Boolean"]>;
+    id: Scalars["ID"];
+    idType?: Maybe<Video_projectIdType>;
+  }) => Maybe<Video_project>;
+  videoProjectBy: (args?: {
+    id?: Maybe<Scalars["ID"]>;
+    uri?: Maybe<Scalars["String"]>;
+    video_projectId?: Maybe<Scalars["Int"]>;
+  }) => Maybe<Video_project>;
+  videoProjects: (args?: {
+    after?: Maybe<Scalars["String"]>;
+    before?: Maybe<Scalars["String"]>;
+    first?: Maybe<Scalars["Int"]>;
+    last?: Maybe<Scalars["Int"]>;
+    where?: Maybe<RootQueryToVideo_projectConnectionWhereArgs>;
+  }) => Maybe<RootQueryToVideo_projectConnection>;
   viewer?: Maybe<User>;
   writingSettings?: Maybe<WritingSettings>;
 }
@@ -14190,8 +15660,10 @@ export interface SchemaObjectTypes {
   CreatePagePayload: CreatePagePayload;
   CreatePostFormatPayload: CreatePostFormatPayload;
   CreatePostPayload: CreatePostPayload;
+  CreateProjectPayload: CreateProjectPayload;
   CreateTagPayload: CreateTagPayload;
   CreateUserPayload: CreateUserPayload;
+  CreateVideo_projectPayload: CreateVideo_projectPayload;
   DefaultTemplate: DefaultTemplate;
   DeleteCategoryPayload: DeleteCategoryPayload;
   DeleteCommentPayload: DeleteCommentPayload;
@@ -14199,8 +15671,10 @@ export interface SchemaObjectTypes {
   DeletePagePayload: DeletePagePayload;
   DeletePostFormatPayload: DeletePostFormatPayload;
   DeletePostPayload: DeletePostPayload;
+  DeleteProjectPayload: DeleteProjectPayload;
   DeleteTagPayload: DeleteTagPayload;
   DeleteUserPayload: DeleteUserPayload;
+  DeleteVideo_projectPayload: DeleteVideo_projectPayload;
   DiscussionSettings: DiscussionSettings;
   EnqueuedScript: EnqueuedScript;
   EnqueuedStylesheet: EnqueuedStylesheet;
@@ -14215,6 +15689,7 @@ export interface SchemaObjectTypes {
   MediaItemMeta: MediaItemMeta;
   MediaItemToCommentConnection: MediaItemToCommentConnection;
   MediaItemToCommentConnectionEdge: MediaItemToCommentConnectionEdge;
+  MediaItem_Imageattributes: MediaItem_Imageattributes;
   MediaSize: MediaSize;
   Menu: Menu;
   MenuItem: MenuItem;
@@ -14222,6 +15697,7 @@ export interface SchemaObjectTypes {
   MenuItemToMenuItemConnection: MenuItemToMenuItemConnection;
   MenuItemToMenuItemConnectionEdge: MenuItemToMenuItemConnectionEdge;
   MenuItemToMenuItemLinkableConnectionEdge: MenuItemToMenuItemLinkableConnectionEdge;
+  MenuItem_Menuitemattributes: MenuItem_Menuitemattributes;
   MenuToMenuItemConnection: MenuToMenuItemConnection;
   MenuToMenuItemConnectionEdge: MenuToMenuItemConnectionEdge;
   Mutation: Mutation;
@@ -14256,6 +15732,9 @@ export interface SchemaObjectTypes {
   PostToTermNodeConnection: PostToTermNodeConnection;
   PostToTermNodeConnectionEdge: PostToTermNodeConnectionEdge;
   PostTypeLabelDetails: PostTypeLabelDetails;
+  Project: Project;
+  ProjectToPreviewConnectionEdge: ProjectToPreviewConnectionEdge;
+  Project_Projectattributes: Project_Projectattributes;
   Query: Query;
   ReadingSettings: ReadingSettings;
   RegisterUserPayload: RegisterUserPayload;
@@ -14289,6 +15768,8 @@ export interface SchemaObjectTypes {
   RootQueryToPostConnectionEdge: RootQueryToPostConnectionEdge;
   RootQueryToPostFormatConnection: RootQueryToPostFormatConnection;
   RootQueryToPostFormatConnectionEdge: RootQueryToPostFormatConnectionEdge;
+  RootQueryToProjectConnection: RootQueryToProjectConnection;
+  RootQueryToProjectConnectionEdge: RootQueryToProjectConnectionEdge;
   RootQueryToTagConnection: RootQueryToTagConnection;
   RootQueryToTagConnectionEdge: RootQueryToTagConnectionEdge;
   RootQueryToTaxonomyConnection: RootQueryToTaxonomyConnection;
@@ -14301,6 +15782,8 @@ export interface SchemaObjectTypes {
   RootQueryToUserConnectionEdge: RootQueryToUserConnectionEdge;
   RootQueryToUserRoleConnection: RootQueryToUserRoleConnection;
   RootQueryToUserRoleConnectionEdge: RootQueryToUserRoleConnectionEdge;
+  RootQueryToVideo_projectConnection: RootQueryToVideo_projectConnection;
+  RootQueryToVideo_projectConnectionEdge: RootQueryToVideo_projectConnectionEdge;
   SendPasswordResetEmailPayload: SendPasswordResetEmailPayload;
   Settings: Settings;
   Subscription: Subscription;
@@ -14315,7 +15798,9 @@ export interface SchemaObjectTypes {
   TaxonomyToContentTypeConnectionEdge: TaxonomyToContentTypeConnectionEdge;
   Template_AboutPage: Template_AboutPage;
   Template_BookPage: Template_BookPage;
+  Template_BookPage_Bookpageattributes: Template_BookPage_Bookpageattributes;
   Template_ContactPage: Template_ContactPage;
+  Template_ContactPage_Contactpageoptions: Template_ContactPage_Contactpageoptions;
   Template_ProjectsPage: Template_ProjectsPage;
   Template_VideosPage: Template_VideosPage;
   Template_WritingPage: Template_WritingPage;
@@ -14330,9 +15815,11 @@ export interface SchemaObjectTypes {
   UpdatePagePayload: UpdatePagePayload;
   UpdatePostFormatPayload: UpdatePostFormatPayload;
   UpdatePostPayload: UpdatePostPayload;
+  UpdateProjectPayload: UpdateProjectPayload;
   UpdateSettingsPayload: UpdateSettingsPayload;
   UpdateTagPayload: UpdateTagPayload;
   UpdateUserPayload: UpdateUserPayload;
+  UpdateVideo_projectPayload: UpdateVideo_projectPayload;
   User: User;
   UserRole: UserRole;
   UserToCommentConnection: UserToCommentConnection;
@@ -14351,6 +15838,8 @@ export interface SchemaObjectTypes {
   UserToPostConnectionEdge: UserToPostConnectionEdge;
   UserToUserRoleConnection: UserToUserRoleConnection;
   UserToUserRoleConnectionEdge: UserToUserRoleConnectionEdge;
+  Video_project: Video_project;
+  Video_projectToPreviewConnectionEdge: Video_projectToPreviewConnectionEdge;
   WPPageInfo: WPPageInfo;
   WritingSettings: WritingSettings;
 }
@@ -14392,8 +15881,10 @@ export type SchemaObjectTypesNames =
   | "CreatePagePayload"
   | "CreatePostFormatPayload"
   | "CreatePostPayload"
+  | "CreateProjectPayload"
   | "CreateTagPayload"
   | "CreateUserPayload"
+  | "CreateVideo_projectPayload"
   | "DefaultTemplate"
   | "DeleteCategoryPayload"
   | "DeleteCommentPayload"
@@ -14401,8 +15892,10 @@ export type SchemaObjectTypesNames =
   | "DeletePagePayload"
   | "DeletePostFormatPayload"
   | "DeletePostPayload"
+  | "DeleteProjectPayload"
   | "DeleteTagPayload"
   | "DeleteUserPayload"
+  | "DeleteVideo_projectPayload"
   | "DiscussionSettings"
   | "EnqueuedScript"
   | "EnqueuedStylesheet"
@@ -14417,6 +15910,7 @@ export type SchemaObjectTypesNames =
   | "MediaItemMeta"
   | "MediaItemToCommentConnection"
   | "MediaItemToCommentConnectionEdge"
+  | "MediaItem_Imageattributes"
   | "MediaSize"
   | "Menu"
   | "MenuItem"
@@ -14424,6 +15918,7 @@ export type SchemaObjectTypesNames =
   | "MenuItemToMenuItemConnection"
   | "MenuItemToMenuItemConnectionEdge"
   | "MenuItemToMenuItemLinkableConnectionEdge"
+  | "MenuItem_Menuitemattributes"
   | "MenuToMenuItemConnection"
   | "MenuToMenuItemConnectionEdge"
   | "Mutation"
@@ -14458,6 +15953,9 @@ export type SchemaObjectTypesNames =
   | "PostToTermNodeConnection"
   | "PostToTermNodeConnectionEdge"
   | "PostTypeLabelDetails"
+  | "Project"
+  | "ProjectToPreviewConnectionEdge"
+  | "Project_Projectattributes"
   | "Query"
   | "ReadingSettings"
   | "RegisterUserPayload"
@@ -14491,6 +15989,8 @@ export type SchemaObjectTypesNames =
   | "RootQueryToPostConnectionEdge"
   | "RootQueryToPostFormatConnection"
   | "RootQueryToPostFormatConnectionEdge"
+  | "RootQueryToProjectConnection"
+  | "RootQueryToProjectConnectionEdge"
   | "RootQueryToTagConnection"
   | "RootQueryToTagConnectionEdge"
   | "RootQueryToTaxonomyConnection"
@@ -14503,6 +16003,8 @@ export type SchemaObjectTypesNames =
   | "RootQueryToUserConnectionEdge"
   | "RootQueryToUserRoleConnection"
   | "RootQueryToUserRoleConnectionEdge"
+  | "RootQueryToVideo_projectConnection"
+  | "RootQueryToVideo_projectConnectionEdge"
   | "SendPasswordResetEmailPayload"
   | "Settings"
   | "Subscription"
@@ -14517,7 +16019,9 @@ export type SchemaObjectTypesNames =
   | "TaxonomyToContentTypeConnectionEdge"
   | "Template_AboutPage"
   | "Template_BookPage"
+  | "Template_BookPage_Bookpageattributes"
   | "Template_ContactPage"
+  | "Template_ContactPage_Contactpageoptions"
   | "Template_ProjectsPage"
   | "Template_VideosPage"
   | "Template_WritingPage"
@@ -14532,9 +16036,11 @@ export type SchemaObjectTypesNames =
   | "UpdatePagePayload"
   | "UpdatePostFormatPayload"
   | "UpdatePostPayload"
+  | "UpdateProjectPayload"
   | "UpdateSettingsPayload"
   | "UpdateTagPayload"
   | "UpdateUserPayload"
+  | "UpdateVideo_projectPayload"
   | "User"
   | "UserRole"
   | "UserToCommentConnection"
@@ -14553,8 +16059,18 @@ export type SchemaObjectTypesNames =
   | "UserToPostConnectionEdge"
   | "UserToUserRoleConnection"
   | "UserToUserRoleConnectionEdge"
+  | "Video_project"
+  | "Video_projectToPreviewConnectionEdge"
   | "WPPageInfo"
   | "WritingSettings";
+
+export interface $AcfFieldGroup {
+  MediaItem_Imageattributes?: MediaItem_Imageattributes;
+  MenuItem_Menuitemattributes?: MenuItem_Menuitemattributes;
+  Project_Projectattributes?: Project_Projectattributes;
+  Template_BookPage_Bookpageattributes?: Template_BookPage_Bookpageattributes;
+  Template_ContactPage_Contactpageoptions?: Template_ContactPage_Contactpageoptions;
+}
 
 export interface $Commenter {
   CommentAuthor?: CommentAuthor;
@@ -14565,6 +16081,8 @@ export interface $ContentNode {
   MediaItem?: MediaItem;
   Page?: Page;
   Post?: Post;
+  Project?: Project;
+  Video_project?: Video_project;
 }
 
 export interface $ContentRevisionUnion {
@@ -14591,8 +16109,10 @@ export interface $DatabaseIdentifier {
   Page?: Page;
   Post?: Post;
   PostFormat?: PostFormat;
+  Project?: Project;
   Tag?: Tag;
   User?: User;
+  Video_project?: Video_project;
 }
 
 export interface $EnqueuedAsset {
@@ -14603,6 +16123,8 @@ export interface $EnqueuedAsset {
 export interface $HierarchicalContentNode {
   MediaItem?: MediaItem;
   Page?: Page;
+  Project?: Project;
+  Video_project?: Video_project;
 }
 
 export interface $HierarchicalTermNode {
@@ -14613,14 +16135,18 @@ export interface $MenuItemLinkable {
   Category?: Category;
   Page?: Page;
   Post?: Post;
+  Project?: Project;
   Tag?: Tag;
+  Video_project?: Video_project;
 }
 
 export interface $MenuItemObjectUnion {
   Category?: Category;
   Page?: Page;
   Post?: Post;
+  Project?: Project;
   Tag?: Tag;
+  Video_project?: Video_project;
 }
 
 export interface $Node {
@@ -14637,11 +16163,13 @@ export interface $Node {
   Plugin?: Plugin;
   Post?: Post;
   PostFormat?: PostFormat;
+  Project?: Project;
   Tag?: Tag;
   Taxonomy?: Taxonomy;
   Theme?: Theme;
   User?: User;
   UserRole?: UserRole;
+  Video_project?: Video_project;
 }
 
 export interface $NodeWithAuthor {
@@ -14659,6 +16187,8 @@ export interface $NodeWithComments {
 export interface $NodeWithContentEditor {
   Page?: Page;
   Post?: Post;
+  Project?: Project;
+  Video_project?: Video_project;
 }
 
 export interface $NodeWithExcerpt {
@@ -14683,12 +16213,16 @@ export interface $NodeWithTemplate {
   MediaItem?: MediaItem;
   Page?: Page;
   Post?: Post;
+  Project?: Project;
+  Video_project?: Video_project;
 }
 
 export interface $NodeWithTitle {
   MediaItem?: MediaItem;
   Page?: Page;
   Post?: Post;
+  Project?: Project;
+  Video_project?: Video_project;
 }
 
 export interface $NodeWithTrackbacks {
@@ -14708,8 +16242,10 @@ export interface $UniformResourceIdentifiable {
   Page?: Page;
   Post?: Post;
   PostFormat?: PostFormat;
+  Project?: Project;
   Tag?: Tag;
   User?: User;
+  Video_project?: Video_project;
 }
 
 export interface GeneratedSchema {
@@ -14751,6 +16287,7 @@ export interface ScalarsEnums extends MakeNullable<Scalars> {
     | PostObjectsConnectionOrderbyEnum
     | undefined;
   PostStatusEnum: PostStatusEnum | undefined;
+  ProjectIdType: ProjectIdType | undefined;
   RelationEnum: RelationEnum | undefined;
   TagIdType: TagIdType | undefined;
   TaxonomyEnum: TaxonomyEnum | undefined;
@@ -14763,4 +16300,5 @@ export interface ScalarsEnums extends MakeNullable<Scalars> {
   UserRoleEnum: UserRoleEnum | undefined;
   UsersConnectionOrderbyEnum: UsersConnectionOrderbyEnum | undefined;
   UsersConnectionSearchColumnEnum: UsersConnectionSearchColumnEnum | undefined;
+  Video_projectIdType: Video_projectIdType | undefined;
 }
