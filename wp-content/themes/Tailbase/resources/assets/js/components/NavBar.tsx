@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import { useQuery, MenuLocationEnum, MediaItemSizeEnum } from '../gqty';
 
 
@@ -37,7 +36,11 @@ export default function NavBar() {
                         <img
                             src={item.menuItemAttributes?.image?.sourceUrl({ size: MediaItemSizeEnum.MEDIUM }) ?? ''}
                             alt={item.label}
-                            onMouseOver={() => setTooltip(item.label ?? null)}
+                            onMouseOver={() => {
+                                if (window.innerWidth >= 1024) {
+                                    setTooltip(item.label ?? null)
+                                }
+                            }}
                             onMouseOut={() => setTooltip(null)}
                             style={{ width: 40 }}
                         />
