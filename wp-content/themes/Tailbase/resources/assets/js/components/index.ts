@@ -1,5 +1,8 @@
-import ProjectsIndex from './projects-index';
+import ProjectsIndex from './ProjectsIndex';
+import NavBar from './NavBar';
+
 
 export default [
-    ProjectsIndex
+    ProjectsIndex,
+    NavBar
 ];

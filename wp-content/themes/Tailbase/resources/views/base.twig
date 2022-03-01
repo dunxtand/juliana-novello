@@ -5,19 +5,22 @@
   {% include 'header/_head.twig' %}
 
   <body>
-    <div id="app">
-      <nav-bar items-str='{{ menu|json_encode }}'></nav-bar>
+    <nav
+      data-react="NavBar"
+      class="fixed top-0 left-0 ml-2 lg:ml-8 mt-2 lg:mt-6"
+      style="z-index: 100;"
+    >
+    </nav>
 
-      <div class="relative">
+    <div class="relative">
 
-        {% block content %}
+      {% block content %}
 
-          {{ messages.base.no_content }}
+        {{ messages.base.no_content }}
 
-        {% endblock %}
+      {% endblock %}
 
-      </div>
-	  </div>
+    </div>
 
 	  {{ function('wp_footer') }}
 	</body>

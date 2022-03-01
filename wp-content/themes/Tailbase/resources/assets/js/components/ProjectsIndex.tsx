@@ -74,8 +74,6 @@ export default function ProjectsIndex() {
     const [selected, setSelected] = useState(null);
     const [image, setImage] = useState(null);
 
-    console.log(image);
-
     useEffect(() => {
         if (!selected) {
             setImage(null);
