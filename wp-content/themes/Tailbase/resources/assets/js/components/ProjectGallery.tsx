@@ -67,7 +67,6 @@ export default function ProjectGallery(props: {
     const { gallery } = project?.projectAttributes ?? {};
 
     const [currentIndex, setCurrentIndex] = useState(null);
-    const currentImage = gallery[currentIndex] ?? null;
 
     return (
         <div className="flex flex-wrap items-center justify-center w-full lg:w-3/4 mx-auto">

@@ -678,8 +678,8 @@ export interface CreateUserInput {
   yim?: InputMaybe<Scalars["String"]>;
 }
 
-/** Input for the createVideo_project mutation */
-export interface CreateVideo_projectInput {
+/** Input for the createVideoProject mutation */
+export interface CreateVideoProjectInput {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
   clientMutationId?: InputMaybe<Scalars["String"]>;
   /** The content of the object */
@@ -824,13 +824,13 @@ export interface DeleteUserInput {
   reassignId?: InputMaybe<Scalars["ID"]>;
 }
 
-/** Input for the deleteVideo_project mutation */
-export interface DeleteVideo_projectInput {
+/** Input for the deleteVideoProject mutation */
+export interface DeleteVideoProjectInput {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
   clientMutationId?: InputMaybe<Scalars["String"]>;
   /** Whether the object should be force deleted instead of being moved to the trash */
   forceDelete?: InputMaybe<Scalars["Boolean"]>;
-  /** The ID of the video_project to delete */
+  /** The ID of the videoProject to delete */
   id: Scalars["ID"];
 }
 
@@ -2604,8 +2604,8 @@ export interface RootQueryToUserConnectionWhereArgs {
   >;
 }
 
-/** Arguments for filtering the RootQueryToVideo_projectConnection connection */
-export interface RootQueryToVideo_projectConnectionWhereArgs {
+/** Arguments for filtering the RootQueryToVideoProjectConnection connection */
+export interface RootQueryToVideoProjectConnectionWhereArgs {
   /** Filter the connection based on dates */
   dateQuery?: InputMaybe<DateQueryInput>;
   /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
@@ -3100,15 +3100,15 @@ export interface UpdateUserInput {
   yim?: InputMaybe<Scalars["String"]>;
 }
 
-/** Input for the updateVideo_project mutation */
-export interface UpdateVideo_projectInput {
+/** Input for the updateVideoProject mutation */
+export interface UpdateVideoProjectInput {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
   clientMutationId?: InputMaybe<Scalars["String"]>;
   /** The content of the object */
   content?: InputMaybe<Scalars["String"]>;
   /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
   date?: InputMaybe<Scalars["String"]>;
-  /** The ID of the video_project object */
+  /** The ID of the videoProject object */
   id: Scalars["ID"];
   /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
   menuOrder?: InputMaybe<Scalars["Int"]>;
@@ -3461,7 +3461,7 @@ export enum UsersConnectionSearchColumnEnum {
 }
 
 /** The Type of Identifier used to fetch a single resource. Default is ID. */
-export enum Video_projectIdType {
+export enum VideoProjectIdType {
   /** Identify a resource by the Database ID. */
   DATABASE_ID = "DATABASE_ID",
   /** Identify a resource by the (hashed) Global ID. */
@@ -3511,7 +3511,7 @@ export const scalarsEnumsHash: import("gqty").ScalarsEnumsHash = {
   UserRoleEnum: true,
   UsersConnectionOrderbyEnum: true,
   UsersConnectionSearchColumnEnum: true,
-  Video_projectIdType: true,
+  VideoProjectIdType: true,
 };
 export const generatedSchema = {
   AcfFieldGroup: {
@@ -4193,7 +4193,7 @@ export const generatedSchema = {
     clientMutationId: { __type: "String" },
     user: { __type: "User" },
   },
-  CreateVideo_projectInput: {
+  CreateVideoProjectInput: {
     clientMutationId: { __type: "String" },
     content: { __type: "String" },
     date: { __type: "String" },
@@ -4204,10 +4204,10 @@ export const generatedSchema = {
     status: { __type: "PostStatusEnum" },
     title: { __type: "String" },
   },
-  CreateVideo_projectPayload: {
+  CreateVideoProjectPayload: {
     __typename: { __type: "String!" },
     clientMutationId: { __type: "String" },
-    video_project: { __type: "Video_project" },
+    videoProject: { __type: "VideoProject" },
   },
   DatabaseIdentifier: {
     __typename: { __type: "String!" },
@@ -4334,16 +4334,16 @@ export const generatedSchema = {
     deletedId: { __type: "ID" },
     user: { __type: "User" },
   },
-  DeleteVideo_projectInput: {
+  DeleteVideoProjectInput: {
     clientMutationId: { __type: "String" },
     forceDelete: { __type: "Boolean" },
     id: { __type: "ID!" },
   },
-  DeleteVideo_projectPayload: {
+  DeleteVideoProjectPayload: {
     __typename: { __type: "String!" },
     clientMutationId: { __type: "String" },
     deletedId: { __type: "ID" },
-    video_project: { __type: "Video_project" },
+    videoProject: { __type: "VideoProject" },
   },
   DiscussionSettings: {
     __typename: { __type: "String!" },
@@ -6288,18 +6288,18 @@ export const generatedSchema = {
     cursor: { __type: "String" },
     node: { __type: "UserRole" },
   },
-  RootQueryToVideo_projectConnection: {
+  RootQueryToVideoProjectConnection: {
     __typename: { __type: "String!" },
-    edges: { __type: "[RootQueryToVideo_projectConnectionEdge]" },
-    nodes: { __type: "[Video_project]" },
+    edges: { __type: "[RootQueryToVideoProjectConnectionEdge]" },
+    nodes: { __type: "[VideoProject]" },
     pageInfo: { __type: "WPPageInfo" },
   },
-  RootQueryToVideo_projectConnectionEdge: {
+  RootQueryToVideoProjectConnectionEdge: {
     __typename: { __type: "String!" },
     cursor: { __type: "String" },
-    node: { __type: "Video_project" },
+    node: { __type: "VideoProject" },
   },
-  RootQueryToVideo_projectConnectionWhereArgs: {
+  RootQueryToVideoProjectConnectionWhereArgs: {
     dateQuery: { __type: "DateQueryInput" },
     hasPassword: { __type: "Boolean" },
     id: { __type: "Int" },
@@ -6811,7 +6811,7 @@ export const generatedSchema = {
     clientMutationId: { __type: "String" },
     user: { __type: "User" },
   },
-  UpdateVideo_projectInput: {
+  UpdateVideoProjectInput: {
     clientMutationId: { __type: "String" },
     content: { __type: "String" },
     date: { __type: "String" },
@@ -6823,10 +6823,10 @@ export const generatedSchema = {
     status: { __type: "PostStatusEnum" },
     title: { __type: "String" },
   },
-  UpdateVideo_projectPayload: {
+  UpdateVideoProjectPayload: {
     __typename: { __type: "String!" },
     clientMutationId: { __type: "String" },
-    video_project: { __type: "Video_project" },
+    videoProject: { __type: "VideoProject" },
   },
   User: {
     __typename: { __type: "String!" },
@@ -7153,7 +7153,7 @@ export const generatedSchema = {
     field: { __type: "UsersConnectionOrderbyEnum!" },
     order: { __type: "OrderEnum" },
   },
-  Video_project: {
+  VideoProject: {
     __typename: { __type: "String!" },
     ancestors: {
       __type: "HierarchicalContentNodeToContentNodeAncestorsConnection",
@@ -7212,7 +7212,7 @@ export const generatedSchema = {
     },
     parentDatabaseId: { __type: "Int" },
     parentId: { __type: "ID" },
-    preview: { __type: "Video_projectToPreviewConnectionEdge" },
+    preview: { __type: "VideoProjectToPreviewConnectionEdge" },
     previewRevisionDatabaseId: { __type: "Int" },
     previewRevisionId: { __type: "ID" },
     slug: { __type: "String" },
@@ -7223,11 +7223,22 @@ export const generatedSchema = {
       __args: { format: "PostObjectFieldFormatEnum" },
     },
     uri: { __type: "String" },
-    video_projectId: { __type: "Int!" },
+    videoAttributes: { __type: "VideoProject_Videoattributes" },
+    videoProjectId: { __type: "Int!" },
   },
-  Video_projectToPreviewConnectionEdge: {
+  VideoProjectToPreviewConnectionEdge: {
     __typename: { __type: "String!" },
-    node: { __type: "Video_project" },
+    node: { __type: "VideoProject" },
+  },
+  VideoProject_Videoattributes: {
+    __typename: { __type: "String!" },
+    fieldGroupName: { __type: "String" },
+    videos: { __type: "[VideoProject_Videoattributes_videos]" },
+  },
+  VideoProject_Videoattributes_videos: {
+    __typename: { __type: "String!" },
+    fieldGroupName: { __type: "String" },
+    file: { __type: "MediaItem" },
   },
   WPPageInfo: {
     __typename: { __type: "String!" },
@@ -7281,8 +7292,8 @@ export const generatedSchema = {
       __args: { input: "CreateUserInput!" },
     },
     createVideoProject: {
-      __type: "CreateVideo_projectPayload",
-      __args: { input: "CreateVideo_projectInput!" },
+      __type: "CreateVideoProjectPayload",
+      __args: { input: "CreateVideoProjectInput!" },
     },
     deleteCategory: {
       __type: "DeleteCategoryPayload",
@@ -7321,8 +7332,8 @@ export const generatedSchema = {
       __args: { input: "DeleteUserInput!" },
     },
     deleteVideoProject: {
-      __type: "DeleteVideo_projectPayload",
-      __args: { input: "DeleteVideo_projectInput!" },
+      __type: "DeleteVideoProjectPayload",
+      __args: { input: "DeleteVideoProjectInput!" },
     },
     increaseCount: { __type: "Int", __args: { count: "Int" } },
     registerUser: {
@@ -7382,8 +7393,8 @@ export const generatedSchema = {
       __args: { input: "UpdateUserInput!" },
     },
     updateVideoProject: {
-      __type: "UpdateVideo_projectPayload",
-      __args: { input: "UpdateVideo_projectInput!" },
+      __type: "UpdateVideoProjectPayload",
+      __args: { input: "UpdateVideoProjectInput!" },
     },
   },
   query: {
@@ -7648,25 +7659,21 @@ export const generatedSchema = {
       },
     },
     videoProject: {
-      __type: "Video_project",
-      __args: {
-        asPreview: "Boolean",
-        id: "ID!",
-        idType: "Video_projectIdType",
-      },
+      __type: "VideoProject",
+      __args: { asPreview: "Boolean", id: "ID!", idType: "VideoProjectIdType" },
     },
     videoProjectBy: {
-      __type: "Video_project",
-      __args: { id: "ID", uri: "String", video_projectId: "Int" },
+      __type: "VideoProject",
+      __args: { id: "ID", uri: "String", videoProjectId: "Int" },
     },
     videoProjects: {
-      __type: "RootQueryToVideo_projectConnection",
+      __type: "RootQueryToVideoProjectConnection",
       __args: {
         after: "String",
         before: "String",
         first: "Int",
         last: "Int",
-        where: "RootQueryToVideo_projectConnectionWhereArgs",
+        where: "RootQueryToVideoProjectConnectionWhereArgs",
       },
     },
     viewer: { __type: "User" },
@@ -7686,7 +7693,7 @@ export const generatedSchema = {
       "Project",
       "Tag",
       "User",
-      "Video_project",
+      "VideoProject",
     ],
     HierarchicalTermNode: ["Category"],
     MenuItemLinkable: [
@@ -7695,7 +7702,7 @@ export const generatedSchema = {
       "Post",
       "Project",
       "Tag",
-      "Video_project",
+      "VideoProject",
     ],
     Node: [
       "Category",
@@ -7717,7 +7724,7 @@ export const generatedSchema = {
       "Theme",
       "User",
       "UserRole",
-      "Video_project",
+      "VideoProject",
     ],
     TermNode: ["Category", "PostFormat", "Tag"],
     UniformResourceIdentifiable: [
@@ -7730,7 +7737,7 @@ export const generatedSchema = {
       "Project",
       "Tag",
       "User",
-      "Video_project",
+      "VideoProject",
     ],
     Commenter: ["CommentAuthor", "User"],
     ContentRevisionUnion: ["Page", "Post"],
@@ -7744,18 +7751,20 @@ export const generatedSchema = {
       "Template_WritingPage",
     ],
     EnqueuedAsset: ["EnqueuedScript", "EnqueuedStylesheet"],
-    ContentNode: ["MediaItem", "Page", "Post", "Project", "Video_project"],
-    HierarchicalContentNode: ["MediaItem", "Page", "Project", "Video_project"],
+    ContentNode: ["MediaItem", "Page", "Post", "Project", "VideoProject"],
+    HierarchicalContentNode: ["MediaItem", "Page", "Project", "VideoProject"],
     NodeWithAuthor: ["MediaItem", "Page", "Post"],
     NodeWithComments: ["MediaItem", "Page", "Post"],
-    NodeWithTemplate: ["MediaItem", "Page", "Post", "Project", "Video_project"],
-    NodeWithTitle: ["MediaItem", "Page", "Post", "Project", "Video_project"],
+    NodeWithTemplate: ["MediaItem", "Page", "Post", "Project", "VideoProject"],
+    NodeWithTitle: ["MediaItem", "Page", "Post", "Project", "VideoProject"],
     AcfFieldGroup: [
       "MediaItem_Imageattributes",
       "MenuItem_Menuitemattributes",
       "Project_Projectattributes",
       "Template_BookPage_Bookpageattributes",
       "Template_ContactPage_Contactpageoptions",
+      "VideoProject_Videoattributes",
+      "VideoProject_Videoattributes_videos",
     ],
     MenuItemObjectUnion: [
       "Category",
@@ -7763,9 +7772,9 @@ export const generatedSchema = {
       "Post",
       "Project",
       "Tag",
-      "Video_project",
+      "VideoProject",
     ],
-    NodeWithContentEditor: ["Page", "Post", "Project", "Video_project"],
+    NodeWithContentEditor: ["Page", "Post", "Project", "VideoProject"],
     NodeWithFeaturedImage: ["Page", "Post"],
     NodeWithPageAttributes: ["Page"],
     NodeWithRevisions: ["Page", "Post"],
@@ -7783,7 +7792,9 @@ export interface AcfFieldGroup {
     | "MenuItem_Menuitemattributes"
     | "Project_Projectattributes"
     | "Template_BookPage_Bookpageattributes"
-    | "Template_ContactPage_Contactpageoptions";
+    | "Template_ContactPage_Contactpageoptions"
+    | "VideoProject_Videoattributes"
+    | "VideoProject_Videoattributes_videos";
   /**
    * The name of the ACF Field Group
    */
@@ -8467,7 +8478,7 @@ export interface Commenter {
  * Nodes used to manage content
  */
 export interface ContentNode {
-  __typename?: "MediaItem" | "Page" | "Post" | "Project" | "Video_project";
+  __typename?: "MediaItem" | "Page" | "Post" | "Project" | "VideoProject";
   /**
    * Connection between the ContentNode type and the ContentType type
    */
@@ -9122,10 +9133,10 @@ export interface CreateUserPayload {
 }
 
 /**
- * The payload for the createVideo_project mutation
+ * The payload for the createVideoProject mutation
  */
-export interface CreateVideo_projectPayload {
-  __typename?: "CreateVideo_projectPayload";
+export interface CreateVideoProjectPayload {
+  __typename?: "CreateVideoProjectPayload";
   /**
    * If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
    */
@@ -9133,7 +9144,7 @@ export interface CreateVideo_projectPayload {
   /**
    * The Post object mutation type.
    */
-  video_project?: Maybe<Video_project>;
+  videoProject?: Maybe<VideoProject>;
 }
 
 /**
@@ -9152,7 +9163,7 @@ export interface DatabaseIdentifier {
     | "Project"
     | "Tag"
     | "User"
-    | "Video_project";
+    | "VideoProject";
   /**
    * The unique identifier stored in the database
    */
@@ -9343,10 +9354,10 @@ export interface DeleteUserPayload {
 }
 
 /**
- * The payload for the deleteVideo_project mutation
+ * The payload for the deleteVideoProject mutation
  */
-export interface DeleteVideo_projectPayload {
-  __typename?: "DeleteVideo_projectPayload";
+export interface DeleteVideoProjectPayload {
+  __typename?: "DeleteVideoProjectPayload";
   /**
    * If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
    */
@@ -9358,7 +9369,7 @@ export interface DeleteVideo_projectPayload {
   /**
    * The object before it was deleted
    */
-  video_project?: Maybe<Video_project>;
+  videoProject?: Maybe<VideoProject>;
 }
 
 /**
@@ -9529,7 +9540,7 @@ export interface GeneralSettings {
  * Content node with hierarchical (parent/child) relationships
  */
 export interface HierarchicalContentNode {
-  __typename?: "MediaItem" | "Page" | "Project" | "Video_project";
+  __typename?: "MediaItem" | "Page" | "Project" | "VideoProject";
   /**
    * Returns ancestors of the node. Default ordered as lowest (closest to the child) to highest (closest to the root).
    */
@@ -10393,7 +10404,7 @@ export interface MenuItemLinkable {
     | "Post"
     | "Project"
     | "Tag"
-    | "Video_project";
+    | "VideoProject";
   /**
    * The unique resource identifier path
    */
@@ -10419,7 +10430,7 @@ export interface MenuItemObjectUnion {
     | "Post"
     | "Project"
     | "Tag"
-    | "Video_project";
+    | "VideoProject";
   $on: $MenuItemObjectUnion;
 }
 
@@ -10549,7 +10560,7 @@ export interface Node {
     | "Theme"
     | "User"
     | "UserRole"
-    | "Video_project";
+    | "VideoProject";
   /**
    * The globally unique ID for the object
    */
@@ -10608,7 +10619,7 @@ export interface NodeWithComments {
  * A node that supports the content editor
  */
 export interface NodeWithContentEditor {
-  __typename?: "Page" | "Post" | "Project" | "Video_project";
+  __typename?: "Page" | "Post" | "Project" | "VideoProject";
   /**
    * The content of the post.
    */
@@ -10850,7 +10861,7 @@ export interface NodeWithRevisionsToContentNodeConnectionEdge {
  * A node that can have a template associated with it
  */
 export interface NodeWithTemplate {
-  __typename?: "MediaItem" | "Page" | "Post" | "Project" | "Video_project";
+  __typename?: "MediaItem" | "Page" | "Post" | "Project" | "VideoProject";
   /**
    * The template assigned to the node
    */
@@ -10862,7 +10873,7 @@ export interface NodeWithTemplate {
  * A node that NodeWith a title
  */
 export interface NodeWithTitle {
-  __typename?: "MediaItem" | "Page" | "Post" | "Project" | "Video_project";
+  __typename?: "MediaItem" | "Page" | "Post" | "Project" | "VideoProject";
   /**
    * The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made.
    */
@@ -13345,18 +13356,18 @@ export interface RootQueryToUserRoleConnectionEdge {
 }
 
 /**
- * Connection between the RootQuery type and the video_project type
+ * Connection between the RootQuery type and the videoProject type
  */
-export interface RootQueryToVideo_projectConnection {
-  __typename?: "RootQueryToVideo_projectConnection";
+export interface RootQueryToVideoProjectConnection {
+  __typename?: "RootQueryToVideoProjectConnection";
   /**
-   * Edges for the RootQueryToVideo_projectConnection connection
+   * Edges for the RootQueryToVideoProjectConnection connection
    */
-  edges?: Maybe<Array<Maybe<RootQueryToVideo_projectConnectionEdge>>>;
+  edges?: Maybe<Array<Maybe<RootQueryToVideoProjectConnectionEdge>>>;
   /**
    * The nodes of the connection, without the edges
    */
-  nodes?: Maybe<Array<Maybe<Video_project>>>;
+  nodes?: Maybe<Array<Maybe<VideoProject>>>;
   /**
    * Information about pagination in a connection.
    */
@@ -13366,8 +13377,8 @@ export interface RootQueryToVideo_projectConnection {
 /**
  * An edge in a connection
  */
-export interface RootQueryToVideo_projectConnectionEdge {
-  __typename?: "RootQueryToVideo_projectConnectionEdge";
+export interface RootQueryToVideoProjectConnectionEdge {
+  __typename?: "RootQueryToVideoProjectConnectionEdge";
   /**
    * A cursor for use in pagination
    */
@@ -13375,7 +13386,7 @@ export interface RootQueryToVideo_projectConnectionEdge {
   /**
    * The item at the end of the edge
    */
-  node?: Maybe<Video_project>;
+  node?: Maybe<VideoProject>;
 }
 
 /**
@@ -14180,7 +14191,7 @@ export interface UniformResourceIdentifiable {
     | "Project"
     | "Tag"
     | "User"
-    | "Video_project";
+    | "VideoProject";
   /**
    * The unique resource identifier path
    */
@@ -14371,10 +14382,10 @@ export interface UpdateUserPayload {
 }
 
 /**
- * The payload for the updateVideo_project mutation
+ * The payload for the updateVideoProject mutation
  */
-export interface UpdateVideo_projectPayload {
-  __typename?: "UpdateVideo_projectPayload";
+export interface UpdateVideoProjectPayload {
+  __typename?: "UpdateVideoProjectPayload";
   /**
    * If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
    */
@@ -14382,7 +14393,7 @@ export interface UpdateVideo_projectPayload {
   /**
    * The Post object mutation type.
    */
-  video_project?: Maybe<Video_project>;
+  videoProject?: Maybe<VideoProject>;
 }
 
 /**
@@ -14987,10 +14998,10 @@ export interface UserToUserRoleConnectionEdge {
 }
 
 /**
- * The video_project type
+ * The videoProject type
  */
-export interface Video_project {
-  __typename?: "Video_project";
+export interface VideoProject {
+  __typename?: "VideoProject";
   /**
    * Returns ancestors of the node. Default ordered as lowest (closest to the child) to highest (closest to the root).
    */
@@ -15177,9 +15188,9 @@ export interface Video_project {
    */
   parentId?: Maybe<ScalarsEnums["ID"]>;
   /**
-   * Connection between the video_project type and the video_project type
+   * Connection between the videoProject type and the videoProject type
    */
-  preview?: Maybe<Video_projectToPreviewConnectionEdge>;
+  preview?: Maybe<VideoProjectToPreviewConnectionEdge>;
   /**
    * The database id of the preview node
    */
@@ -15214,21 +15225,49 @@ export interface Video_project {
    */
   uri?: Maybe<ScalarsEnums["String"]>;
   /**
+   * Added to the GraphQL Schema because the ACF Field Group &quot;Video Attributes&quot; was set to Show in GraphQL.
+   */
+  videoAttributes?: Maybe<VideoProject_Videoattributes>;
+  /**
    * The id field matches the WP_Post-&gt;ID field.
    * @deprecated Deprecated in favor of the databaseId field
    */
-  video_projectId: ScalarsEnums["Int"];
+  videoProjectId: ScalarsEnums["Int"];
 }
 
 /**
- * Connection between the video_project type and the video_project type
+ * Connection between the videoProject type and the videoProject type
  */
-export interface Video_projectToPreviewConnectionEdge {
-  __typename?: "Video_projectToPreviewConnectionEdge";
+export interface VideoProjectToPreviewConnectionEdge {
+  __typename?: "VideoProjectToPreviewConnectionEdge";
   /**
    * The node of the connection, without the edges
    */
-  node?: Maybe<Video_project>;
+  node?: Maybe<VideoProject>;
+}
+
+/**
+ * Field Group
+ */
+export interface VideoProject_Videoattributes {
+  __typename?: "VideoProject_Videoattributes";
+  /**
+   * The name of the ACF Field Group
+   */
+  fieldGroupName?: Maybe<ScalarsEnums["String"]>;
+  videos?: Maybe<Array<Maybe<VideoProject_Videoattributes_videos>>>;
+}
+
+/**
+ * Field Group
+ */
+export interface VideoProject_Videoattributes_videos {
+  __typename?: "VideoProject_Videoattributes_videos";
+  /**
+   * The name of the ACF Field Group
+   */
+  fieldGroupName?: Maybe<ScalarsEnums["String"]>;
+  file?: Maybe<MediaItem>;
 }
 
 /**
@@ -15295,8 +15334,8 @@ export interface Mutation {
   createTag: (args: { input: CreateTagInput }) => Maybe<CreateTagPayload>;
   createUser: (args: { input: CreateUserInput }) => Maybe<CreateUserPayload>;
   createVideoProject: (args: {
-    input: CreateVideo_projectInput;
-  }) => Maybe<CreateVideo_projectPayload>;
+    input: CreateVideoProjectInput;
+  }) => Maybe<CreateVideoProjectPayload>;
   deleteCategory: (args: {
     input: DeleteCategoryInput;
   }) => Maybe<DeleteCategoryPayload>;
@@ -15317,8 +15356,8 @@ export interface Mutation {
   deleteTag: (args: { input: DeleteTagInput }) => Maybe<DeleteTagPayload>;
   deleteUser: (args: { input: DeleteUserInput }) => Maybe<DeleteUserPayload>;
   deleteVideoProject: (args: {
-    input: DeleteVideo_projectInput;
-  }) => Maybe<DeleteVideo_projectPayload>;
+    input: DeleteVideoProjectInput;
+  }) => Maybe<DeleteVideoProjectPayload>;
   increaseCount: (args?: {
     count?: Maybe<Scalars["Int"]>;
   }) => Maybe<ScalarsEnums["Int"]>;
@@ -15357,8 +15396,8 @@ export interface Mutation {
   updateTag: (args: { input: UpdateTagInput }) => Maybe<UpdateTagPayload>;
   updateUser: (args: { input: UpdateUserInput }) => Maybe<UpdateUserPayload>;
   updateVideoProject: (args: {
-    input: UpdateVideo_projectInput;
-  }) => Maybe<UpdateVideo_projectPayload>;
+    input: UpdateVideoProjectInput;
+  }) => Maybe<UpdateVideoProjectPayload>;
 }
 
 export interface Query {
@@ -15600,20 +15639,20 @@ export interface Query {
   videoProject: (args: {
     asPreview?: Maybe<Scalars["Boolean"]>;
     id: Scalars["ID"];
-    idType?: Maybe<Video_projectIdType>;
-  }) => Maybe<Video_project>;
+    idType?: Maybe<VideoProjectIdType>;
+  }) => Maybe<VideoProject>;
   videoProjectBy: (args?: {
     id?: Maybe<Scalars["ID"]>;
     uri?: Maybe<Scalars["String"]>;
-    video_projectId?: Maybe<Scalars["Int"]>;
-  }) => Maybe<Video_project>;
+    videoProjectId?: Maybe<Scalars["Int"]>;
+  }) => Maybe<VideoProject>;
   videoProjects: (args?: {
     after?: Maybe<Scalars["String"]>;
     before?: Maybe<Scalars["String"]>;
     first?: Maybe<Scalars["Int"]>;
     last?: Maybe<Scalars["Int"]>;
-    where?: Maybe<RootQueryToVideo_projectConnectionWhereArgs>;
-  }) => Maybe<RootQueryToVideo_projectConnection>;
+    where?: Maybe<RootQueryToVideoProjectConnectionWhereArgs>;
+  }) => Maybe<RootQueryToVideoProjectConnection>;
   viewer?: Maybe<User>;
   writingSettings?: Maybe<WritingSettings>;
 }
@@ -15663,7 +15702,7 @@ export interface SchemaObjectTypes {
   CreateProjectPayload: CreateProjectPayload;
   CreateTagPayload: CreateTagPayload;
   CreateUserPayload: CreateUserPayload;
-  CreateVideo_projectPayload: CreateVideo_projectPayload;
+  CreateVideoProjectPayload: CreateVideoProjectPayload;
   DefaultTemplate: DefaultTemplate;
   DeleteCategoryPayload: DeleteCategoryPayload;
   DeleteCommentPayload: DeleteCommentPayload;
@@ -15674,7 +15713,7 @@ export interface SchemaObjectTypes {
   DeleteProjectPayload: DeleteProjectPayload;
   DeleteTagPayload: DeleteTagPayload;
   DeleteUserPayload: DeleteUserPayload;
-  DeleteVideo_projectPayload: DeleteVideo_projectPayload;
+  DeleteVideoProjectPayload: DeleteVideoProjectPayload;
   DiscussionSettings: DiscussionSettings;
   EnqueuedScript: EnqueuedScript;
   EnqueuedStylesheet: EnqueuedStylesheet;
@@ -15782,8 +15821,8 @@ export interface SchemaObjectTypes {
   RootQueryToUserConnectionEdge: RootQueryToUserConnectionEdge;
   RootQueryToUserRoleConnection: RootQueryToUserRoleConnection;
   RootQueryToUserRoleConnectionEdge: RootQueryToUserRoleConnectionEdge;
-  RootQueryToVideo_projectConnection: RootQueryToVideo_projectConnection;
-  RootQueryToVideo_projectConnectionEdge: RootQueryToVideo_projectConnectionEdge;
+  RootQueryToVideoProjectConnection: RootQueryToVideoProjectConnection;
+  RootQueryToVideoProjectConnectionEdge: RootQueryToVideoProjectConnectionEdge;
   SendPasswordResetEmailPayload: SendPasswordResetEmailPayload;
   Settings: Settings;
   Subscription: Subscription;
@@ -15819,7 +15858,7 @@ export interface SchemaObjectTypes {
   UpdateSettingsPayload: UpdateSettingsPayload;
   UpdateTagPayload: UpdateTagPayload;
   UpdateUserPayload: UpdateUserPayload;
-  UpdateVideo_projectPayload: UpdateVideo_projectPayload;
+  UpdateVideoProjectPayload: UpdateVideoProjectPayload;
   User: User;
   UserRole: UserRole;
   UserToCommentConnection: UserToCommentConnection;
@@ -15838,8 +15877,10 @@ export interface SchemaObjectTypes {
   UserToPostConnectionEdge: UserToPostConnectionEdge;
   UserToUserRoleConnection: UserToUserRoleConnection;
   UserToUserRoleConnectionEdge: UserToUserRoleConnectionEdge;
-  Video_project: Video_project;
-  Video_projectToPreviewConnectionEdge: Video_projectToPreviewConnectionEdge;
+  VideoProject: VideoProject;
+  VideoProjectToPreviewConnectionEdge: VideoProjectToPreviewConnectionEdge;
+  VideoProject_Videoattributes: VideoProject_Videoattributes;
+  VideoProject_Videoattributes_videos: VideoProject_Videoattributes_videos;
   WPPageInfo: WPPageInfo;
   WritingSettings: WritingSettings;
 }
@@ -15884,7 +15925,7 @@ export type SchemaObjectTypesNames =
   | "CreateProjectPayload"
   | "CreateTagPayload"
   | "CreateUserPayload"
-  | "CreateVideo_projectPayload"
+  | "CreateVideoProjectPayload"
   | "DefaultTemplate"
   | "DeleteCategoryPayload"
   | "DeleteCommentPayload"
@@ -15895,7 +15936,7 @@ export type SchemaObjectTypesNames =
   | "DeleteProjectPayload"
   | "DeleteTagPayload"
   | "DeleteUserPayload"
-  | "DeleteVideo_projectPayload"
+  | "DeleteVideoProjectPayload"
   | "DiscussionSettings"
   | "EnqueuedScript"
   | "EnqueuedStylesheet"
@@ -16003,8 +16044,8 @@ export type SchemaObjectTypesNames =
   | "RootQueryToUserConnectionEdge"
   | "RootQueryToUserRoleConnection"
   | "RootQueryToUserRoleConnectionEdge"
-  | "RootQueryToVideo_projectConnection"
-  | "RootQueryToVideo_projectConnectionEdge"
+  | "RootQueryToVideoProjectConnection"
+  | "RootQueryToVideoProjectConnectionEdge"
   | "SendPasswordResetEmailPayload"
   | "Settings"
   | "Subscription"
@@ -16040,7 +16081,7 @@ export type SchemaObjectTypesNames =
   | "UpdateSettingsPayload"
   | "UpdateTagPayload"
   | "UpdateUserPayload"
-  | "UpdateVideo_projectPayload"
+  | "UpdateVideoProjectPayload"
   | "User"
   | "UserRole"
   | "UserToCommentConnection"
@@ -16059,8 +16100,10 @@ export type SchemaObjectTypesNames =
   | "UserToPostConnectionEdge"
   | "UserToUserRoleConnection"
   | "UserToUserRoleConnectionEdge"
-  | "Video_project"
-  | "Video_projectToPreviewConnectionEdge"
+  | "VideoProject"
+  | "VideoProjectToPreviewConnectionEdge"
+  | "VideoProject_Videoattributes"
+  | "VideoProject_Videoattributes_videos"
   | "WPPageInfo"
   | "WritingSettings";
 
@@ -16070,6 +16113,8 @@ export interface $AcfFieldGroup {
   Project_Projectattributes?: Project_Projectattributes;
   Template_BookPage_Bookpageattributes?: Template_BookPage_Bookpageattributes;
   Template_ContactPage_Contactpageoptions?: Template_ContactPage_Contactpageoptions;
+  VideoProject_Videoattributes?: VideoProject_Videoattributes;
+  VideoProject_Videoattributes_videos?: VideoProject_Videoattributes_videos;
 }
 
 export interface $Commenter {
@@ -16082,7 +16127,7 @@ export interface $ContentNode {
   Page?: Page;
   Post?: Post;
   Project?: Project;
-  Video_project?: Video_project;
+  VideoProject?: VideoProject;
 }
 
 export interface $ContentRevisionUnion {
@@ -16112,7 +16157,7 @@ export interface $DatabaseIdentifier {
   Project?: Project;
   Tag?: Tag;
   User?: User;
-  Video_project?: Video_project;
+  VideoProject?: VideoProject;
 }
 
 export interface $EnqueuedAsset {
@@ -16124,7 +16169,7 @@ export interface $HierarchicalContentNode {
   MediaItem?: MediaItem;
   Page?: Page;
   Project?: Project;
-  Video_project?: Video_project;
+  VideoProject?: VideoProject;
 }
 
 export interface $HierarchicalTermNode {
@@ -16137,7 +16182,7 @@ export interface $MenuItemLinkable {
   Post?: Post;
   Project?: Project;
   Tag?: Tag;
-  Video_project?: Video_project;
+  VideoProject?: VideoProject;
 }
 
 export interface $MenuItemObjectUnion {
@@ -16146,7 +16191,7 @@ export interface $MenuItemObjectUnion {
   Post?: Post;
   Project?: Project;
   Tag?: Tag;
-  Video_project?: Video_project;
+  VideoProject?: VideoProject;
 }
 
 export interface $Node {
@@ -16169,7 +16214,7 @@ export interface $Node {
   Theme?: Theme;
   User?: User;
   UserRole?: UserRole;
-  Video_project?: Video_project;
+  VideoProject?: VideoProject;
 }
 
 export interface $NodeWithAuthor {
@@ -16188,7 +16233,7 @@ export interface $NodeWithContentEditor {
   Page?: Page;
   Post?: Post;
   Project?: Project;
-  Video_project?: Video_project;
+  VideoProject?: VideoProject;
 }
 
 export interface $NodeWithExcerpt {
@@ -16214,7 +16259,7 @@ export interface $NodeWithTemplate {
   Page?: Page;
   Post?: Post;
   Project?: Project;
-  Video_project?: Video_project;
+  VideoProject?: VideoProject;
 }
 
 export interface $NodeWithTitle {
@@ -16222,7 +16267,7 @@ export interface $NodeWithTitle {
   Page?: Page;
   Post?: Post;
   Project?: Project;
-  Video_project?: Video_project;
+  VideoProject?: VideoProject;
 }
 
 export interface $NodeWithTrackbacks {
@@ -16245,7 +16290,7 @@ export interface $UniformResourceIdentifiable {
   Project?: Project;
   Tag?: Tag;
   User?: User;
-  Video_project?: Video_project;
+  VideoProject?: VideoProject;
 }
 
 export interface GeneratedSchema {
@@ -16300,5 +16345,5 @@ export interface ScalarsEnums extends MakeNullable<Scalars> {
   UserRoleEnum: UserRoleEnum | undefined;
   UsersConnectionOrderbyEnum: UsersConnectionOrderbyEnum | undefined;
   UsersConnectionSearchColumnEnum: UsersConnectionSearchColumnEnum | undefined;
-  Video_projectIdType: Video_projectIdType | undefined;
+  VideoProjectIdType: VideoProjectIdType | undefined;
 }

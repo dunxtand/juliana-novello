@@ -60,8 +60,8 @@ function create_post_types(){
       'has_archive' => false,
       'hierarchical' => true,
       'show_in_graphql' => true,
-      'graphql_single_name' => 'video_project',
-      'graphql_plural_name' => 'video_projects',
+      'graphql_single_name' => 'videoProject',
+      'graphql_plural_name' => 'videoProjects',
       'menu_icon' => 'dashicons-video-alt',
       'supports' => array( 'title', 'editor' )
     )
