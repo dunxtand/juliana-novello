@@ -19,6 +19,7 @@
     "@babel/preset-typescript": "^7.16.7",
     "@gqty/cli": "^3.1.0",
     "@types/react": "^17.0.39",
+    "@types/react-dom": "^17.0.12",
     "@types/styled-components": "^5.1.23",
     "browser-sync": "^2.8.2",
     "browser-sync-webpack-plugin": "^2.3.0",

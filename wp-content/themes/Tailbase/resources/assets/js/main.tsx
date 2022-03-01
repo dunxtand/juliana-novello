@@ -1,15 +1,3 @@
-// import Vue from 'vue';
-// import vueComponents from './components/vue-components';
-
-
-// for (const [name, component] of vueComponents) {
-//   Vue.component(name, component);
-// }
-
-// new Vue({ el: '#app' });
-
-
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import components from './components';
