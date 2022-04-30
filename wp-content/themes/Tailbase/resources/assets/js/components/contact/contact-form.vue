@@ -35,6 +35,7 @@
                 <button
                     @click="send"
                     color="white"
+                    class="text-deep-purple"
                 >
                     {{ submitting ? 'please wait...' : 'submit' }}
                 </button>

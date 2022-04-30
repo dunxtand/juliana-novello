@@ -25,7 +25,7 @@
                 @mouseenter="selected = project.id"
                 @mouseleave="selected = null"
             >
-                <h2>
+                <h2 class="text-ocean">
                     {{ project.title }}
                 </h2>
             </a>

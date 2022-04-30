@@ -2,7 +2,7 @@
     <nav>
         <div class="fixed top-0 left-0 ml-2 lg:ml-8 mt-2 lg:mt-6">
             <a href="/">
-                <h3>
+                <h3 class="text-dried-blood">
                     juliana roccoforte novello
                 </h3>
             </a>
@@ -11,7 +11,7 @@
         <div class="fixed bottom-0 lg:top-0 lg:right-0 lg:bottom-auto flex w-full lg:w-auto justify-center items-center mb-2 lg:mb-0 lg:mr-2 lg:mt-2">
             <div
                 v-show="!!tooltip"
-                class="tooltip mr-2"
+                class="tooltip mr-2 text-royal-blue"
             >
                 {{ tooltip }}
             </div>

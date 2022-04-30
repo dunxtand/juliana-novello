@@ -6,7 +6,7 @@
         >
             <source :type="type" :src="src"/>
         </video>
-        <div class="flex justify-end mt-1">
+        <div class="flex justify-end mt-1 text-deep-purple">
             <a
                 href="#"
                 @click.prevent="play"

@@ -14,13 +14,13 @@
                 }
             ]"
         >
-            <h2 class="text-center">
+            <h2 class="text-center text-ocean">
                 {{ post.title }}
             </h2>
             <div
                 v-if="selectedIndex === index"
                 v-html="selectedContent"
-                class="selected-content lin-libertine"
+                class="selected-content lin-libertine text-dried-blood"
             ></div>
         </a>
     </div>

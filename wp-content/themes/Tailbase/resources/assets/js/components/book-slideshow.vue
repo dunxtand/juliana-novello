@@ -11,12 +11,22 @@
             tag="div"
             class="image-container"
         >
-            <img
-                v-for="(image, index) in images"
-                :key="image"
-                :src="image"
+            <div
+                v-for="({ type, src }, index) in images"
+                :key="src"
                 v-show="selected === index"
-            />
+            >
+                <video-player
+                    v-if="type === 'mp4'"
+                    :type="`video/${type}`"
+                    :src="src"
+                />
+                <img
+                    v-else
+                    :src="src"
+                    v-show="selected === index"
+                />
+            </div>
         </fade-list>
         <a
             href="#"
@@ -30,6 +40,7 @@
 
 <script>
 import { validateJSON } from '../helpers';
+import VideoPlayer from './video-player';
 import { FadeList } from './transitions';
 
 
@@ -50,12 +61,19 @@ export default {
 
     computed: {
         images: function () {
-            return JSON.parse(this.itemsStr);
+            return JSON.parse(this.itemsStr).map(src => {
+                const splitByDot = src.split('.');
+                return {
+                    type: splitByDot[splitByDot.length - 1],
+                    src: src
+                };
+            });
         }
     },
 
     methods: {
         back: function () {
+            console.log(this.images);
             if (this.selected - 1 < 0) {
                 this.selected = this.images.length - 1;
             } else {
@@ -73,7 +91,8 @@ export default {
     },
 
     components: {
-        FadeList
+        FadeList,
+        VideoPlayer
     }
 }
 </script>
@@ -82,12 +101,13 @@ export default {
 .slideshow-container {
     height: 300px;
     @media(min-width: 640px) {
+        margin-top: 75px;
         height: 500px;
     }
 }
 
 .image-container {
-    max-width: 700px;
+    max-width: 900px;
     img {
         margin: 0 auto;
     }

@@ -28,6 +28,7 @@ html, body {
   font-family: 'LinLibertine';
   margin: 0 auto;
   max-width: 90%;
+  color: $dried-blood;
   @media (min-width: $md) {
     max-width: 1000px;
   }

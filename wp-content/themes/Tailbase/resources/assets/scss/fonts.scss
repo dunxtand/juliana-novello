@@ -89,3 +89,30 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
   font-style: normal;
 }
+
+
+$dried-blood: #4A0505;
+$ocean: #003D43;
+$royal-blue: #101D82;
+$pine-needle: #0A422B;
+$deep-purple: #380B76;
+
+.text-dried-blood {
+  color: $dried-blood;
+}
+
+.text-ocean {
+  color: $ocean;
+}
+
+.text-royal-blue {
+  color: $royal-blue;
+}
+
+.text-pine-needle {
+  color: $pine-needle;
+}
+
+.text-deep-purple {
+  color: $deep-purple;
+}
