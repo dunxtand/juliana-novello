@@ -2,7 +2,7 @@
     {{ post.post_title }}
 </h2>
 
-<project-gallery items-str='{{ project_gallery|json_encode }}'>
+<project-gallery items-str='{{ project_gallery|json_encode|striptags|escape }}'>
 </project-gallery>
 
 <div class="post-content pb-24">

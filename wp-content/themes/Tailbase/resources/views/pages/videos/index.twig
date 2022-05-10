@@ -1,4 +1,4 @@
 <div class="lg:h-screen pt-24">
-    <videos-index items-str='{{ video_projects|json_encode }}'>
+    <videos-index items-str='{{ video_projects|json_encode|striptags|escape }}'>
     </videos-index>
 </div>

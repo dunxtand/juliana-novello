@@ -1,4 +1,4 @@
 <div class="lg:h-screen pt-24">
-    <projects-index items-str='{{ projects|json_encode }}'>
+    <projects-index items-str='{{ projects|json_encode|striptags|escape }}'>
     </projects-index>
 </div>

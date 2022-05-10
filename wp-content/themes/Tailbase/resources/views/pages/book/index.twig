@@ -3,6 +3,6 @@
         {{ post.post_content }}
     </div>
 
-    <book-slideshow items-str='{{ images|json_encode }}'>
+    <book-slideshow items-str='{{ images|json_encode|striptags|escape }}'>
     </book-slideshow>
 </div>
