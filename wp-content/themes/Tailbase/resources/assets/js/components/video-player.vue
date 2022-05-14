@@ -47,6 +47,17 @@ export default {
 
     mounted: function () {
         this.fullscreenSupported = document.fullscreenEnabled || document.mozFullscreenEnabled || document.webkitFullscreenEnabled || document.msFullscreenEnabled;
+
+        this.$refs.video.addEventListener('ended', () => {
+            setTimeout(() => this.$refs.video.currentTime = 0, 3000);
+        });
+
+        // note: add the option to turn this off
+        this.$refs.video.addEventListener('play', () => {
+            if (this.$refs.video.muted === true) {
+                this.$refs.video.muted = false;
+            }
+        });
     },
 
     data: function () {
@@ -78,5 +89,13 @@ video {
     @media (min-width: 1024px) {
         width: 900px;
     }
+}
+
+// note: add the option to control these
+::-webkit-media-controls-current-time-display,
+::-webkit-media-controls-time-remaining-display,
+::-webkit-media-controls-mute-button,
+::-webkit-media-controls-timeline {
+    display: none !important;
 }
 </style>
