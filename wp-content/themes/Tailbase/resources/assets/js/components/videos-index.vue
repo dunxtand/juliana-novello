@@ -1,14 +1,17 @@
 <template>
     <div class="w-full h-full flex justify-between pt-4 pb-24">
         <video
+            v-for="(video, index) in allVideos"
+            :key="index"
             ref="video"
-            :class="{ show: !!selected }"
+            :class="{ show: selectedVideo && video.src === selectedVideo.src }"
+            :data-src="video.src"
             muted
         >
             <source
-                v-if="selectedVideo"
-                :type="selectedVideo.type"
-                :src="selectedVideo.src"
+                v-if="selectedVideo && video.src === selectedVideo.src"
+                :type="video.type"
+                :src="video.src"
             />
         </video>
 
@@ -18,9 +21,9 @@
                 :key="index"
                 :href="project.link"
                 :class="[
-                    'flex mb-16 lg:mb-0',
+                    'flex mb-16 lg:mb-12',
                     {
-                        selected: selected === project.id,
+                        selected: index === selected,
                         'not-selected': !!selected && selected !== project.id
                     }
                 ]"
@@ -57,14 +60,16 @@ export default {
 
     watch: {
         selectedVideo: function (video) {
-            console.log(video);
             if (video && video.src) {
-                this.$refs.video.currentTime = 0;
-                this.$refs.video.muted = false;
-                this.$refs.video.play();
+                const v = this.$refs.video.find(r => r.dataset?.src === video.src);
+                v.currentTime = 0;
+                v.muted = false;
+                v.play();
             } else {
-                this.$refs.video.pause();
-                this.$refs.video.muted = true;
+                for (const vid of this.$refs.video) {
+                    vid.pause();
+                    vid.muted = true;
+                }
             }
         }
     },
@@ -82,6 +87,10 @@ export default {
             const videos = (this.projects.find(v => v.id === this.selected) || { videos: [] }).videos;
             const randomIndex = Math.floor((Math.random()) * ((videos.length - 1) + 1));
             return videos[randomIndex] || null;
+        },
+
+        allVideos: function () {
+            return this.projects.map(p => p.videos).flat();
         }
     }
 }
@@ -108,7 +117,7 @@ a {
     z-index: 10;
     &.selected {
         h2 {
-            color: #ccf4f9;
+            color: #ccf4f9 !important;
         }
     }
 
