@@ -23,7 +23,7 @@
                 :class="[
                     'flex mb-16 lg:mb-12',
                     {
-                        selected: index === selected,
+                        selected: project.id === selected,
                         'not-selected': !!selected && selected !== project.id
                     }
                 ]"
