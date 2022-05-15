@@ -3,6 +3,9 @@
         <video
             ref="video"
             muted
+            disablepictureinpicture
+            controlslist="nodownload noplaybackrate"
+            :class="{ notimeline: !timeline }"
         >
             <source :type="type" :src="src"/>
         </video>
@@ -42,6 +45,14 @@ export default {
         src: {
             type: String,
             required: true
+        },
+        timeline: {
+            type: Boolean,
+            default: false
+        },
+        muted: {
+            type: Boolean,
+            default: false
         }
     },
 
@@ -52,12 +63,13 @@ export default {
             setTimeout(() => this.$refs.video.currentTime = 0, 3000);
         });
 
-        // note: add the option to turn this off
-        this.$refs.video.addEventListener('play', () => {
-            if (this.$refs.video.muted === true) {
-                this.$refs.video.muted = false;
-            }
-        });
+        if (!this.muted) {
+            this.$refs.video.addEventListener('play', () => {
+                if (this.$refs.video.muted === true) {
+                    this.$refs.video.muted = false;
+                }
+            });
+        }
     },
 
     data: function () {
@@ -68,7 +80,9 @@ export default {
 
     methods: {
         play: function () {
-            this.$refs.video.muted = false;
+            if (!this.muted) {
+                this.$refs.video.muted = false;
+            }
             this.$refs.video.play();
         },
 
@@ -91,11 +105,15 @@ video {
     }
 }
 
-// note: add the option to control these
 ::-webkit-media-controls-current-time-display,
 ::-webkit-media-controls-time-remaining-display,
-::-webkit-media-controls-mute-button,
-::-webkit-media-controls-timeline {
+::-webkit-media-controls-mute-button {
     display: none !important;
+}
+
+.notimeline {
+    &::-webkit-media-controls-timeline {
+        display: none !important;
+    }
 }
 </style>

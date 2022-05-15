@@ -1,6 +1,6 @@
 <div class="mb-20 mt-24 pt-4">
-    <div class="post-content pb-10">
-        {{ post.post_content }}
+    <div class="post-content">
+        {{ post.content }}
     </div>
 
     <book-slideshow items-str='{{ images|json_encode|striptags|escape }}'>

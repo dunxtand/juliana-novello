@@ -20,6 +20,8 @@
                     v-if="type === 'mp4'"
                     :type="`video/${type}`"
                     :src="src"
+                    timeline
+                    muted
                 />
                 <img
                     v-else
