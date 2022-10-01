@@ -8,8 +8,9 @@ function format_project ( $project ) {
 
     $gallery = array();
     $featured = array();
+
     foreach (($timber_post->meta( 'gallery' ) ?: array()) as $image) {
-        $gallery[] = $image['url'];
+        $gallery[] = $image['sizes']['1536x1536'] ?: $image['url'];
 
         if ( boolval( (new TimberImage( $image ))->featured ) ) {
             $featured[] = $image['url'];
