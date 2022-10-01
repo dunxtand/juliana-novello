@@ -10,10 +10,11 @@ function format_project ( $project ) {
     $featured = array();
 
     foreach (($timber_post->meta( 'gallery' ) ?: array()) as $image) {
-        $gallery[] = $image['sizes']['1536x1536'] ?: $image['url'];
+        $image_url = $image['sizes']['1536x1536'] ?: $image['url'];
+        $gallery[] = $image_url;
 
         if ( boolval( (new TimberImage( $image ))->featured ) ) {
-            $featured[] = $image['url'];
+            $featured[] = $image_url;
         }
     }
 
