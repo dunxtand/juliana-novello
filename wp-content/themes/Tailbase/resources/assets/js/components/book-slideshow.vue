@@ -12,7 +12,7 @@
             class="image-container"
         >
             <div
-                v-for="({ type, src }, index) in images"
+                v-for="({ type, src }, index) in items"
                 :key="src"
                 v-show="selected === index"
             >
@@ -22,6 +22,7 @@
                     :src="src"
                     timeline
                     muted
+                    ref="video"
                 />
                 <img
                     v-else
@@ -62,7 +63,7 @@ export default {
     },
 
     computed: {
-        images: function () {
+        items: function () {
             return JSON.parse(this.itemsStr).map(src => {
                 const splitByDot = src.split('.');
                 return {
@@ -73,18 +74,25 @@ export default {
         }
     },
 
+    watch: {
+        selected: function () {
+            for (const video of (this.$refs.video || [])) {
+                video.pause();
+            }
+        }
+    },
+
     methods: {
         back: function () {
-            console.log(this.images);
             if (this.selected - 1 < 0) {
-                this.selected = this.images.length - 1;
+                this.selected = this.items.length - 1;
             } else {
                 this.selected -= 1;
             }
         },
 
         forward: function () {
-            if (this.selected + 1 > (this.images.length - 1)) {
+            if (this.selected + 1 > (this.items.length - 1)) {
                 this.selected = 0;
             } else {
                 this.selected += 1;
