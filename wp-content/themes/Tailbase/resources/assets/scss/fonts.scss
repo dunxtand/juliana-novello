@@ -64,6 +64,14 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'LinLibertine';
 }
 
+.nabla {
+  font-family: 'Nabla', cursive;
+}
+
+.fira-code {
+  font-family: 'Fira Code', monospace;
+}
+
 
 @font-face {
   font-family: 'HappyTime';
@@ -91,11 +99,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+$white: #fff;
 $dried-blood: #4A0505;
 $ocean: #003D43;
 $royal-blue: #101D82;
 $pine-needle: #0A422B;
 $deep-purple: #380B76;
+$nuclear: #93ff9b;
+$northeast-sky: #5b8dff;
+$periwinkle: #98b7ff;
+
+.text-white {
+  color: $white;
+}
 
 .text-dried-blood {
   color: $dried-blood;
@@ -115,4 +131,16 @@ $deep-purple: #380B76;
 
 .text-deep-purple {
   color: $deep-purple;
+}
+
+.text-nuclear {
+  color: $nuclear;
+}
+
+.text-northeast-sky {
+  color: $northeast-sky;
+}
+
+.text-periwinkle {
+  color: $periwinkle;
 }

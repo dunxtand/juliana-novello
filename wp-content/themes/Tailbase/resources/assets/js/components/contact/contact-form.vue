@@ -1,7 +1,7 @@
 <template>
     <form
         @submit="send"
-        class="lg:-mx-4 px-6"
+        class="lg:-mx-4 px-6 fira-code"
     >
         <fade-list
             tag="div"
@@ -35,7 +35,7 @@
                 <button
                     @click="send"
                     color="white"
-                    class="text-deep-purple"
+                    class="text-northeast-sky"
                 >
                     {{ submitting ? 'please wait...' : 'submit' }}
                 </button>
@@ -159,6 +159,7 @@ form {
 
 input, textarea {
     -webkit-appearance: none;
+    border-color: #fff;
     &::placeholder {
         color: #958F86;
     }

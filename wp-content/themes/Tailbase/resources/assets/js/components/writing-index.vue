@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full lg:h-screen flex flex-col justify-between items-center pt-4 pb-32">
+    <div class="w-full lg:h-screen flex flex-col justify-center items-center pt-4 pb-32">
         <a
             v-for="(post, index) in posts"
             :key="index"
@@ -7,20 +7,20 @@
             @mouseenter="selectedIndex = index"
             @mouseleave="selectedIndex = null"
             :class="[
-                'relative flex justify-center mb-16 lg:mb-6 mx-4',
+                'relative flex justify-center mb-16 lg:mb-12 mx-4',
                 {
                     selected: selectedIndex === index,
                     'not-selected': selectedIndex !== null && selectedIndex !== index
                 }
             ]"
         >
-            <h2 class="text-center text-ocean">
+            <h2 class="text-center text-periwinkle">
                 {{ post.title }}
             </h2>
             <div
                 v-if="selectedIndex === index"
                 v-html="selectedContent"
-                class="selected-content lin-libertine text-dried-blood"
+                class="selected-content fira-code text-white"
             ></div>
         </a>
     </div>
@@ -98,13 +98,14 @@ export default {
 <style lang="scss" scoped>
 a {
     h2 {
-        font-size: 45px;
+        font-size: 40px;
+        letter-spacing: 1px;
         transition: opacity .4s, color .3s;
     }
 
     &.selected {
         h2 {
-            color: #ccf4f9;
+            color: #93ff9b;
         }
     }
 

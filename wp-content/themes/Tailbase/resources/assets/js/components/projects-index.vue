@@ -10,13 +10,13 @@
             ]"
         />
 
-        <div class="w-full h-full flex flex-col justify-between items-center mx-4">
+        <div class="w-full h-full flex flex-col justify-center items-center mx-4">
             <a
                 v-for="(project, index) in projects"
                 :key="index"
                 :href="project.link"
                 :class="[
-                    'flex mb-16 lg:mb-0',
+                    'flex mb-16 lg:mb-12',
                     {
                         selected: selected === project.id,
                         'not-selected': !!selected && selected !== project.id
@@ -25,7 +25,7 @@
                 @mouseenter="selected = project.id"
                 @mouseleave="selected = null"
             >
-                <h2 class="text-ocean">
+                <h2 class="text-periwinkle">
                     {{ project.title }}
                 </h2>
             </a>
@@ -101,7 +101,7 @@ a {
     z-index: 10;
     &.selected {
         h2 {
-            color: #ccf4f9;
+            color: #93ff9b;
         }
     }
 
@@ -112,7 +112,8 @@ a {
     }
 
     h2 {
-        font-size: 45px;
+        font-size: 40px;
+        letter-spacing: 1px;
         max-width: 900px;
         text-align: center;
         opacity: 1;

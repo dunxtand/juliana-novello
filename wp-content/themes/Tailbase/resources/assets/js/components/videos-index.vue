@@ -30,7 +30,7 @@
                 @mouseenter="selected = project.id"
                 @mouseleave="selected = null"
             >
-                <h2 class="text-ocean">
+                <h2 class="text-periwinkle">
                     {{ project.title }}
                 </h2>
             </a>
@@ -117,7 +117,7 @@ a {
     z-index: 10;
     &.selected {
         h2 {
-            color: #ccf4f9 !important;
+            color: #93ff9b !important;
         }
     }
 
@@ -128,7 +128,8 @@ a {
     }
 
     h2 {
-        font-size: 45px;
+        font-size: 40px;
+        letter-spacing: 1px;
         max-width: 900px;
         text-align: center;
         opacity: 1;
@@ -137,7 +138,8 @@ a {
 }
 
 h2 {
-    font-size: 45px;
+    font-size: 40px;
+    letter-spacing: 1px;
     text-align: center;
 }
 </style>

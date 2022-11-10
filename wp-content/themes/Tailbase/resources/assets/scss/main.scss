@@ -20,15 +20,16 @@
 
 
 html, body {
-  font-family: 'HappyTime';
-  background-color: #f5dbdb;
+  font-family: 'Playfair Display', serif;
+  background-color: #092D7F;
+  color: $white;
 }
 
 .post-content {
-  font-family: 'LinLibertine';
+  font-family: 'Fira Code', monospace;
   margin: 0 auto;
   max-width: 90%;
-  color: $dried-blood;
+  color: $white;
   @media (min-width: $md) {
     max-width: 1000px;
   }
