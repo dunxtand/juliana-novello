@@ -1,10 +1,12 @@
-<h2 class="text-center mb-6 mt-24 pt-4 text-periwinkle">
+<h2 class="text-center mb-10 lg:mb-12 mt-24 pt-4 text-periwinkle">
     {{ post.post_title }}
 </h2>
 
-<project-gallery items-str='{{ project_gallery|json_encode|striptags|escape }}'>
-</project-gallery>
+<project-page-gallery items-str='{{ project_gallery|json_encode|striptags|escape }}'>
+</project-page-gallery>
 
-<div class="post-content pb-24">
-    {{ post.content }}
-</div>
+{% if post.content %}
+    <div class="post-content pb-24">
+        {{ post.content }}
+    </div>
+{% endif %}
