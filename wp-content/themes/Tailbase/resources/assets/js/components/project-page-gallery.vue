@@ -8,12 +8,7 @@
             >
                 ➬
             </a>
-            <img
-                v-for="(src, index) in images"
-                :key="index"
-                :src="src"
-                :class="{ show: src === shown }"
-            />
+            <img :src="shown" />
             <a
                 href="#"
                 @click.prevent="forward"
@@ -87,15 +82,11 @@ export default {
 
     img {
         position: absolute;
-        opacity: 0;
         max-height: 100%;
         transition: opacity .3s;
         max-width: 100%;
-        @media(min-width: 640px) {
+        @media (min-width: 640px) {
             max-width: 80%;
-        }
-        &.show {
-            opacity: 1;
         }
     }
 
