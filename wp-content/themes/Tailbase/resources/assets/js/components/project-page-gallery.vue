@@ -84,6 +84,7 @@ export default {
         position: absolute;
         max-height: 100%;
         transition: opacity .3s;
+        transition-delay: 1s;
         max-width: 100%;
         @media (min-width: 640px) {
             max-width: 80%;

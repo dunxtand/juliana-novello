@@ -1,14 +1,16 @@
 <template>
     <div class="w-full h-full flex justify-between pt-4 pb-24">
-        <img
-            v-for="(src, index) in allImages"
-            :key="index"
-            :src="src"
-            :class="[
-                'mt-6',
-                { show: image === src }
-            ]"
-        />
+        <div v-if="isLargeScreen()">
+            <img 
+                v-for="(src, index) in allImages"
+                :key="index"
+                :src="src"
+                :class="[
+                    'mt-6',
+                    { show: image === src }
+                ]"
+            />
+        </div>
 
         <div class="w-full h-full flex flex-col justify-center items-center mx-4">
             <a
@@ -76,6 +78,12 @@ export default {
 
         allImages: function () {
             return this.projects.reduce((images, project) => images.concat(project.featured), []);
+        }
+    },
+
+    methods: {
+        isLargeScreen: function () {
+            return window.innerWidth >= 768;
         }
     }
 }

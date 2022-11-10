@@ -1,19 +1,21 @@
 <template>
     <div class="w-full h-full flex justify-between pt-4 pb-24">
-        <video
-            v-for="(video, index) in allVideos"
-            :key="index"
-            ref="video"
-            :class="{ show: selectedVideo && video.src === selectedVideo.src }"
-            :data-src="video.src"
-            muted
-        >
-            <source
-                v-if="selectedVideo && video.src === selectedVideo.src"
-                :type="video.type"
-                :src="video.src"
-            />
-        </video>
+        <div v-if="isLargeScreen()">
+            <video
+                v-for="(video, index) in allVideos"
+                :key="index"
+                ref="video"
+                :class="{ show: selectedVideo && video.src === selectedVideo.src }"
+                :data-src="video.src"
+                muted
+            >
+                <source
+                    v-if="selectedVideo && video.src === selectedVideo.src"
+                    :type="video.type"
+                    :src="video.src"
+                />
+            </video>
+        </div>
 
         <div class="w-full h-full flex flex-col justify-center items-center mx-4">
             <a
@@ -91,6 +93,12 @@ export default {
 
         allVideos: function () {
             return this.projects.map(p => p.videos).flat();
+        }
+    },
+
+    methods: {
+        isLargeScreen: function () {
+            return window.innerWidth >= 768;
         }
     }
 }
