@@ -9,7 +9,7 @@
         >
             <source :type="type" :src="src"/>
         </video>
-        <div class="flex justify-end mt-1 text-deep-purple">
+        <div class="flex justify-end mt-1 text-periwinkle">
             <a
                 href="#"
                 @click.prevent="play"

@@ -9,7 +9,7 @@ $context['post'] = $timber_post;
 
 $context['images'] = array_map(
     function ( $image ) {
-        return $image['url'];
+        return $image['sizes']['1536x1536'] ?: $image['url'];
     },
     $timber_post->meta( 'slideshow' ) ?: array()
 );
