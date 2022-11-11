@@ -16,4 +16,12 @@ $context['videos'] = array_map(
     $post->meta( 'videos' ) ?: array()
 );
 
+$context['gallery'] = array_map(
+    function ( $image ) {
+        // dump( $image['image']['sizes'] );
+        return $image['image']['sizes']['medium'];
+    },
+    $post->meta( 'images' ) ?: array()
+);
+
 Timber::render( 'single-video.twig' , $context );

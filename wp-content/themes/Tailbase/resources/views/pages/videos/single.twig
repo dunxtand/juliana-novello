@@ -12,6 +12,9 @@
     {% endfor %}
 </div>
 
-<div class="post-content pb-24">
+<video-project-gallery items-str='{{ gallery|json_encode|striptags|escape }}'>
+</video-project-gallery>
+
+<div class="post-content pt-12 pb-24">
     {{ post.content }}
 </div>
