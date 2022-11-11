@@ -4,15 +4,20 @@
             <a
                 href="#"
                 @click.prevent="back"
-                class="controls controls-prev absolute bottom-0 sm:bottom-auto left-0 ml-4"
+                class="controls controls-prev absolute left-0 ml-4"
             >
                 ➬
             </a>
-            <img :src="shown" />
+            <img
+                v-for="(src, index) in images"
+                :key="index"
+                :src="src"
+                :class="{ show: src === shown }"
+            />
             <a
                 href="#"
                 @click.prevent="forward"
-                class="controls controls-next absolute bottom-0 sm:bottom-auto right-0 mr-4"
+                class="controls controls-next absolute right-0 mr-4"
             >
                 ➫
             </a>
@@ -78,16 +83,23 @@ export default {
     max-width: 90%;
 }
 .lightbox {
-    height: 72vh;
+    height: 50vh;
+
+    @media (min-width: 640px) {
+        height: 72vh;
+    }
 
     img {
         position: absolute;
         max-height: 100%;
+        opacity: 0;
         transition: opacity .3s;
-        transition-delay: 1s;
         max-width: 100%;
         @media (min-width: 640px) {
             max-width: 80%;
+        }
+        &.show {
+            opacity: 1;
         }
     }
 
@@ -98,6 +110,10 @@ export default {
     .controls-prev, .controls-next {
         font-size: 50px;
         z-index: 100;
+        bottom: -65px;
+        @media (min-width: 640px) {
+            bottom: auto;
+        }
     }
 
     .controls-prev {
