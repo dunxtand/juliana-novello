@@ -3,7 +3,7 @@
         <div
             @scroll="handleScroll"
             ref="track"
-            class="flex items-center overflow-x-scroll"
+            class="track flex items-center bg-transparent pb-4"
         >
             <div
                 v-for="(src, index) in images"
@@ -48,7 +48,7 @@ export default {
     methods: {
         handleScroll: function () {
             const scrollableWidth = this.$refs.track.scrollWidth - this.$refs.track.clientWidth;
-            if (this.$refs.track.scrollLeft === scrollableWidth) {
+            if (this.$refs.track.scrollLeft >= (scrollableWidth - 100)) {
                 this.images = this.images.concat(this.originalImages);
             }
         }

@@ -12,9 +12,13 @@
     {% endfor %}
 </div>
 
-<video-project-gallery items-str='{{ gallery|json_encode|striptags|escape }}'>
-</video-project-gallery>
+{% if gallery %}
+    <video-project-gallery items-str='{{ gallery|json_encode|striptags|escape }}'>
+    </video-project-gallery>
+{% endif %}
 
-<div class="post-content pt-12 pb-24">
-    {{ post.content }}
-</div>
+{% if post.content %}
+    <div class="post-content pt-10 pb-24">
+        {{ post.content }}
+    </div>
+{% endif %}

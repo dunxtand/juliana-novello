@@ -14,7 +14,10 @@
                 }
             ]"
         >
-            <h2 class="text-center text-periwinkle">
+            <h2 :class="[
+                'text-center',
+                post.is_category ? 'text-white' : 'text-periwinkle'
+            ]">
                 {{ post.title }}
             </h2>
             <div

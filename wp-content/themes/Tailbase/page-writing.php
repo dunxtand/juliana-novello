@@ -54,6 +54,7 @@ foreach ( $posts_query->posts as $default_post) {
                 'title' => $category->name,
                 'content' => $post->post_content,
                 'link' => '/' . $timber_post->slug . '?category=' . $category->slug,
+                'is_category' => true
             ];
         }
     }
