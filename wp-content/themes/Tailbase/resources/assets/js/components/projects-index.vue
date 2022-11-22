@@ -114,8 +114,10 @@ a {
     }
 
     &.not-selected {
-        h2 {
-            opacity: 0;
+        @media (min-width: 768px) {
+            h2 {
+                opacity: 0;
+            }
         }
     }
 

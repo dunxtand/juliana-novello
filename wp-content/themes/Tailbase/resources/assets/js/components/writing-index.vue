@@ -21,7 +21,7 @@
                 {{ post.title }}
             </h2>
             <div
-                v-if="selectedIndex === index"
+                v-if="selectedIndex === index && isLargeScreen()"
                 v-html="selectedContent"
                 class="selected-content fira-code text-white"
             ></div>
@@ -94,6 +94,12 @@ export default {
         selectedPost: function () {
             return this.posts[this.selectedIndex] || null;
         }
+    },
+
+    methods: {
+        isLargeScreen: function () {
+            return window.innerWidth >= 768;
+        }
     }
 }
 </script>
@@ -113,8 +119,10 @@ a {
     }
 
     &.not-selected {
-        h2 {
-            opacity: 0;
+        @media (min-width: 768px) {
+            h2 {
+                opacity: 0;
+            }
         }
     }
 }

@@ -1,26 +1,31 @@
 <template>
     <div class="mx-4">
-        <video
-            ref="video"
-            muted
-            disablepictureinpicture
-            controlslist="nodownload noplaybackrate"
-            :class="{ notimeline: !timeline }"
-        >
-            <source :type="type" :src="src"/>
-        </video>
+        <div class="relative">
+            <video
+                ref="video"
+                muted
+                disablepictureinpicture
+                controlslist="nodownload noplaybackrate"
+                :class="{ notimeline: !timeline, loading }"
+            >
+                <source :type="type" :src="`${src}#t=0.1`"/>
+            </video>
+            <div
+                v-if="loading"
+                class="spinner animate-spin"
+            />
+        </div>
         <div class="flex justify-end mt-1 text-periwinkle">
             <a
                 href="#"
                 @click.prevent="play"
-                class="mr-4"
             >
                 play
             </a>
             <a
                 href="#"
                 @click.prevent="pause"
-                class="mr-4"
+                class="ml-4"
             >
                 pause
             </a>
@@ -28,6 +33,7 @@
                 v-if="fullscreenSupported"
                 href="#"
                 @click.prevent="fullscreen"
+                class="ml-4"
             >
                 fullscreen
             </a>
@@ -63,6 +69,10 @@ export default {
             setTimeout(() => this.$refs.video.currentTime = 0, 3000);
         });
 
+        this.$refs.video.addEventListener('canplaythrough', () => {
+            this.loading = false;
+        });
+
         if (!this.muted) {
             this.$refs.video.addEventListener('play', () => {
                 if (this.$refs.video.muted === true) {
@@ -74,12 +84,15 @@ export default {
 
     data: function () {
         return {
-            fullscreenSupported: true
+            fullscreenSupported: true,
+            loading: true
         };
     },
 
     methods: {
         play: function () {
+            if (this.loading) return;
+
             if (!this.muted) {
                 this.$refs.video.muted = false;
             }
@@ -87,11 +100,15 @@ export default {
         },
 
         pause: function () {
+            if (this.loading) return;
+
             this.$refs.video.pause();
             this.$refs.video.muted = true;
         },
 
         fullscreen: function () {
+            if (this.loading) return;
+
             this.$refs.video.requestFullscreen();
         }
     }
@@ -103,6 +120,23 @@ video {
     @media (min-width: 1024px) {
         width: 900px;
     }
+    &.loading {
+        opacity: 0.5;
+    }
+}
+
+.spinner {
+    position: absolute;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto;
+    top: 43%;
+    width: 65px;
+    height: 65px;
+    border-radius: 100%;
+    border: 5px solid #fff;
+    border-top-color: #98b7ff;
 }
 
 ::-webkit-media-controls-current-time-display,
