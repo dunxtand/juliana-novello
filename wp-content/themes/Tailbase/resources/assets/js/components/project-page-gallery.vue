@@ -90,6 +90,7 @@ export default {
     }
 
     img {
+        width: auto;
         position: absolute;
         max-height: 100%;
         opacity: 0;
